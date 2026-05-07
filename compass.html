@@ -3,58 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stori Compass — Learning Hub Demo</title>
+<title>Stori Compass</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F8F8F6; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
-  .frame { background: #fff; border-radius: 16px; border: 1px solid #E8E6DF; width: 100%; max-width: 520px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-  .header { display: flex; align-items: center; gap: 10px; padding: 16px 20px; border-bottom: 1px solid #F0EEE7; }
-  .compass-icon { width: 36px; height: 36px; border-radius: 9px; background: #EEEDFE; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-  .h-title { font-size: 14px; font-weight: 600; color: #2C2C2A; }
-  .h-sub { font-size: 11px; color: #888780; }
-  .scope { display: flex; gap: 5px; padding: 10px 20px; border-bottom: 1px solid #F0EEE7; flex-wrap: wrap; align-items: center; }
-  .scope-label { font-size: 10px; color: #B4B2A9; }
-  .pill { font-size: 10px; font-weight: 500; padding: 3px 8px; border-radius: 20px; }
-  .pill-in { background: #EEEDFE; color: #3C3489; }
-  .pill-out { background: #F1EFE8; color: #5F5E5A; }
-  .messages { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; min-height: 340px; max-height: 440px; overflow-y: auto; }
-  .msg { display: flex; gap: 10px; align-items: flex-start; }
-  .msg.user { flex-direction: row-reverse; }
-  .avatar { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
-  .av-c { background: #EEEDFE; color: #534AB7; }
-  .av-u { background: #E1F5EE; color: #0F6E56; }
-  .bubble { padding: 10px 14px; border-radius: 12px; font-size: 13px; line-height: 1.65; max-width: 82%; }
-  .bubble-c { background: #F6F5F0; color: #2C2C2A; border-radius: 4px 12px 12px 12px; }
-  .bubble-u { background: #0F6E56; color: #fff; border-radius: 12px 4px 12px 12px; }
-  .typing { display: flex; align-items: center; gap: 4px; padding: 12px 14px; background: #F6F5F0; border-radius: 4px 12px 12px 12px; width: fit-content; }
-  .dot { width: 6px; height: 6px; border-radius: 50%; background: #B4B2A9; animation: bounce 1.2s infinite; }
-  .dot:nth-child(2) { animation-delay: .2s; }
-  .dot:nth-child(3) { animation-delay: .4s; }
-  @keyframes bounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
-  .starters { padding: 0 20px 12px; display: flex; flex-direction: column; gap: 6px; }
-  .starter { font-size: 12px; color: #534AB7; border: 1px solid #AFA9EC; border-radius: 8px; padding: 8px 12px; cursor: pointer; text-align: left; background: #fff; line-height: 1.45; transition: background .1s; }
-  .starter:hover { background: #EEEDFE; }
-  .input-area { padding: 12px 20px; border-top: 1px solid #F0EEE7; display: flex; gap: 8px; align-items: flex-end; }
-  .input-area textarea { flex: 1; border: 1px solid #D3D1C7; border-radius: 10px; padding: 9px 12px; font-size: 13px; font-family: inherit; resize: none; min-height: 38px; max-height: 120px; line-height: 1.5; color: #2C2C2A; outline: none; }
-  .input-area textarea:focus { border-color: #534AB7; }
-  .send-btn { width: 36px; height: 36px; border-radius: 9px; background: #534AB7; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0; font-size: 15px; }
-  .send-btn:disabled { background: #D3D1C7; cursor: not-allowed; }
-  .footer { padding: 8px 20px 14px; display: flex; justify-content: space-between; align-items: center; }
-  .footer-tag { font-size: 10px; color: #B4B2A9; }
-  .reset-btn { font-size: 11px; color: #888780; background: none; border: none; cursor: pointer; }
-  .reset-btn:hover { color: #534AB7; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F8F8F6;padding:20px;display:flex;flex-direction:column;align-items:center;min-height:100vh}
+.back{font-size:12px;color:#0F6E56;text-decoration:none;align-self:flex-start;margin-bottom:12px}
+.frame{background:#fff;border-radius:16px;border:1px solid #E8E6DF;width:100%;max-width:540px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.header{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid #F0EEE7}
+.cicon{width:36px;height:36px;border-radius:9px;background:#EEEDFE;display:flex;align-items:center;justify-content:center;font-size:18px}
+.h-title{font-size:14px;font-weight:600;color:#2C2C2A}
+.h-sub{font-size:11px;color:#888780}
+.scope{display:flex;gap:5px;padding:10px 20px;border-bottom:1px solid #F0EEE7;flex-wrap:wrap;align-items:center}
+.scope-label{font-size:10px;color:#B4B2A9}
+.pill{font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px}
+.pill-in{background:#EEEDFE;color:#3C3489}
+.pill-out{background:#F1EFE8;color:#5F5E5A}
+.messages{padding:16px 20px;display:flex;flex-direction:column;gap:12px;min-height:340px;max-height:440px;overflow-y:auto}
+.msg{display:flex;gap:10px;align-items:flex-start}
+.msg.user{flex-direction:row-reverse}
+.avatar{width:28px;height:28px;min-width:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
+.av-c{background:#EEEDFE;color:#534AB7}
+.av-u{background:#E1F5EE;color:#0F6E56}
+.bubble{padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.65;max-width:82%}
+.bubble-c{background:#F6F5F0;color:#2C2C2A;border-radius:4px 12px 12px 12px}
+.bubble-u{background:#0F6E56;color:#fff;border-radius:12px 4px 12px 12px}
+.typing{display:flex;align-items:center;gap:4px;padding:12px 14px;background:#F6F5F0;border-radius:4px 12px 12px 12px;width:fit-content}
+.dot{width:6px;height:6px;border-radius:50%;background:#B4B2A9;animation:bounce 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}
+.dot:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.starters{padding:0 20px 12px;display:flex;flex-direction:column;gap:6px}
+.starter{font-size:12px;color:#534AB7;border:1px solid #AFA9EC;border-radius:8px;padding:8px 12px;cursor:pointer;text-align:left;background:#fff;line-height:1.45;font-family:inherit}
+.starter:hover{background:#EEEDFE}
+.input-area{padding:12px 20px;border-top:1px solid #F0EEE7;display:flex;gap:8px;align-items:flex-end}
+.input-area textarea{flex:1;border:1px solid #D3D1C7;border-radius:10px;padding:9px 12px;font-size:13px;font-family:inherit;resize:none;min-height:38px;max-height:120px;line-height:1.5;color:#2C2C2A;outline:none}
+.input-area textarea:focus{border-color:#534AB7}
+.send-btn{width:36px;height:36px;border-radius:9px;background:#534AB7;border:none;cursor:pointer;color:#fff;flex-shrink:0;font-size:15px;font-family:inherit}
+.send-btn:disabled{background:#D3D1C7;cursor:not-allowed}
+.footer-bar{padding:8px 20px 14px;display:flex;justify-content:space-between;align-items:center}
+.footer-tag{font-size:10px;color:#B4B2A9}
+.reset-btn{font-size:11px;color:#888780;background:none;border:none;cursor:pointer;font-family:inherit}
 </style>
 </head>
 <body>
-<div style="padding:10px 20px;background:#fff;border-bottom:1px solid #E8E6DF;max-width:520px;margin:0 auto"><a href="index.html" style="font-size:12px;color:#0F6E56;text-decoration:none">← Back to hub</a></div><div class="frame">
+<a class="back" href="index.html">← Back to hub</a>
+<div class="frame">
   <div class="header">
-    <div class="compass-icon">🧭</div>
+    <div class="cicon">🧭</div>
     <div>
       <div class="h-title">Stori Compass</div>
       <div class="h-sub">Your thinking partner for work and growth at Stori</div>
     </div>
   </div>
-
   <div class="scope">
     <span class="scope-label">In scope:</span>
     <span class="pill pill-in">Career development</span>
@@ -65,98 +65,151 @@
     <span class="pill pill-out">Legal advice</span>
     <span class="pill pill-out">Therapy</span>
   </div>
-
   <div class="messages" id="messages">
     <div class="msg">
       <div class="avatar av-c">🧭</div>
       <div class="bubble bubble-c">Hi — I'm Stori Compass, your thinking partner for work and growth at Stori.<br><br>I'm here to help you think through career decisions, navigate manager situations, or find the right learning for where you are right now. I ask questions more than I give answers — that's intentional.<br><br>What's on your mind?</div>
     </div>
   </div>
-
   <div class="starters" id="starters">
-    <button class="starter" onclick="sendStarter(this)">I'm thinking about my next step at Stori and not sure where to go</button>
-    <button class="starter" onclick="sendStarter(this)">I need to give difficult feedback to someone on my team</button>
-    <button class="starter" onclick="sendStarter(this)">I want to build a specific skill but don't know where to start</button>
+    <button class="starter" onclick="sendStarter(this,0)">I need to give difficult feedback to someone on my team</button>
+    <button class="starter" onclick="sendStarter(this,1)">I'm thinking about my next step at Stori and not sure where to go</button>
+    <button class="starter" onclick="sendStarter(this,2)">I want to build a specific skill but don't know where to start</button>
   </div>
-
   <div class="input-area">
     <textarea id="input" placeholder="Type your message…" rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
-    <button class="send-btn" id="send-btn" onclick="sendMsg()" title="Send">➤</button>
+    <button class="send-btn" id="send-btn" onclick="sendMsg()">➤</button>
   </div>
-
-  <div class="footer">
+  <div class="footer-bar">
     <span class="footer-tag">Stori Learning Hub · L&D · Demo</span>
     <button class="reset-btn" onclick="resetChat()">↺ Start over</button>
   </div>
 </div>
 
 <script>
-const SYSTEM = `You are Stori Compass, an AI thinking partner for Storians (employees at Stori, a Mexican fintech company). Your role is to help people think through career development, manager situations, and learning navigation at Stori.
-
-Your coaching style:
-- Ask one thoughtful question at a time before offering any advice
-- Be warm, direct, and concise — no corporate jargon
-- Help people think, don't think for them
-- When someone is stuck, reflect back what you're hearing before asking the next question
-- Keep responses short — 3-5 sentences max unless the person asks for more
-- Respond in the same language the person writes in (Spanish or English)
-
-Your scope (only discuss these):
-- Career development and growth at Stori
-- Manager situations: giving feedback, difficult conversations, team dynamics, motivation
-- Learning navigation: finding the right resource or programme in the Stori Learning Hub (Storiversity, Stori Business Academy, Leadership Academy, Stori Talks, Teaming & Collaboration, Grow at Stori, Stori Expertise)
-
-Hard boundaries — if asked about these, kindly redirect:
-- HR decisions, compensation, or performance ratings → "That's a conversation for your manager or HR directly — I can help you prepare for it though."
-- Legal advice → "I'm not able to help with legal questions — please reach out to the legal team."
-- Personal or mental health → "I want to make sure you get the right support — please reach out to someone you trust or HR."
-
-Always stay in character as Stori Compass. If asked who built you, say you are part of the Stori Learning Hub, built by the L&D team.`;
-
-const CONVERSATIONS = {
-  0: [
-    { role: "compass", text: "That's a meaningful situation to be in — and the fact that you're thinking carefully about how to do it well says a lot.\n\nBefore I share any frameworks, I want to understand the situation better. What's one specific thing this person has done or not done that made you decide feedback is needed?" },
-    { role: "user", text: "They keep missing deadlines and it affects the whole team" },
-    { role: "compass", text: "Got it — recurring missed deadlines with team impact. That's a pattern, not a one-off, which actually makes it easier to address because you have concrete examples.\n\nHere's what I want to understand before you have the conversation: has this person ever received feedback about this before, or would this be the first time they're hearing it?" },
-    { role: "user", text: "I don't think they've been told directly" },
-    { role: "compass", text: "That's really important context. First-time feedback lands very differently than a follow-up — they may genuinely not know the impact.\n\nSo the goal of this conversation is less about accountability and more about awareness and alignment. That changes the tone completely.\n\nTry this opening: describe what you've observed specifically, explain the impact on the team, and then ask a genuine question — 'What's been getting in the way for you?' You might be surprised by the answer.\n\nHow does that framing feel to you?" }
+var CONV = [
+  [
+    {r:"c",t:"That's a meaningful situation to be in — and the fact that you're thinking carefully about how to do it well says a lot.\n\nBefore I share any frameworks, I want to understand the situation better. What's one specific thing this person has done or not done that made you decide feedback is needed?"},
+    {r:"u",t:"They keep missing deadlines and it affects the whole team"},
+    {r:"c",t:"Got it — recurring missed deadlines with team impact. That's a pattern, not a one-off, which actually makes it easier to address because you have concrete examples.\n\nHere's what I want to understand: has this person ever received feedback about this before, or would this be the first time they're hearing it?"},
+    {r:"u",t:"I don't think they've been told directly"},
+    {r:"c",t:"That's really important context. First-time feedback lands very differently than a follow-up — they may genuinely not know the impact.\n\nSo the goal of this conversation is less about accountability and more about awareness and alignment. That changes the tone completely.\n\nTry this opening: describe what you've observed specifically, explain the impact on the team, and then ask a genuine question — 'What's been getting in the way for you?' You might be surprised by the answer.\n\nHow does that framing feel to you?"}
   ],
-  1: [
-    { role: "compass", text: "Thinking about your next step is one of the most worthwhile things you can invest time in — and also one of the easiest to keep pushing off.\n\nLet me ask you something simple to start: when you imagine yourself a year from now feeling genuinely energized by your work at Stori, what does that look like?" },
-    { role: "user", text: "I think I'd be leading a team or a bigger project" },
-    { role: "compass", text: "That's a clear signal — leadership and ownership are pulling at you. That's not a small thing to notice about yourself.\n\nNow let me push a little: is it the people leadership part that excites you, or the scope and impact of a bigger project? Because those can lead to pretty different paths." },
-    { role: "user", text: "Honestly more the impact and scope" },
-    { role: "compass", text: "That's a really useful distinction. A lot of people assume 'next level' means managing people — but what you're describing sounds more like you want to own something bigger, drive decisions, and see real results from your work.\n\nThat path exists at Stori — and it doesn't necessarily require a people management role first.\n\nWhat's one project or initiative you're working on right now where you could start expanding your scope, even slightly? Sometimes the next step is already in front of you." }
+  [
+    {r:"c",t:"Thinking about your next step is one of the most worthwhile things you can invest time in — and also one of the easiest to keep pushing off.\n\nLet me ask you something simple: when you imagine yourself a year from now feeling genuinely energized by your work at Stori, what does that look like?"},
+    {r:"u",t:"I think I'd be leading a team or a bigger project"},
+    {r:"c",t:"That's a clear signal — leadership and ownership are pulling at you. That's not a small thing to notice about yourself.\n\nNow let me push a little: is it the people leadership part that excites you, or the scope and impact of a bigger project? Because those can lead to pretty different paths."},
+    {r:"u",t:"Honestly more the impact and scope"},
+    {r:"c",t:"That's a really useful distinction. A lot of people assume 'next level' means managing people — but what you're describing sounds more like you want to own something bigger, drive decisions, and see real results.\n\nThat path exists at Stori — and it doesn't necessarily require a people management role first.\n\nWhat's one project you're working on right now where you could start expanding your scope, even slightly? Sometimes the next step is already in front of you."}
   ],
-  2: [
-    { role: "compass", text: "Great question to bring here. The Learning Hub has a few different spaces depending on what you're trying to build.\n\nHelp me point you in the right direction — are you looking to develop a specific skill for your current role, prepare for something coming up, or explore something for your longer-term growth?" },
-    { role: "user", text: "I want to get better at communicating with senior stakeholders" },
-    { role: "compass", text: "That's one of the highest-leverage skills you can develop at a fintech like Stori — especially as you grow.\n\nI'd point you to two places. First, the Stori Business Academy has a programme called Communicating with Clarity that covers exactly this — structuring your message for different audiences, async vs sync communication, and how to be concise without losing depth.\n\nSecond, if you want to think through a specific upcoming situation — a presentation, a difficult message, a proposal — I can help you work through it here.\n\nWhich feels more useful right now?" }
+  [
+    {r:"c",t:"Great question to bring here. The Learning Hub has a few different spaces depending on what you're trying to build.\n\nHelp me point you in the right direction — are you looking to develop a specific skill for your current role, prepare for something coming up, or explore something for your longer-term growth?"},
+    {r:"u",t:"I want to get better at communicating with senior stakeholders"},
+    {r:"c",t:"That's one of the highest-leverage skills you can develop at a fintech like Stori — especially as you grow.\n\nI'd point you to two places. First, the Stori Business Academy has a programme called Communicating with Clarity — structuring your message for different audiences, async vs sync, and how to be concise without losing depth.\n\nSecond, if you want to think through a specific upcoming situation — a presentation, a difficult message, a proposal — I can help you work through it right here.\n\nWhich feels more useful right now?"}
   ]
-};
+];
 
-let currentConv = -1;
-let currentStep = 0;
-let isTyping = false;
+var currentConv = -1;
+var convStep = -1;
 
-async function callAPI(userMsg) {
-  await new Promise(r => setTimeout(r, 800 + Math.random() * 600));
-  if (currentConv === -1) return "I am having trouble connecting right now — please try again in a moment.";
-  const conv = CONVERSATIONS[currentConv];
-  const nextResponses = conv.filter((m, i) => m.role === "compass" && i > currentStep);
-  if (nextResponses.length > 0) {
-    const nextIdx = conv.indexOf(nextResponses[0]);
-    currentStep = nextIdx;
-    return nextResponses[0].text;
+function getNode(id){return document.getElementById(id);}
+
+function addMsg(text, role) {
+  var msgs = getNode("messages");
+  var div = document.createElement("div");
+  div.className = "msg" + (role === "user" ? " user" : "");
+  var av = document.createElement("div");
+  av.className = "avatar " + (role === "user" ? "av-u" : "av-c");
+  av.textContent = role === "user" ? "DB" : "🧭";
+  var bubble = document.createElement("div");
+  bubble.className = "bubble " + (role === "user" ? "bubble-u" : "bubble-c");
+  bubble.innerHTML = text.replace(/\n/g, "<br>");
+  div.appendChild(av);
+  div.appendChild(bubble);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showTyping() {
+  var msgs = getNode("messages");
+  var div = document.createElement("div");
+  div.className = "msg";
+  div.id = "typing-indicator";
+  var av = document.createElement("div");
+  av.className = "avatar av-c";
+  av.textContent = "🧭";
+  var t = document.createElement("div");
+  t.className = "typing";
+  t.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+  div.appendChild(av);
+  div.appendChild(t);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() {
+  var t = getNode("typing-indicator");
+  if (t) t.remove();
+}
+
+function getNextResponse() {
+  if (currentConv === -1) return "I'm here to help — try one of the prompts above or describe your situation.";
+  var conv = CONV[currentConv];
+  for (var i = convStep + 1; i < conv.length; i++) {
+    if (conv[i].r === "c") {
+      convStep = i;
+      return conv[i].t;
+    }
   }
-  return "That's a really thoughtful point. What feels like the right next step for you based on what we've explored?";
+  return "That's really thoughtful. What feels like the right next step for you based on what we've explored?";
+}
+
+function respond() {
+  getNode("send-btn").disabled = true;
+  showTyping();
+  setTimeout(function() {
+    removeTyping();
+    var reply = getNextResponse();
+    addMsg(reply, "compass");
+    getNode("send-btn").disabled = false;
+  }, 900 + Math.floor(Math.random() * 500));
+}
+
+function sendMsg() {
+  var input = getNode("input");
+  var text = input.value.trim();
+  if (!text) return;
+  getNode("starters").style.display = "none";
+  input.value = "";
+  input.style.height = "auto";
+  addMsg(text, "user");
+  respond();
+  input.focus();
+}
+
+function sendStarter(btn, idx) {
+  currentConv = idx;
+  convStep = -1;
+  getNode("starters").style.display = "none";
+  addMsg(btn.textContent, "user");
+  respond();
+}
+
+function handleKey(e) {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMsg(); }
+}
+
+function autoResize(el) {
+  el.style.height = "auto";
+  el.style.height = Math.min(el.scrollHeight, 120) + "px";
 }
 
 function resetChat() {
-  history = [];
-  const msgs = document.getElementById("messages");
+  currentConv = -1;
+  convStep = -1;
+  var msgs = getNode("messages");
   msgs.innerHTML = '<div class="msg"><div class="avatar av-c">🧭</div><div class="bubble bubble-c">Hi — I\'m Stori Compass, your thinking partner for work and growth at Stori.<br><br>I\'m here to help you think through career decisions, navigate manager situations, or find the right learning for where you are right now. I ask questions more than I give answers — that\'s intentional.<br><br>What\'s on your mind?</div></div>';
-  document.getElementById("starters").style.display = "flex";
+  getNode("starters").style.display = "flex";
 }
 </script>
 </body>
