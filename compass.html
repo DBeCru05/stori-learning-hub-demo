@@ -114,26 +114,28 @@ Hard boundaries — if asked about these, kindly redirect:
 Always stay in character as Stori Compass. If asked who built you, say you are part of the Stori Learning Hub, built by the L&D team.`;
 
 let history = [];
-let GEMINI_KEY = sessionStorage.getItem("gemini_key") || "";
-if (!GEMINI_KEY) {
-  GEMINI_KEY = prompt("Enter your Stori Compass API key:") || "";
-  if (GEMINI_KEY) sessionStorage.setItem("gemini_key", GEMINI_KEY);
+let API_KEY = sessionStorage.getItem("compass_key") || "";
+if (!API_KEY) {
+  API_KEY = prompt("Enter your Stori Compass API key:") || "";
+  if (API_KEY) sessionStorage.setItem("compass_key", API_KEY);
 }
 
 async function callAPI(userMsg) {
-  history.push({ role: "user", parts: [{ text: userMsg }] });
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`, {
+  history.push({ role: "user", content: userMsg });
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "x-api-key": API_KEY, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
     body: JSON.stringify({
-      system_instruction: { parts: [{ text: SYSTEM }] },
-      contents: history,
-      generationConfig: { maxOutputTokens: 800, temperature: 0.7 }
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 800,
+      system: SYSTEM,
+      messages: history
     })
   });
   const data = await res.json();
-  const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm having trouble connecting right now — please try again in a moment.";
-  history.push({ role: "model", parts: [{ text: reply }] });
+  const reply = data.content?.[0]?.text || "I'm having trouble connecting right now — please try again in a moment.";
+  history.push({ role: "assistant", content: reply });
   return reply;
 }
 
