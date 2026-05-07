@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stori Expertise — Stori Learning Hub</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F8F8F6;color:#2C2C2A;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;background:#fff;border-bottom:1px solid #E8E6DF}
+.topbar-left{display:flex;align-items:center;gap:10px}
+.logo{width:30px;height:30px;background:#0F6E56;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600}
+.site-name{font-size:14px;font-weight:600}.site-sub{font-size:11px;color:#888780}
+.avatar{width:30px;height:30px;border-radius:50%;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#0F6E56}
+.back-btn{display:flex;align-items:center;gap:8px;padding:14px 28px;background:#fff;border-bottom:1px solid #E8E6DF;font-size:12px;color:#0F6E56;text-decoration:none}
+.back-btn:hover{background:#F8F8F6}
+.sp-hero{padding:24px 28px;background:#fff;border-bottom:1px solid #E8E6DF}
+.mod-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px;color:#185FA5}
+.sp-hero h1{font-size:20px;font-weight:600;margin-bottom:6px}
+.sp-hero p{font-size:13px;color:#888780;line-height:1.65;max-width:500px}
+.note{font-size:11px;color:#B4B2A9;margin-top:6px;font-style:italic}
+.sp-body{padding:24px 28px}
+.sec-title{font-size:14px;font-weight:600;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.card{background:#fff;border:1px solid #E8E6DF;border-radius:12px;padding:16px;cursor:pointer;transition:border-color .15s}
+.card:hover{border-color:#B5D4F4}
+.card.dashed{border-style:dashed;cursor:default}
+.card.dashed:hover{border-color:#E8E6DF}
+.cicon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:10px}
+.ctitle{font-size:13px;font-weight:600;margin-bottom:4px}
+.cdesc{font-size:11px;color:#888780;line-height:1.55}
+footer{padding:16px 28px;border-top:1px solid #E8E6DF;background:#fff;margin-top:20px}
+.footer-text{font-size:11px;color:#B4B2A9}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="logo">S</div>
+    <div><div class="site-name">Stori Learning Hub</div><div class="site-sub">Learning & Development</div></div>
+  </div>
+  <div class="avatar">DB</div>
+</div>
+<a class="back-btn" href="index.html">← Back to hub</a>
+
+<div class="sp-hero">
+  <div class="mod-icon" style="background:#E6F1FB">🔧</div>
+  <div class="eyebrow">By function</div>
+  <h1>Stori Expertise</h1>
+  <p>Role-specific technical training built by your business unit. Select your function to see what's available for your team.</p>
+  <p class="note">Content is owned and maintained by each business unit. L&D provides the platform and quality standards.</p>
+</div>
+
+<div class="sp-body">
+  <div class="sec-title">Select your function</div>
+  <div class="grid2">
+    <div class="card"><div class="cicon" style="background:#E6F1FB">💳</div><div class="ctitle">Credit Risk</div><div class="cdesc">Underwriting, decisioning, and risk frameworks at Stori.</div></div>
+    <div class="card"><div class="cicon" style="background:#E1F5EE">🎧</div><div class="ctitle">Customer Experience</div><div class="cdesc">Service protocols, escalation flows, and CX tools.</div></div>
+    <div class="card"><div class="cicon" style="background:#FAEEDA">💻</div><div class="ctitle">Technology</div><div class="cdesc">Engineering standards, deployment, and technical onboarding.</div></div>
+    <div class="card"><div class="cicon" style="background:#EEEDFE">📊</div><div class="ctitle">Finance & Compliance</div><div class="cdesc">Regulatory frameworks, reporting standards, and controls.</div></div>
+    <div class="card"><div class="cicon" style="background:#EAF3DE">📣</div><div class="ctitle">Marketing & Growth</div><div class="cdesc">Brand guidelines, campaign processes, and growth frameworks.</div></div>
+    <div class="card dashed"><div class="cicon" style="background:#F1EFE8">➕</div><div class="ctitle" style="color:#888780">Add your function</div><div class="cdesc">Is your area missing? Submit a request and L&D will help you get started.</div></div>
+  </div>
+</div>
+
+<footer><span class="footer-text">Stori Learning Hub · L&D · 2026 · Demo version</span></footer>
+</body>
+</html>

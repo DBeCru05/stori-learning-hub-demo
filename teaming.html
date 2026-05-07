@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stori Learning Hub — Module Demos</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F8F8F6;padding:20px}
+.page{display:none}
+.page.active{display:block}
+.nav-demo{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.nav-demo button{font-size:12px;padding:7px 14px;border-radius:8px;border:1px solid #D3D1C7;background:#fff;cursor:pointer;font-family:inherit;color:#2C2C2A}
+.nav-demo button.active{background:#0F6E56;color:#fff;border-color:#0F6E56}
+
+/* SHARED */
+.frame{background:#fff;border-radius:16px;border:1px solid #E8E6DF;max-width:640px;margin:0 auto;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.back-btn{display:flex;align-items:center;gap:6px;font-size:12px;color:#0F6E56;cursor:pointer;padding:14px 20px;border-bottom:1px solid #F0EEE7;background:none;border-left:none;border-right:none;border-top:none;font-family:inherit;width:100%;text-align:left}
+.sp-header{padding:20px;border-bottom:1px solid #F0EEE7}
+.mod-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.sp-header h1{font-size:18px;font-weight:600;color:#2C2C2A;margin-bottom:4px}
+.sp-header p{font-size:13px;color:#888780;line-height:1.6;max-width:480px}
+.sp-body{padding:20px}
+
+/* ── STORIVERSITY ── */
+.eloomi-hero{background:#E1F5EE;border-radius:12px;padding:24px;text-align:center;margin-bottom:20px}
+.eloomi-hero h2{font-size:16px;font-weight:600;color:#085041;margin-bottom:6px}
+.eloomi-hero p{font-size:13px;color:#0F6E56;margin-bottom:16px;line-height:1.5}
+.btn-teal{background:#0F6E56;color:#fff;border:none;padding:10px 24px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
+.info-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.info-pill{font-size:11px;background:#F1EFE8;color:#5F5E5A;padding:4px 10px;border-radius:20px}
+
+/* ── BUSINESS ACADEMY EQ ── */
+.prog-header{background:linear-gradient(135deg,#185FA5 0%,#0C447C 100%);padding:20px;color:#fff}
+.prog-header h2{font-size:16px;font-weight:600;margin-bottom:4px}
+.prog-header p{font-size:12px;opacity:.8;margin-bottom:14px}
+.xp-bar-wrap{background:rgba(255,255,255,0.2);border-radius:20px;height:8px;margin-bottom:6px;overflow:hidden}
+.xp-bar{background:#fff;height:8px;border-radius:20px;transition:width .6s ease}
+.xp-label{display:flex;justify-content:space-between;font-size:10px;opacity:.8}
+.badges-row{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.badge{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;border:2px solid rgba(255,255,255,0.4)}
+.badge.earned{border-color:#fff;background:rgba(255,255,255,0.2)}
+.badge.locked{opacity:.35;filter:grayscale(1)}
+.badge-label{font-size:9px;text-align:center;margin-top:3px;opacity:.8;max-width:40px}
+.badge-wrap{display:flex;flex-direction:column;align-items:center}
+.modules-list{padding:16px 20px;display:flex;flex-direction:column;gap:10px}
+.mod-card{border:1px solid #E8E6DF;border-radius:12px;padding:14px 16px;cursor:pointer;transition:border-color .15s;display:flex;align-items:center;gap:14px}
+.mod-card:hover{border-color:#B5D4F4}
+.mod-card.done{border-color:#9FE1CB;background:#F6FBF9}
+.mod-card.locked-mod{opacity:.5;cursor:not-allowed}
+.mod-num{width:32px;height:32px;min-width:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.mod-num.done{background:#E1F5EE;color:#0F6E56}
+.mod-num.active{background:#E6F1FB;color:#185FA5}
+.mod-num.locked-mod{background:#F1EFE8;color:#B4B2A9}
+.mod-info{flex:1}
+.mod-title{font-size:13px;font-weight:600;color:#2C2C2A;margin-bottom:2px}
+.mod-sub{font-size:11px;color:#888780}
+.mod-xp{font-size:11px;font-weight:600;color:#185FA5;background:#E6F1FB;padding:3px 8px;border-radius:20px}
+.mod-xp.done{color:#0F6E56;background:#E1F5EE}
+.status-icon{font-size:16px}
+.scenario-wrap{padding:20px;display:none}
+.scenario-wrap.active{display:block}
+.scenario-box{background:#F6F8FE;border-radius:12px;padding:16px;margin-bottom:16px;border-left:3px solid #185FA5}
+.scenario-box p{font-size:13px;color:#2C2C2A;line-height:1.65}
+.scenario-q{font-size:13px;font-weight:600;color:#2C2C2A;margin-bottom:12px}
+.options{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.opt{border:1px solid #D3D1C7;border-radius:10px;padding:12px 14px;font-size:13px;cursor:pointer;text-align:left;background:#fff;font-family:inherit;line-height:1.5;color:#2C2C2A;transition:border-color .15s}
+.opt:hover{border-color:#185FA5;background:#F6F8FE}
+.opt.correct{border-color:#0F6E56;background:#F6FBF9;color:#085041}
+.opt.wrong{border-color:#D85A30;background:#FAECE7;color:#712B13}
+.feedback-box{border-radius:10px;padding:14px;font-size:13px;line-height:1.65;margin-bottom:16px;display:none}
+.feedback-box.show{display:block}
+.feedback-box.good{background:#E1F5EE;color:#085041;border:1px solid #9FE1CB}
+.feedback-box.bad{background:#FAECE7;color:#712B13;border:1px solid #F5C4B3}
+.next-btn{background:#185FA5;color:#fff;border:none;padding:10px 20px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;display:none}
+.next-btn.show{display:inline-block}
+.complete-box{background:#E1F5EE;border-radius:12px;padding:20px;text-align:center;display:none}
+.complete-box.show{display:block}
+.complete-box h3{font-size:16px;font-weight:600;color:#085041;margin-bottom:6px}
+.complete-box p{font-size:13px;color:#0F6E56;margin-bottom:14px}
+.xp-earned{font-size:24px;font-weight:700;color:#0F6E56;margin-bottom:4px}
+
+/* ── TEAMING ── */
+.activity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.act-card{border:1px solid #E8E6DF;border-radius:12px;padding:16px;cursor:pointer;transition:border-color .15s;background:#fff}
+.act-card:hover{border-color:#C0DD97}
+.act-icon{width:36px;height:36px;border-radius:9px;background:#EAF3DE;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+.act-title{font-size:13px;font-weight:600;color:#2C2C2A;margin-bottom:4px}
+.act-desc{font-size:12px;color:#888780;line-height:1.5;margin-bottom:10px}
+.act-meta{display:flex;gap:6px;flex-wrap:wrap}
+.meta-tag{font-size:10px;background:#EAF3DE;color:#27500A;padding:3px 8px;border-radius:20px;font-weight:500}
+.act-detail{display:none;padding:20px;border-top:1px solid #F0EEE7}
+.act-detail.open{display:block}
+.detail-section{margin-bottom:14px}
+.detail-section h4{font-size:12px;font-weight:600;color:#3B6D11;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.detail-section p{font-size:13px;color:#444441;line-height:1.65}
+.step{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start}
+.step-num{width:22px;height:22px;min-width:22px;border-radius:50%;background:#EAF3DE;color:#3B6D11;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.step p{font-size:13px;color:#444441;line-height:1.5}
+</style>
+</head>
+<body>
+
+<div style="padding:12px 20px;background:#fff;border-bottom:1px solid #E8E6DF"><a href="index.html" style="font-size:12px;color:#0F6E56;text-decoration:none">← Back to hub</a></div><div class="nav-demo">
+  <button class="active" onclick="showPage('teaming',this)">Storiversity</button>
+  <button onclick="showPage('academy',this)">Stori Business Academy</button>
+  <button onclick="showPage('teaming',this)">Teaming & Collaboration</button>
+</div>
+
+<!-- ── STORIVERSITY ── -->
+<div id="storiversity" class="page active">
+  <div class="frame">
+    <div class="sp-header">
+      <div class="mod-icon" style="background:#E1F5EE">🎓</div>
+      <div class="eyebrow" style="color:#0F6E56">E-learning</div>
+      <h1>Storiversity</h1>
+      <p>Your full course catalogue and compliance training — all hosted on Eloomi, Stori's learning platform.</p>
+    </div>
+    <div class="sp-body">
+      <div class="eloomi-hero">
+        <h2>Your courses are waiting on Eloomi</h2>
+        <p>Storiversity lives on Eloomi — Stori's e-learning platform. Click below to access your full catalogue, mandatory training, and progress tracking.</p>
+        <button class="btn-teal" onclick="window.open('https://eloomi.com','_blank')">Open Eloomi ↗</button>
+      </div>
+      <div style="font-size:13px;font-weight:600;color:#2C2C2A;margin-bottom:12px">What you'll find there</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #E8E6DF;border-radius:10px">
+          <div style="width:32px;height:32px;min-width:32px;border-radius:8px;background:#FAECE7;display:flex;align-items:center;justify-content:center;font-size:16px">⚠️</div>
+          <div><div style="font-size:13px;font-weight:600;color:#2C2C2A">Mandatory training</div><div style="font-size:11px;color:#888780">Compliance, regulatory, and audit-required courses</div></div>
+          <span style="margin-left:auto;font-size:10px;background:#FAEEDA;color:#854F0B;padding:3px 8px;border-radius:20px;font-weight:500;white-space:nowrap">Due dates apply</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #E8E6DF;border-radius:10px">
+          <div style="width:32px;height:32px;min-width:32px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:16px">📚</div>
+          <div><div style="font-size:13px;font-weight:600;color:#2C2C2A">Optional catalogue</div><div style="font-size:11px;color:#888780">Skills, tools, and role-specific content you can explore anytime</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #E8E6DF;border-radius:10px">
+          <div style="width:32px;height:32px;min-width:32px;border-radius:8px;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:16px">📊</div>
+          <div><div style="font-size:13px;font-weight:600;color:#2C2C2A">Your progress</div><div style="font-size:11px;color:#888780">Track completions, certificates, and learning history</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BUSINESS ACADEMY EQ ── -->
+<div id="academy" class="page">
+  <div class="frame">
+    <div id="academy-home">
+      <div class="prog-header">
+        <div style="font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-bottom:6px">Stori Business Academy</div>
+        <h2>Emotional Intelligence</h2>
+        <p>5 modules · Self-paced · Certificate on completion</p>
+        <div class="xp-bar-wrap">
+          <div class="xp-bar" id="xp-bar" style="width:20%"></div>
+        </div>
+        <div class="xp-label">
+          <span id="xp-text">100 / 500 XP</span>
+          <span id="level-text">Level 1 — Self-aware</span>
+        </div>
+        <div class="badges-row">
+          <div class="badge-wrap"><div class="badge earned" id="b1">🌱</div><div class="badge-label">Self-aware</div></div>
+          <div class="badge-wrap"><div class="badge locked" id="b2">🔍</div><div class="badge-label">Observer</div></div>
+          <div class="badge-wrap"><div class="badge locked" id="b3">🤝</div><div class="badge-label">Empath</div></div>
+          <div class="badge-wrap"><div class="badge locked" id="b4">⚡</div><div class="badge-label">Regulator</div></div>
+          <div class="badge-wrap"><div class="badge locked" id="b5">🏆</div><div class="badge-label">EQ Champion</div></div>
+        </div>
+      </div>
+      <div class="modules-list">
+        <div style="font-size:12px;font-weight:600;color:#888780;margin-bottom:4px">YOUR MODULES</div>
+        <div class="mod-card done" onclick="openModule(1)">
+          <div class="mod-num done">✓</div>
+          <div class="mod-info"><div class="mod-title">1. What is emotional intelligence?</div><div class="mod-sub">5 min · Self-awareness foundations</div></div>
+          <span class="mod-xp done">+100 XP</span>
+        </div>
+        <div class="mod-card" id="mod2-card" onclick="openModule(2)">
+          <div class="mod-num active">2</div>
+          <div class="mod-info"><div class="mod-title">2. Reading the room</div><div class="mod-sub">7 min · Social awareness in practice</div></div>
+          <span class="mod-xp">+100 XP</span>
+        </div>
+        <div class="mod-card locked-mod">
+          <div class="mod-num locked-mod">3</div>
+          <div class="mod-info"><div class="mod-title">3. Regulating under pressure</div><div class="mod-sub">Unlocks after module 2</div></div>
+          <span class="mod-xp" style="background:#F1EFE8;color:#B4B2A9">+100 XP</span>
+        </div>
+        <div class="mod-card locked-mod">
+          <div class="mod-num locked-mod">4</div>
+          <div class="mod-info"><div class="mod-title">4. EQ in difficult conversations</div><div class="mod-sub">Unlocks after module 3</div></div>
+          <span class="mod-xp" style="background:#F1EFE8;color:#B4B2A9">+100 XP</span>
+        </div>
+        <div class="mod-card locked-mod">
+          <div class="mod-num locked-mod">5</div>
+          <div class="mod-info"><div class="mod-title">5. Leading with EQ</div><div class="mod-sub">Unlocks after module 4</div></div>
+          <span class="mod-xp" style="background:#F1EFE8;color:#B4B2A9">+100 XP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 2 SCENARIO -->
+    <div id="module2" style="display:none">
+      <button class="back-btn" onclick="closeModule()">← Back to programme</button>
+      <div style="padding:16px 20px;border-bottom:1px solid #F0EEE7">
+        <div style="font-size:10px;font-weight:600;color:#185FA5;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Module 2 · Reading the room</div>
+        <div style="font-size:16px;font-weight:600;color:#2C2C2A">Social awareness in practice</div>
+      </div>
+      <div style="padding:16px 20px">
+        <div style="font-size:13px;color:#888780;line-height:1.6;margin-bottom:16px">Emotional intelligence isn't just about understanding yourself — it's about reading others accurately. Social awareness means picking up on emotional cues, understanding group dynamics, and noticing what's not being said.</div>
+        <div style="background:#E6F1FB;border-radius:10px;padding:14px;margin-bottom:16px;border-left:3px solid #185FA5">
+          <div style="font-size:11px;font-weight:600;color:#185FA5;margin-bottom:4px">KEY CONCEPT</div>
+          <div style="font-size:13px;color:#0C447C;line-height:1.6">People with high social awareness notice the gap between what someone says and what their body language, tone, or energy communicates. That gap is where the real information lives.</div>
+        </div>
+      </div>
+
+      <div id="scenario-section" style="padding:0 20px 20px">
+        <div style="font-size:12px;font-weight:600;color:#888780;margin-bottom:10px">SCENARIO — What would you do?</div>
+        <div class="scenario-box">
+          <p>You're in a team sync. Your colleague Ana presents her project update. She says everything is "on track" and "going well" — but she's speaking faster than usual, avoiding eye contact, and didn't mention the deadline that was due last week. Your manager moves on without asking any questions.</p>
+        </div>
+        <div class="scenario-q">What's the most emotionally intelligent response?</div>
+        <div class="options" id="options">
+          <button class="opt" onclick="answer(this,false)">Say nothing — your manager didn't react, so it's probably fine</button>
+          <button class="opt" onclick="answer(this,true)">After the meeting, check in with Ana privately — ask how things are really going</button>
+          <button class="opt" onclick="answer(this,false)">Raise it in the meeting — ask Ana directly why she didn't mention the deadline</button>
+          <button class="opt" onclick="answer(this,false)">Message your manager after and tell them you think Ana is struggling</button>
+        </div>
+        <div class="feedback-box" id="feedback-good" style="background:#E1F5EE;color:#085041;border:1px solid #9FE1CB">
+          ✓ <strong>Well read.</strong> You noticed the gap between Ana's words and her signals — and you chose a response that's supportive without putting her on the spot. That's social awareness in action. Checking in privately creates psychological safety and gives Ana the chance to be honest.
+        </div>
+        <div class="feedback-box" id="feedback-bad" style="background:#FAECE7;color:#712B13;border:1px solid #F5C4B3">
+          Not quite. High social awareness means acting on what you noticed — not dismissing it or escalating before you've talked to the person directly. The most effective move is almost always a private, low-pressure check-in first.
+        </div>
+        <button class="next-btn" id="next-btn" onclick="completeModule()">Complete module → earn 100 XP</button>
+      </div>
+
+      <div class="complete-box" id="complete-box" style="margin:0 20px 20px">
+        <div style="font-size:32px;margin-bottom:8px">🔍</div>
+        <div class="xp-earned">+100 XP</div>
+        <h3>Badge unlocked: Observer</h3>
+        <p>You completed Module 2 — Reading the room. You're building real social awareness.</p>
+        <button class="btn-teal" onclick="closeModuleComplete()">Back to programme</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TEAMING ── -->
+<div id="teaming" class="page">
+  <div class="frame">
+    <div class="sp-header">
+      <div class="mod-icon" style="background:#EAF3DE">🤝</div>
+      <div class="eyebrow" style="color:#3B6D11">Team tools</div>
+      <h1>Teaming & Collaboration</h1>
+      <p>Ready-to-run activities for your team meetings. No facilitation experience needed — pick one and go.</p>
+    </div>
+    <div class="sp-body">
+      <div style="font-size:12px;color:#888780;margin-bottom:14px">Click any activity to see the full guide</div>
+      <div class="activity-grid" id="act-grid">
+
+        <div class="act-card" onclick="toggleActivity(this,'act1')">
+          <div class="act-icon">👋</div>
+          <div class="act-title">Check-in rounds</div>
+          <div class="act-desc">A structured opening that gets everyone present before diving into business.</div>
+          <div class="act-meta"><span class="meta-tag">5 min</span><span class="meta-tag">Any size</span><span class="meta-tag">No prep</span></div>
+        </div>
+        <div id="act1" class="act-detail">
+          <div class="detail-section"><h4>Purpose</h4><p>Help everyone arrive mentally, not just physically. Creates safety and connection before the work starts.</p></div>
+          <div class="detail-section"><h4>How to run it</h4>
+            <div class="step"><div class="step-num">1</div><p>Open with one question for the whole team. Example: "In one word, how are you showing up today?"</p></div>
+            <div class="step"><div class="step-num">2</div><p>Go around the room — each person answers in 10-15 seconds. No elaboration needed.</p></div>
+            <div class="step"><div class="step-num">3</div><p>Facilitator (you) goes last. Then move into the agenda.</p></div>
+          </div>
+          <div class="detail-section"><h4>Good questions to use</h4><p>"One word for how you're feeling right now." · "What's one thing on your mind today?" · "Weather report: what's your internal forecast?"</p></div>
+        </div>
+
+        <div class="act-card" onclick="toggleActivity(this,'act2')">
+          <div class="act-icon">🔄</div>
+          <div class="act-title">Retro in a box</div>
+          <div class="act-desc">A 30-minute guided retrospective that works for any team, any project, any size.</div>
+          <div class="act-meta"><span class="meta-tag">30 min</span><span class="meta-tag">Any size</span><span class="meta-tag">Post-sprint</span></div>
+        </div>
+        <div id="act2" class="act-detail">
+          <div class="detail-section"><h4>Purpose</h4><p>Create space to reflect on what's working and what isn't — before moving into the next cycle. Builds team learning habits.</p></div>
+          <div class="detail-section"><h4>How to run it</h4>
+            <div class="step"><div class="step-num">1</div><p><strong>Set the stage (3 min):</strong> Remind the team this is a safe space — no blame, just learning.</p></div>
+            <div class="step"><div class="step-num">2</div><p><strong>Gather data (10 min):</strong> Everyone writes sticky notes for: What went well? What was hard? What surprised us?</p></div>
+            <div class="step"><div class="step-num">3</div><p><strong>Group and discuss (10 min):</strong> Cluster similar themes. Pick 2-3 to discuss as a team.</p></div>
+            <div class="step"><div class="step-num">4</div><p><strong>Decide (7 min):</strong> Pick one thing to try differently next time. Assign an owner.</p></div>
+          </div>
+        </div>
+
+        <div class="act-card" onclick="toggleActivity(this,'act3')">
+          <div class="act-icon">🧩</div>
+          <div class="act-title">Working styles</div>
+          <div class="act-desc">Help your team understand how each person works best — and design around it.</div>
+          <div class="act-meta"><span class="meta-tag">20 min</span><span class="meta-tag">4-12 people</span><span class="meta-tag">New teams</span></div>
+        </div>
+        <div id="act3" class="act-detail">
+          <div class="detail-section"><h4>Purpose</h4><p>Reduce friction before it happens. When people know each other's preferences, they collaborate better and assume less.</p></div>
+          <div class="detail-section"><h4>How to run it</h4>
+            <div class="step"><div class="step-num">1</div><p>Each person answers 3 questions in writing (5 min): How do you like to receive feedback? What drains your energy at work? What does support look like to you?</p></div>
+            <div class="step"><div class="step-num">2</div><p>Each person shares one answer — the one they want the team to know most. (10 min)</p></div>
+            <div class="step"><div class="step-num">3</div><p>Close with: "What's one thing you'll do differently based on what you heard?" (5 min)</p></div>
+          </div>
+        </div>
+
+        <div class="act-card" onclick="toggleActivity(this,'act4')">
+          <div class="act-icon">🧭</div>
+          <div class="act-title">Team compass</div>
+          <div class="act-desc">Align on priorities and ways of working at the start of a new cycle or quarter.</div>
+          <div class="act-meta"><span class="meta-tag">45 min</span><span class="meta-tag">Any size</span><span class="meta-tag">Cycle kick-off</span></div>
+        </div>
+        <div id="act4" class="act-detail">
+          <div class="detail-section"><h4>Purpose</h4><p>Get everyone pointing in the same direction before the sprint starts — not halfway through it.</p></div>
+          <div class="detail-section"><h4>How to run it</h4>
+            <div class="step"><div class="step-num">1</div><p><strong>North star (10 min):</strong> What is the one thing this team must achieve this cycle? Write it together.</p></div>
+            <div class="step"><div class="step-num">2</div><p><strong>Current reality (10 min):</strong> What's in our way? What do we have going for us?</p></div>
+            <div class="step"><div class="step-num">3</div><p><strong>Ways of working (15 min):</strong> What are our 3 agreements for how we'll work together this cycle?</p></div>
+            <div class="step"><div class="step-num">4</div><p><strong>Commit (10 min):</strong> Each person names one personal commitment to the team for this cycle.</p></div>
+          </div>
+        </div>
+
+        <div class="act-card" onclick="toggleActivity(this,'act5')">
+          <div class="act-icon">💡</div>
+          <div class="act-title">Ideation sprint</div>
+          <div class="act-desc">A structured 25-minute creative session for any challenge or decision your team is facing.</div>
+          <div class="act-meta"><span class="meta-tag">25 min</span><span class="meta-tag">4-8 people</span><span class="meta-tag">Problem-solving</span></div>
+        </div>
+        <div id="act5" class="act-detail">
+          <div class="detail-section"><h4>Purpose</h4><p>Generate ideas fast without the usual meeting dynamics — where the loudest voice wins.</p></div>
+          <div class="detail-section"><h4>How to run it</h4>
+            <div class="step"><div class="step-num">1</div><p><strong>Frame the challenge (3 min):</strong> Write a "How might we…" question on the board. Everyone agrees on the framing.</p></div>
+            <div class="step"><div class="step-num">2</div><p><strong>Silent generation (7 min):</strong> Everyone writes ideas individually — no talking. Quantity over quality.</p></div>
+            <div class="step"><div class="step-num">3</div><p><strong>Share and cluster (10 min):</strong> Each person shares their top 2 ideas. Group similar ones.</p></div>
+            <div class="step"><div class="step-num">4</div><p><strong>Dot vote (5 min):</strong> Each person gets 3 votes. Most votes = the idea to develop further.</p></div>
+          </div>
+        </div>
+
+        <div class="act-card" onclick="toggleActivity(this,'act6')">
+          <div class="act-icon">⭐</div>
+          <div class="act-title">Appreciation circle</div>
+          <div class="act-desc">A simple, low-pressure way to close a sprint, a tough week, or a big milestone.</div>
+          <div class="act-meta"><span class="meta-tag">10 min</span><span class="meta-tag">Any size</span><span class="meta-tag">Closing ritual</span></div>
+        </div>
+        <div id="act6" class="act-detail">
+          <div class="detail-section"><h4>Purpose</h4><p>End on connection, not just output. Recognizing each other's contributions takes 10 minutes and costs nothing — but it changes how people feel about coming back tomorrow.</p></div>
+          <div class="detail-section"><h4>How to run it</h4>
+            <div class="step"><div class="step-num">1</div><p>Go around the team. Each person names one colleague and says specifically what they appreciated about them this week or sprint.</p></div>
+            <div class="step"><div class="step-num">2</div><p>Keep it specific — "thanks for your help" doesn't land. "Thanks for staying on the call when it ran over and helping me think through the decision" does.</p></div>
+            <div class="step"><div class="step-num">3</div><p>No one responds to their appreciation — just receives it. Facilitator closes with a word of thanks to the whole team.</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-demo button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function toggleActivity(card, detailId) {
+  const detail = document.getElementById(detailId);
+  const isOpen = detail.classList.contains('open');
+  document.querySelectorAll('.act-detail').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.act-card').forEach(c => c.style.borderColor = '');
+  if (!isOpen) {
+    detail.classList.add('open');
+    card.style.borderColor = '#3B6D11';
+    detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+let xp = 100;
+function openModule(num) {
+  if (num === 2) {
+    document.getElementById('academy-home').style.display = 'none';
+    document.getElementById('module2').style.display = 'block';
+  }
+}
+function closeModule() {
+  document.getElementById('module2').style.display = 'none';
+  document.getElementById('academy-home').style.display = 'block';
+}
+function answer(btn, correct) {
+  const opts = document.querySelectorAll('.opt');
+  opts.forEach(o => o.disabled = true);
+  if (correct) {
+    btn.classList.add('correct');
+    document.getElementById('feedback-good').style.display = 'block';
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById('feedback-bad').style.display = 'block';
+    opts.forEach(o => { if (o.onclick.toString().includes('true')) o.classList.add('correct'); });
+  }
+  document.getElementById('next-btn').style.display = 'inline-block';
+}
+function completeModule() {
+  document.getElementById('scenario-section').style.display = 'none';
+  document.getElementById('complete-box').style.display = 'block';
+}
+function closeModuleComplete() {
+  xp = 200;
+  document.getElementById('xp-bar').style.width = '40%';
+  document.getElementById('xp-text').textContent = '200 / 500 XP';
+  document.getElementById('level-text').textContent = 'Level 2 — Observer';
+  document.getElementById('b2').classList.remove('locked');
+  document.getElementById('b2').classList.add('earned');
+  document.getElementById('mod2-card').classList.add('done');
+  document.getElementById('mod2-card').querySelector('.mod-num').textContent = '✓';
+  document.getElementById('mod2-card').querySelector('.mod-num').className = 'mod-num done';
+  document.getElementById('mod2-card').querySelector('.mod-xp').className = 'mod-xp done';
+  document.getElementById('module2').style.display = 'none';
+  document.getElementById('academy-home').style.display = 'block';
+  document.getElementById('complete-box').style.display = 'none';
+  document.getElementById('scenario-section').style.display = 'block';
+  document.querySelectorAll('.opt').forEach(o => { o.disabled = false; o.className = 'opt'; });
+  document.getElementById('feedback-good').style.display = 'none';
+  document.getElementById('feedback-bad').style.display = 'none';
+  document.getElementById('next-btn').style.display = 'none';
+}
+</script>
+</body>
+</html>

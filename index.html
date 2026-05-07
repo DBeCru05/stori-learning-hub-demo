@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stori Learning Hub</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F8F8F6;color:#2C2C2A;min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;background:#fff;border-bottom:1px solid #E8E6DF;position:sticky;top:0;z-index:100}
+.topbar-left{display:flex;align-items:center;gap:10px}
+.logo{width:30px;height:30px;background:#0F6E56;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;flex-shrink:0}
+.site-name{font-size:14px;font-weight:600;color:#2C2C2A}
+.site-sub{font-size:11px;color:#888780}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.avatar{width:30px;height:30px;border-radius:50%;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#0F6E56}
+.lang-toggle{display:flex;border:1px solid #E8E6DF;border-radius:7px;overflow:hidden}
+.lang-btn{font-size:10px;font-weight:600;padding:4px 10px;border:none;cursor:pointer;font-family:inherit;transition:background .15s,color .15s}
+.lang-btn.active{background:#0F6E56;color:#fff}
+.lang-btn:not(.active){background:#fff;color:#888780}
+.lang-btn:not(.active):hover{background:#E1F5EE;color:#0F6E56}
+
+.nav{display:flex;align-items:center;padding:0 28px;background:#fff;border-bottom:1px solid #E8E6DF}
+.nav-item{padding:10px 14px;font-size:12px;color:#888780;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.nav-item.active{color:#0F6E56;border-bottom-color:#0F6E56;font-weight:600}
+.nav-item:hover:not(.active){color:#2C2C2A}
+.nav-spacer{flex:1}
+.nav-ld{font-size:10px;color:#B4B2A9;padding:10px 0 10px 14px;cursor:pointer;display:flex;align-items:center;gap:4px}
+.nav-ld:hover{color:#0F6E56}
+
+.hero{padding:36px 28px 28px;border-bottom:1px solid #E8E6DF;background:#fff}
+.hero-eyebrow{font-size:10px;font-weight:600;color:#0F6E56;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
+.hero-title{font-size:24px;font-weight:600;color:#2C2C2A;margin-bottom:6px;line-height:1.3}
+.hero-sub{font-size:13px;color:#888780;line-height:1.65;max-width:500px}
+.hero-btns{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.btn-primary{background:#0F6E56;color:#fff;border:none;padding:9px 18px;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.btn-primary:hover{background:#085041}
+.btn-secondary{background:#fff;color:#2C2C2A;border:1px solid #D3D1C7;padding:9px 18px;border-radius:9px;font-size:12px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.btn-secondary:hover{background:#F8F8F6}
+
+.announce{margin:20px 28px 0;background:#F6FBF9;border:1px solid #9FE1CB;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px}
+.ann-icon{width:34px;height:34px;min-width:34px;background:#E1F5EE;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#0F6E56;flex-shrink:0}
+.ann-title{font-size:13px;font-weight:600;color:#2C2C2A;margin-bottom:2px}
+.ann-sub{font-size:11px;color:#5F5E5A}
+.ann-btn{margin-left:auto;flex-shrink:0;background:#fff;color:#2C2C2A;border:1px solid #D3D1C7;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;font-family:inherit;white-space:nowrap;text-decoration:none}
+.ann-btn:hover{background:#F8F8F6}
+
+.section{padding:24px 28px}
+.sec-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px}
+.sec-title{font-size:14px;font-weight:600;color:#2C2C2A}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.card{background:#fff;border:1px solid #E8E6DF;border-radius:12px;padding:16px;cursor:pointer;transition:border-color .15s,transform .1s;text-decoration:none;display:block;color:inherit}
+.card:hover{border-color:#B4B2A9;transform:translateY(-1px)}
+.card.featured{background:#F6FBF9;border-color:#9FE1CB}
+.card.featured:hover{border-color:#5DCAA5}
+.cicon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px}
+.pill{display:inline-flex;align-items:center;font-size:9px;font-weight:700;padding:2px 7px;border-radius:20px;margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase}
+.pt{background:#E1F5EE;color:#085041}
+.pb{background:#E6F1FB;color:#0C447C}
+.pa{background:#FAEEDA;color:#633806}
+.pc{background:#FAECE7;color:#712B13}
+.pp{background:#EEEDFE;color:#3C3489}
+.pg{background:#EAF3DE;color:#27500A}
+.pn{background:#F1EFE8;color:#444441}
+.ctitle{font-size:13px;font-weight:600;color:#2C2C2A;margin-bottom:4px;line-height:1.4}
+.cdesc{font-size:11px;color:#888780;line-height:1.6}
+.cfoot{margin-top:12px;padding-top:10px;border-top:1px solid #F0EEE7;display:flex;align-items:center;justify-content:space-between}
+.cfoot-l{font-size:10px;color:#B4B2A9}
+.cfoot-arr{font-size:14px;color:#0F6E56}
+
+footer{padding:20px 28px;border-top:1px solid #E8E6DF;background:#fff;display:flex;align-items:center;justify-content:space-between}
+.footer-text{font-size:11px;color:#B4B2A9}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="logo">S</div>
+    <div>
+      <div class="site-name">Stori Learning Hub</div>
+      <div class="site-sub">Learning & Development</div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+    </div>
+    <div class="avatar">DB</div>
+  </div>
+</div>
+
+<div class="nav">
+  <div class="nav-item active" data-en="Home" data-es="Inicio">Home</div>
+  <div class="nav-item" data-en="My learning" data-es="Mi aprendizaje">My learning</div>
+  <div class="nav-item" data-en="Catalogue" data-es="Catálogo">Catalogue</div>
+  <div class="nav-item" data-en="For leaders" data-es="Para líderes">For leaders</div>
+  <div class="nav-spacer"></div>
+  <a class="nav-ld" href="metrics.html">🔒 <span data-en="L&D view" data-es="Vista L&D">L&D view</span></a>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow" data-en="Welcome back, Daniela" data-es="Bienvenida, Daniela">Welcome back, Daniela</div>
+  <div class="hero-title" data-en="What do you want to learn today?" data-es="¿Qué quieres aprender hoy?">What do you want to learn today?</div>
+  <div class="hero-sub" data-en="Everything you need to grow at Stori — courses, coaching, team tools, and career resources — all in one place." data-es="Todo lo que necesitas para crecer en Stori — cursos, coaching, herramientas para equipos y recursos de carrera — en un solo lugar.">Everything you need to grow at Stori — courses, coaching, team tools, and career resources — all in one place.</div>
+  <div class="hero-btns">
+    <a class="btn-primary" href="requests.html" data-en="+ Submit a training request" data-es="+ Enviar una solicitud de capacitación">+ Submit a training request</a>
+    <a class="btn-secondary" href="compass.html" data-en="🧭 Open Stori Compass" data-es="🧭 Abrir Stori Compass">🧭 Open Stori Compass</a>
+  </div>
+</div>
+
+<div class="announce">
+  <div class="ann-icon">📢</div>
+  <div>
+    <div class="ann-title" data-en="Leadership Academy — Q2 session confirmed" data-es="Leadership Academy — Sesión Q2 confirmada">Leadership Academy — Q2 session confirmed</div>
+    <div class="ann-sub" data-en="Managing through ambiguity · May 20 · Virtual · Managers and above · Attendance confirmed" data-es="Liderar en la ambigüedad · 20 de mayo · Virtual · Managers y superiores · Asistencia confirmada">Managing through ambiguity · May 20 · Virtual · Managers and above · Attendance confirmed</div>
+  </div>
+  <a class="ann-btn" href="leadership.html" data-en="View details" data-es="Ver detalles">View details</a>
+</div>
+
+<div class="section">
+  <div class="sec-header">
+    <div class="sec-title" data-en="Learning spaces" data-es="Espacios de aprendizaje">Learning spaces</div>
+  </div>
+  <div class="grid">
+
+    <a class="card featured" href="storiversity.html">
+      <div class="cicon" style="background:#E1F5EE">🎓</div>
+      <div class="pill pt" data-en="E-learning" data-es="E-learning">E-learning</div>
+      <div class="ctitle">Storiversity</div>
+      <div class="cdesc" data-en="Your full course catalogue and compliance training on Eloomi." data-es="Tu catálogo completo de cursos y capacitación de cumplimiento en Eloomi.">Your full course catalogue and compliance training on Eloomi.</div>
+      <div class="cfoot"><span class="cfoot-l" data-en="3 in progress" data-es="3 en curso">3 in progress</span><span class="cfoot-arr">→</span></div>
+    </a>
+
+    <a class="card" href="expertise.html">
+      <div class="cicon" style="background:#E6F1FB">🔧</div>
+      <div class="pill pb" data-en="By function" data-es="Por función">By function</div>
+      <div class="ctitle">Stori Expertise</div>
+      <div class="cdesc" data-en="Role-specific training owned by your business unit." data-es="Capacitación específica por rol, gestionada por tu área de negocio.">Role-specific training owned by your business unit.</div>
+      <div class="cfoot"><span class="cfoot-l" data-en="Select your function" data-es="Selecciona tu función">Select your function</span><span class="cfoot-arr">→</span></div>
+    </a>
+
+    <a class="card" href="academy.html">
+      <div class="cicon" style="background:#E6F1FB">🏅</div>
+      <div class="pill pb" data-en="Soft skills" data-es="Habilidades blandas">Soft skills</div>
+      <div class="ctitle">Stori Business Academy</div>
+      <div class="cdesc" data-en="Communication, influence, and effectiveness for ICs." data-es="Comunicación, influencia y efectividad para colaboradores individuales.">Communication, influence, and effectiveness for ICs.</div>
+      <div class="cfoot"><span class="cfoot-l" data-en="Next cohort: June" data-es="Próxima cohorte: Junio">Next cohort: June</span><span class="cfoot-arr">→</span></div>
+    </a>
+
+    <a class="card" href="leadership.html">
+      <div class="cicon" style="background:#FAEEDA">👑</div>
+      <div class="pill pa" data-en="For leaders" data-es="Para líderes">For leaders</div>
+      <div class="ctitle">Leadership Academy</div>
+      <div class="cdesc" data-en="Your next session and development resources for managers and above." data-es="Tu próxima sesión y recursos de desarrollo para managers y superiores.">Your next session and development resources for managers and above.</div>
+      <div class="cfoot"><span class="cfoot-l" data-en="1 session upcoming" data-es="1 sesión próxima">1 session upcoming</span><span class="cfoot-arr">→</span></div>
+    </a>
+
+    <a class="card" href="talks.html">
+      <div class="cicon" style="background:#FAECE7">🎙️</div>
+      <div class="pill pc" data-en="Audio" data-es="Audio">Audio</div>
+      <div class="ctitle">Stori Talks</div>
+      <div class="cdesc" data-en="Short bilingual audio episodes on the topics that matter most." data-es="Episodios cortos bilingües sobre los temas que más importan en Stori.">Short bilingual audio episodes on the topics that matter most.</div>
+      <div class="cfoot"><span class="cfoot-l" data-en="ES · EN available" data-es="Disponible en ES · EN">ES · EN available</span><span class="cfoot-arr">→</span></div>
+    </a>
+
+    <a class="card" href="compass.html">
+      <div class="cicon" style="background:#EEEDFE">🧭</div>
+      <div class="pill pp" data-en="AI coaching" data-es="Coaching con IA">AI coaching</div>
+      <div class="ctitle">Stori Compass</div>
+      <div class="cdesc" data-en="Your thinking partner for career, manager situations, and learning." data-es="Tu socio de pensamiento para carrera, situaciones de manager y aprendizaje.">Your thinking partner for career, manager situations, and learning.</div>
+      <div class="cfoot"><span class="cfoot-l" data-en="Always available" data-es="Siempre disponible">Always available</span><span class="cfoot-arr">→</span></div>
+    </a>
+
+    <a class="card" href="teaming.html">
+      <div class="cicon" style="background:#EAF3DE">🤝</div>
+      <div class="pill pg" data-en="Team tools" data-es="Herramientas de equipo">Team tools</div>
+      <div class="ctitle">Teaming & Collaboration</div>
+      <div class="cdesc" data-en="Ready-to-run activities for your team meetings. Pick one and go." data-es="Actividades listas para usar en tus reuniones de equipo. Elige y empieza.">Ready-to-run activities for your team meetings. Pick one and go.</div>
+      <div class="cfoot"><span class="cfoot-l" data-en="6 activities" data-es="6 actividades">6 activities</span><span class="cfoot-arr">→</span></div>
+    </a>
+
+    <a class="card" href="grow.html">
+      <div class="cicon" style="background:#E1F5EE">🛤️</div>
+      <div class="pill pt" data-en="Career" data-es="Carrera">Career</div>
+      <div class="ctitle">Grow at Stori</div>
+      <div class="cdesc" data-en="Career conversation guides, feedback frameworks, and AI-powered workbooks." data-es="Guías de conversación de carrera, marcos de retroalimentación y cuadernos con IA.">Career conversation guides, feedback frameworks, and AI-powered workbooks.</div>
+      <div class="cfoot"><span class="cfoot-l" data-en="Guides + workbooks" data-es="Guías y cuadernos">Guides + workbooks</span><span class="cfoot-arr">→</span></div>
+    </a>
+
+    <a class="card" href="requests.html">
+      <div class="cicon" style="background:#F1EFE8">📤</div>
+      <div class="pill pn" data-en="L&D team" data-es="Equipo L&D">L&D team</div>
+      <div class="ctitle" data-en="Training requests" data-es="Solicitudes de capacitación">Training requests</div>
+      <div class="cdesc" data-en="Submit a learning need for your team. We'll follow up within 3 business days." data-es="Envía una necesidad de aprendizaje para tu equipo. Te respondemos en 3 días hábiles.">Submit a learning need for your team. We'll follow up within 3 business days.</div>
+      <div class="cfoot"><span class="cfoot-l" data-en="Submit a request" data-es="Enviar solicitud">Submit a request</span><span class="cfoot-arr">→</span></div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <span class="footer-text" data-en="Stori Learning Hub · L&D · 2026 · Demo version" data-es="Stori Learning Hub · L&D · 2026 · Versión demo">Stori Learning Hub · L&D · 2026 · Demo version</span>
+  <span class="footer-text" data-en="Built for leadership review" data-es="Creado para revisión de liderazgo">Built for leadership review</span>
+</footer>
+
+<script>
+let lang = 'en';
+function setLang(l) {
+  lang = l;
+  document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  document.getElementById('btn-es').classList.toggle('active', l === 'es');
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const txt = el.getAttribute('data-' + l);
+    if (txt) el.textContent = txt;
+  });
+  localStorage.setItem('stori-lang', l);
+}
+const saved = localStorage.getItem('stori-lang');
+if (saved && saved !== 'en') setLang(saved);
+</script>
+</body>
+</html>

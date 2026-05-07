@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stori Learning Hub — L&D Metrics Dashboard</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F8F8F6;padding:24px;color:#2C2C2A}
+.wrap{max-width:720px;margin:0 auto}
+.db-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #E8E6DF}
+.db-title{font-size:18px;font-weight:600}
+.db-sub{font-size:12px;color:#888780;margin-top:2px}
+.badge-ld{font-size:10px;font-weight:600;background:#E1F5EE;color:#085041;padding:4px 12px;border-radius:20px;border:1px solid #9FE1CB}
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.metric-card{background:#F1EFE8;border-radius:10px;padding:16px}
+.metric-label{font-size:11px;color:#5F5E5A;margin-bottom:8px;font-weight:500}
+.metric-value{font-size:28px;font-weight:600;margin-bottom:4px}
+.metric-delta{font-size:11px;color:#0F6E56}
+.metric-note{font-size:11px;color:#888780}
+.chart-card{background:#fff;border-radius:12px;border:1px solid #E8E6DF;padding:16px 20px;margin-bottom:14px}
+.chart-title{font-size:14px;font-weight:600;margin-bottom:2px}
+.chart-sub{font-size:11px;color:#888780;margin-bottom:12px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:14px;font-size:11px;color:#5F5E5A}
+.legend span{display:flex;align-items:center;gap:5px}
+.leg-sq{width:10px;height:10px;border-radius:2px;display:inline-block}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.module-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #F0EEE7}
+.module-row:last-child{border-bottom:none}
+.mod-name{font-size:12px;min-width:170px;color:#2C2C2A}
+.bar-wrap{flex:1;background:#F1EFE8;border-radius:4px;height:8px;overflow:hidden}
+.bar-fill{height:8px;border-radius:4px}
+.mod-pct{font-size:11px;color:#888780;min-width:34px;text-align:right}
+.mod-trend{font-size:10px;min-width:50px;text-align:right}
+.up{color:#0F6E56}
+.watch{color:#BA7517}
+.stable{color:#B4B2A9}
+.insight-card{background:#fff;border-radius:12px;border:1px solid #E8E6DF;padding:16px 20px}
+.insight-title{font-size:11px;font-weight:600;color:#888780;text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
+.insight-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:12px;color:#444441;line-height:1.55}
+.dot{width:6px;height:6px;min-width:6px;border-radius:50%;margin-top:4px}
+.dot-g{background:#0F6E56}
+.dot-a{background:#BA7517}
+.footer{font-size:11px;color:#B4B2A9;margin-top:16px;padding-top:14px;border-top:1px solid #E8E6DF;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="db-header">
+    <div>
+      <div class="db-title">L&D hub metrics</div>
+      <div class="db-sub">Week 1–8 · Demo data · For leadership review</div>
+    </div>
+    <span class="badge-ld">L&D view only</span>
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="metric-label">Hub visits / week</div>
+      <div class="metric-value">247</div>
+      <div class="metric-delta">↑ 34% vs week 1</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Stori Compass sessions</div>
+      <div class="metric-value">89</div>
+      <div class="metric-delta">↑ 61% vs week 1</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Training requests</div>
+      <div class="metric-value">18</div>
+      <div class="metric-note">12 resolved · 4 redirected · 2 pending</div>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title">Weekly activity — first 8 weeks</div>
+    <div class="chart-sub">Hub visits and Compass sessions since launch</div>
+    <div class="legend">
+      <span><span class="leg-sq" style="background:#0F6E56"></span>Hub visits</span>
+      <span><span class="leg-sq" style="background:#534AB7;border:1px dashed #534AB7"></span>Compass sessions</span>
+    </div>
+    <div style="position:relative;width:100%;height:220px">
+      <canvas id="line-chart" role="img" aria-label="Line chart showing hub visits growing from 73 in week 1 to 247 in week 8, and Compass sessions growing from 14 to 89">Hub visits: 73, 98, 112, 134, 156, 189, 218, 247. Compass: 14, 22, 31, 38, 47, 61, 74, 89.</canvas>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="chart-card" style="margin-bottom:0">
+      <div class="chart-title">Requests by outcome</div>
+      <div class="chart-sub">18 total submissions</div>
+      <div class="legend">
+        <span><span class="leg-sq" style="background:#0F6E56"></span>Approved 12</span>
+        <span><span class="leg-sq" style="background:#BA7517"></span>Redirected 4</span>
+        <span><span class="leg-sq" style="background:#B4B2A9"></span>Pending 2</span>
+      </div>
+      <div style="position:relative;width:100%;height:160px">
+        <canvas id="donut1" role="img" aria-label="Doughnut chart: 12 approved, 4 redirected, 2 pending training requests">12 approved, 4 redirected, 2 pending.</canvas>
+      </div>
+    </div>
+    <div class="chart-card" style="margin-bottom:0">
+      <div class="chart-title">Compass topics</div>
+      <div class="chart-sub">89 sessions categorized</div>
+      <div class="legend">
+        <span><span class="leg-sq" style="background:#534AB7"></span>Career 47%</span>
+        <span><span class="leg-sq" style="background:#185FA5"></span>Manager 35%</span>
+        <span><span class="leg-sq" style="background:#9FE1CB"></span>Learning 18%</span>
+      </div>
+      <div style="position:relative;width:100%;height:160px">
+        <canvas id="donut2" role="img" aria-label="Doughnut chart: Compass sessions split career 47%, manager situations 35%, learning navigation 18%">Career 47%, manager 35%, learning 18%.</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-top:14px">
+    <div class="chart-title">Module engagement</div>
+    <div class="chart-sub">% of weekly active Storians who visited each section</div>
+    <div style="margin-top:12px">
+      <div class="module-row"><div class="mod-name">Storiversity</div><div class="bar-wrap"><div class="bar-fill" style="width:78%;background:#0F6E56"></div></div><div class="mod-pct">78%</div><div class="mod-trend up">↑ high</div></div>
+      <div class="module-row"><div class="mod-name">Stori Compass</div><div class="bar-wrap"><div class="bar-fill" style="width:64%;background:#534AB7"></div></div><div class="mod-pct">64%</div><div class="mod-trend up">↑ growing</div></div>
+      <div class="module-row"><div class="mod-name">Stori Talks</div><div class="bar-wrap"><div class="bar-fill" style="width:52%;background:#993C1D"></div></div><div class="mod-pct">52%</div><div class="mod-trend up">↑ strong</div></div>
+      <div class="module-row"><div class="mod-name">Teaming & Collaboration</div><div class="bar-wrap"><div class="bar-fill" style="width:41%;background:#3B6D11"></div></div><div class="mod-pct">41%</div><div class="mod-trend up">↑ steady</div></div>
+      <div class="module-row"><div class="mod-name">Grow at Stori</div><div class="bar-wrap"><div class="bar-fill" style="width:38%;background:#0F6E56"></div></div><div class="mod-pct">38%</div><div class="mod-trend up">↑ steady</div></div>
+      <div class="module-row"><div class="mod-name">Business Academy EQ</div><div class="bar-wrap"><div class="bar-fill" style="width:34%;background:#185FA5"></div></div><div class="mod-pct">34%</div><div class="mod-trend up">↑ cohort</div></div>
+      <div class="module-row"><div class="mod-name">Leadership Academy</div><div class="bar-wrap"><div class="bar-fill" style="width:28%;background:#854F0B"></div></div><div class="mod-pct">28%</div><div class="mod-trend stable">= stable</div></div>
+      <div class="module-row"><div class="mod-name">Stori Expertise</div><div class="bar-wrap"><div class="bar-fill" style="width:21%;background:#185FA5"></div></div><div class="mod-pct">21%</div><div class="mod-trend watch">↓ activate BUs</div></div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="insight-card">
+      <div class="insight-title">What's working</div>
+      <div class="insight-item"><div class="dot dot-g"></div>Compass return rate 61% — people come back without being pushed</div>
+      <div class="insight-item"><div class="dot dot-g"></div>4 of 18 requests redirected — gate logic is working</div>
+      <div class="insight-item"><div class="dot dot-g"></div>Stori Talks ep. 1 has a 71% listen-through rate</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-title">Watch closely</div>
+      <div class="insight-item"><div class="dot dot-a"></div>Stori Expertise at 21% — BUs need activation support to add content</div>
+      <div class="insight-item"><div class="dot dot-a"></div>2 requests pending past 5 days — follow up this week</div>
+      <div class="insight-item"><div class="dot dot-a"></div>Leadership Academy low visits — expected, monitor post-session</div>
+    </div>
+  </div>
+
+  <div class="footer">Demo data for leadership presentation · Real data will populate automatically via Wix analytics + Google Sheets tracker · This view is L&D only — not visible to Storians</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+new Chart(document.getElementById('line-chart'),{
+  type:'line',
+  data:{
+    labels:['W1','W2','W3','W4','W5','W6','W7','W8'],
+    datasets:[
+      {label:'Hub visits',data:[73,98,112,134,156,189,218,247],borderColor:'#0F6E56',backgroundColor:'rgba(15,110,86,0.07)',tension:.4,fill:true,pointBackgroundColor:'#0F6E56',pointRadius:3,borderWidth:2},
+      {label:'Compass sessions',data:[14,22,31,38,47,61,74,89],borderColor:'#534AB7',backgroundColor:'rgba(83,74,183,0.05)',tension:.4,fill:true,pointBackgroundColor:'#534AB7',pointRadius:3,borderWidth:2,borderDash:[5,3]}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:{size:11}}},y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:{size:11}},beginAtZero:true}}}
+});
+new Chart(document.getElementById('donut1'),{
+  type:'doughnut',
+  data:{labels:['Approved','Redirected','Pending'],datasets:[{data:[12,4,2],backgroundColor:['#0F6E56','#BA7517','#B4B2A9'],borderWidth:0}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},cutout:'68%'}
+});
+new Chart(document.getElementById('donut2'),{
+  type:'doughnut',
+  data:{labels:['Career','Manager','Learning nav'],datasets:[{data:[42,31,16],backgroundColor:['#534AB7','#185FA5','#9FE1CB'],borderWidth:0}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},cutout:'68%'}
+});
+</script>
+</body>
+</html>
