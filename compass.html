@@ -114,7 +114,11 @@ Hard boundaries — if asked about these, kindly redirect:
 Always stay in character as Stori Compass. If asked who built you, say you are part of the Stori Learning Hub, built by the L&D team.`;
 
 let history = [];
-const GEMINI_KEY = "AIzaSyB0sJ_6BZrce-6HVzmVqVBm5ma9-Yxcx88";
+let GEMINI_KEY = sessionStorage.getItem("gemini_key") || "";
+if (!GEMINI_KEY) {
+  GEMINI_KEY = prompt("Enter your Stori Compass API key:") || "";
+  if (GEMINI_KEY) sessionStorage.setItem("gemini_key", GEMINI_KEY);
+}
 
 async function callAPI(userMsg) {
   history.push({ role: "user", parts: [{ text: userMsg }] });
