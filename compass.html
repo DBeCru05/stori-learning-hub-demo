@@ -113,101 +113,43 @@ Hard boundaries — if asked about these, kindly redirect:
 
 Always stay in character as Stori Compass. If asked who built you, say you are part of the Stori Learning Hub, built by the L&D team.`;
 
-let history = [];
-let API_KEY = sessionStorage.getItem("compass_key") || "";
-if (!API_KEY) {
-  API_KEY = prompt("Enter your Stori Compass API key:") || "";
-  if (API_KEY) sessionStorage.setItem("compass_key", API_KEY);
-}
+const CONVERSATIONS = {
+  0: [
+    { role: "compass", text: "That's a meaningful situation to be in — and the fact that you're thinking carefully about how to do it well says a lot.\n\nBefore I share any frameworks, I want to understand the situation better. What's one specific thing this person has done or not done that made you decide feedback is needed?" },
+    { role: "user", text: "They keep missing deadlines and it affects the whole team" },
+    { role: "compass", text: "Got it — recurring missed deadlines with team impact. That's a pattern, not a one-off, which actually makes it easier to address because you have concrete examples.\n\nHere's what I want to understand before you have the conversation: has this person ever received feedback about this before, or would this be the first time they're hearing it?" },
+    { role: "user", text: "I don't think they've been told directly" },
+    { role: "compass", text: "That's really important context. First-time feedback lands very differently than a follow-up — they may genuinely not know the impact.\n\nSo the goal of this conversation is less about accountability and more about awareness and alignment. That changes the tone completely.\n\nTry this opening: describe what you've observed specifically, explain the impact on the team, and then ask a genuine question — 'What's been getting in the way for you?' You might be surprised by the answer.\n\nHow does that framing feel to you?" }
+  ],
+  1: [
+    { role: "compass", text: "Thinking about your next step is one of the most worthwhile things you can invest time in — and also one of the easiest to keep pushing off.\n\nLet me ask you something simple to start: when you imagine yourself a year from now feeling genuinely energized by your work at Stori, what does that look like?" },
+    { role: "user", text: "I think I'd be leading a team or a bigger project" },
+    { role: "compass", text: "That's a clear signal — leadership and ownership are pulling at you. That's not a small thing to notice about yourself.\n\nNow let me push a little: is it the people leadership part that excites you, or the scope and impact of a bigger project? Because those can lead to pretty different paths." },
+    { role: "user", text: "Honestly more the impact and scope" },
+    { role: "compass", text: "That's a really useful distinction. A lot of people assume 'next level' means managing people — but what you're describing sounds more like you want to own something bigger, drive decisions, and see real results from your work.\n\nThat path exists at Stori — and it doesn't necessarily require a people management role first.\n\nWhat's one project or initiative you're working on right now where you could start expanding your scope, even slightly? Sometimes the next step is already in front of you." }
+  ],
+  2: [
+    { role: "compass", text: "Great question to bring here. The Learning Hub has a few different spaces depending on what you're trying to build.\n\nHelp me point you in the right direction — are you looking to develop a specific skill for your current role, prepare for something coming up, or explore something for your longer-term growth?" },
+    { role: "user", text: "I want to get better at communicating with senior stakeholders" },
+    { role: "compass", text: "That's one of the highest-leverage skills you can develop at a fintech like Stori — especially as you grow.\n\nI'd point you to two places. First, the Stori Business Academy has a programme called Communicating with Clarity that covers exactly this — structuring your message for different audiences, async vs sync communication, and how to be concise without losing depth.\n\nSecond, if you want to think through a specific upcoming situation — a presentation, a difficult message, a proposal — I can help you work through it here.\n\nWhich feels more useful right now?" }
+  ]
+};
+
+let currentConv = -1;
+let currentStep = 0;
+let isTyping = false;
 
 async function callAPI(userMsg) {
-  history.push({ role: "user", content: userMsg });
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    headers: { "Content-Type": "application/json", "x-api-key": API_KEY, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
-    body: JSON.stringify({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 800,
-      system: SYSTEM,
-      messages: history
-    })
-  });
-  const data = await res.json();
-  const reply = data.content?.[0]?.text || "I'm having trouble connecting right now — please try again in a moment.";
-  history.push({ role: "assistant", content: reply });
-  return reply;
-}
-
-function addMsg(text, role) {
-  const msgs = document.getElementById("messages");
-  const div = document.createElement("div");
-  div.className = "msg" + (role === "user" ? " user" : "");
-  const av = document.createElement("div");
-  av.className = "avatar " + (role === "user" ? "av-u" : "av-c");
-  av.textContent = role === "user" ? "DB" : "🧭";
-  const bubble = document.createElement("div");
-  bubble.className = "bubble " + (role === "user" ? "bubble-u" : "bubble-c");
-  bubble.innerHTML = text.replace(/\n/g, "<br>");
-  div.appendChild(av);
-  div.appendChild(bubble);
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-
-function showTyping() {
-  const msgs = document.getElementById("messages");
-  const div = document.createElement("div");
-  div.className = "msg"; div.id = "typing";
-  const av = document.createElement("div");
-  av.className = "avatar av-c"; av.textContent = "🧭";
-  const t = document.createElement("div");
-  t.className = "typing";
-  t.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
-  div.appendChild(av); div.appendChild(t);
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-
-function removeTyping() {
-  const t = document.getElementById("typing");
-  if (t) t.remove();
-}
-
-async function sendMsg() {
-  const input = document.getElementById("input");
-  const text = input.value.trim();
-  if (!text) return;
-  document.getElementById("starters").style.display = "none";
-  input.value = "";
-  input.style.height = "auto";
-  document.getElementById("send-btn").disabled = true;
-  addMsg(text, "user");
-  showTyping();
-  try {
-    const reply = await callAPI(text);
-    removeTyping();
-    addMsg(reply, "compass");
-  } catch (e) {
-    removeTyping();
-    addMsg("Something went wrong — please try again.", "compass");
+  await new Promise(r => setTimeout(r, 800 + Math.random() * 600));
+  if (currentConv === -1) return "I am having trouble connecting right now — please try again in a moment.";
+  const conv = CONVERSATIONS[currentConv];
+  const nextResponses = conv.filter((m, i) => m.role === "compass" && i > currentStep);
+  if (nextResponses.length > 0) {
+    const nextIdx = conv.indexOf(nextResponses[0]);
+    currentStep = nextIdx;
+    return nextResponses[0].text;
   }
-  document.getElementById("send-btn").disabled = false;
-  input.focus();
-}
-
-function sendStarter(btn) {
-  document.getElementById("input").value = btn.textContent;
-  sendMsg();
-}
-
-function handleKey(e) {
-  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMsg(); }
-}
-
-function autoResize(el) {
-  el.style.height = "auto";
-  el.style.height = Math.min(el.scrollHeight, 120) + "px";
+  return "That's a really thoughtful point. What feels like the right next step for you based on what we've explored?";
 }
 
 function resetChat() {
