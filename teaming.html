@@ -182,9 +182,11 @@ a{text-decoration:none;color:inherit}
       <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
     </div>
 
-  <div style="margin-top:28px;padding:14px 0 10px;border-top:2px solid #EEF2F0">
+</div>
+<div id="leader-section" style="padding:0 28px 32px">
+  <div style="margin-bottom:16px;padding:16px 0 10px;border-top:2px solid #EEF2F0">
     <div style="font-size:11px;font-weight:800;color:#00C853;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Leadership & deep collaboration</div>
-    <div style="font-size:13px;color:#7A9E8E;margin-bottom:16px">These four activities require a trained facilitator or L&D support. Two are hands-on experiential sessions (TTT available). Two are strategic reflection sessions leaders can run with guidance.</div>
+    <div style="font-size:13px;color:#7A9E8E">These four activities require a trained facilitator or L&D support. Two are hands-on experiential sessions (TTT available). Two are strategic reflection sessions leaders can run with guidance.</div>
   </div>
   <div class="act-grid" id="act-grid-leader">
 
@@ -406,6 +408,11 @@ var ACTIVITIES = [
 ];
 
 function showActivity(idx) {
+  document.getElementById('list-view').style.display = 'none';
+  var ls = document.getElementById('leader-section');
+  if(ls) ls.style.display = 'none';
+  document.getElementById('detail-view').style.display = 'block';
+  window.scrollTo(0,0);
   var a = ACTIVITIES[idx];
   document.getElementById('d-icon').textContent = a.icon;
   document.getElementById('d-title').textContent = a.title;
@@ -432,6 +439,8 @@ function showActivity(idx) {
 
 function backToList() {
   document.getElementById('list-view').style.display = 'block';
+  var ls = document.getElementById('leader-section');
+  if(ls) ls.style.display = 'block';
   document.getElementById('detail-view').style.display = 'none';
   window.scrollTo(0,0);
 }
