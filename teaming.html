@@ -182,10 +182,7 @@ a{text-decoration:none;color:inherit}
       <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
     </div>
 
-
-  </div>
-
-  <div style="margin-top:32px;margin-bottom:16px">
+  <div style="margin-top:28px;padding:14px 0 10px;border-top:2px solid #EEF2F0">
     <div style="font-size:11px;font-weight:800;color:#00C853;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Leadership & deep collaboration</div>
     <div style="font-size:13px;color:#7A9E8E;margin-bottom:16px">These four activities require a trained facilitator or L&D support. Two are hands-on experiential sessions (TTT available). Two are strategic reflection sessions leaders can run with guidance.</div>
   </div>
@@ -441,15 +438,20 @@ function backToList() {
 
 function showTab(tab) {
   document.querySelectorAll('.tab').forEach(function(t,i){t.classList.toggle('active', ['list','quick','deep','facilitated','leader'][i]===tab);});
-  var cards = document.querySelectorAll('.act-card');
-  cards.forEach(function(card, i) {
-    var tags = ACTIVITIES[i] ? ACTIVITIES[i].tags : [];
-    if(tab==='list') card.style.display='block';
-    else if(tab==='quick') card.style.display=tags.some(function(t){return t.toLowerCase().includes('quick')||t.includes('5 min')||t.includes('10 min')||t.includes('15 min')||t.includes('20–30');}) ? 'block':'none';
-    else if(tab==='deep') card.style.display=tags.some(function(t){return t.includes('Deep')||t.includes('30 min')||t.includes('45')||t.includes('60');}) ? 'block':'none';
-    else if(tab==='facilitated') card.style.display=tags.includes('Facilitator-led')?'block':'none';
-    else if(tab==='leader') card.style.display=tags.includes('Leader session')?'block':'none';
+  document.querySelectorAll('.act-card').forEach(function(card) {
+    var idx = parseInt(card.getAttribute('onclick').match(/\d+/)[0]);
+    var tags = ACTIVITIES[idx] ? ACTIVITIES[idx].tags : [];
+    var show = false;
+    if(tab==='list') show=true;
+    else if(tab==='quick') show=tags.some(function(t){return t.includes('Quick')||t.includes('5 min')||t.includes('10 min')||t.includes('15 min')||t.includes('20–30');});
+    else if(tab==='deep') show=tags.some(function(t){return t.includes('Deep')||t.includes('30 min')||t.includes('45')||t.includes('60');});
+    else if(tab==='facilitated') show=tags.includes('Facilitator-led');
+    else if(tab==='leader') show=tags.includes('Leader session');
+    card.style.display=show?'block':'none';
   });
+  // show/hide section headers
+  var leaderHeader = document.querySelector('[data-leader-header]');
+  if(leaderHeader) leaderHeader.style.display=(tab==='list'||tab==='facilitated'||tab==='leader')?'block':'none';
 }
 
 // Support direct link to activity from homepage
