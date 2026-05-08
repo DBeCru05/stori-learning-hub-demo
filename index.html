@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stori Learning Hub</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#F2F5F3;color:#0D3D32;min-height:100vh}
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Lato",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#F2F5F3;color:#0D3D32;min-height:100vh}
 a{text-decoration:none;color:inherit}
 
 /* TOPBAR */
@@ -24,7 +24,7 @@ a{text-decoration:none;color:inherit}
 
 /* NAV */
 .nav{display:flex;align-items:center;padding:0 32px;background:#fff;border-bottom:1px solid #DDE8E3;height:42px}
-.nav-item{padding:0 12px;font-size:12px;color:#7A9E8E;cursor:pointer;height:42px;display:flex;align-items:center;border-bottom:2px solid transparent;font-weight:600}
+.nav-item{padding:0 12px;font-size:13px;color:#7A9E8E;cursor:pointer;height:42px;display:flex;align-items:center;border-bottom:2px solid transparent;font-weight:600}
 .nav-item.active{color:#0D3D32;border-bottom-color:#00C853}
 .nav-item:hover:not(.active){color:#0D3D32}
 .nav-spacer{flex:1}
@@ -37,10 +37,10 @@ a{text-decoration:none;color:inherit}
 .hero-bg-circle2{position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(0,200,83,0.04);left:-50px;bottom:-50px;pointer-events:none}
 .hero-text{position:relative;z-index:1;max-width:480px}
 .hero-eyebrow{font-size:11px;font-weight:700;color:#00C853;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
-.hero-title{font-size:30px;font-weight:900;color:#fff;margin-bottom:6px;line-height:1.2;letter-spacing:-.02em}
+.hero-title{font-size:34px;font-weight:900;color:#fff;margin-bottom:6px;line-height:1.2;letter-spacing:-.02em}
 .hero-title span{color:#00C853}
-.hero-tagline{font-size:13px;color:rgba(255,255,255,0.5);font-style:italic;margin-bottom:10px;font-weight:500}
-.hero-sub{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:22px}
+.hero-tagline{font-size:14px;color:rgba(255,255,255,0.5);font-style:italic;margin-bottom:10px;font-weight:500}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:22px}
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start}
 .btn-green{background:#00C853;color:#0D3D32;border:none;padding:11px 20px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
 .btn-green:hover{background:#00B548}
@@ -60,8 +60,8 @@ a{text-decoration:none;color:inherit}
 .announce{margin:20px 32px 0;background:#fff;border-left:4px solid #00C853;border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
 .ann-icon{width:38px;height:38px;min-width:38px;background:#E0F7EC;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
 .ann-tag{font-size:9px;font-weight:800;color:#007A38;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
-.ann-title{font-size:13px;font-weight:800;color:#0D3D32;margin-bottom:2px;line-height:1.4}
-.ann-sub{font-size:11px;color:#7A9E8E;display:flex;gap:10px;flex-wrap:wrap}
+.ann-title{font-size:14px;font-weight:800;color:#0D3D32;margin-bottom:2px;line-height:1.4}
+.ann-sub{font-size:12px;color:#7A9E8E;display:flex;gap:10px;flex-wrap:wrap}
 .ann-sub span{display:flex;align-items:center;gap:3px}
 .ann-right{margin-left:auto;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .ann-btn{background:#0D3D32;color:#fff;border:none;padding:7px 14px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;text-decoration:none}
@@ -78,8 +78,8 @@ a{text-decoration:none;color:inherit}
 .strip-icon{width:48px;height:48px;min-width:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px;background:rgba(255,255,255,0.12)}
 .strip-text{}
 .strip-tag{font-size:9px;font-weight:800;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
-.strip-name{font-size:16px;font-weight:800;color:#fff;margin-bottom:4px}
-.strip-desc{font-size:11px;color:rgba(255,255,255,0.6);line-height:1.55}
+.strip-name{font-size:18px;font-weight:800;color:#fff;margin-bottom:4px}
+.strip-desc{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.55}
 .strip-arr{position:absolute;bottom:16px;right:16px;font-size:18px;color:rgba(255,255,255,0.3);font-weight:700}
 .strip-badge{position:absolute;top:14px;right:14px;font-size:9px;font-weight:800;background:rgba(255,255,255,0.15);color:#fff;padding:3px 8px;border-radius:20px}
 
@@ -97,10 +97,10 @@ a{text-decoration:none;color:inherit}
 .pa{background:#FFF3E0;color:#8C4A00}
 .pn{background:#ECEFF1;color:#37474F}
 .pg{background:#E8F5E9;color:#2E7D32}
-.ctitle{font-size:12px;font-weight:800;color:#0D3D32;margin-bottom:3px;line-height:1.35}
-.cdesc{font-size:11px;color:#7A9E8E;line-height:1.55}
+.ctitle{font-size:14px;font-weight:800;color:#0D3D32;margin-bottom:4px;line-height:1.35}
+.cdesc{font-size:12px;color:#7A9E8E;line-height:1.6}
 .cfoot{margin-top:12px;padding-top:10px;border-top:1px solid #EEF2F0;display:flex;align-items:center;justify-content:space-between}
-.cfoot-l{font-size:10px;color:#AABFB6;font-weight:500}
+.cfoot-l{font-size:11px;color:#AABFB6;font-weight:500}
 .cfoot-arr{font-size:14px;color:#00C853;font-weight:800}
 
 /* TEAMING SHEET */
@@ -109,8 +109,8 @@ a{text-decoration:none;color:inherit}
 .teaming-header.open{border-color:#00C853;border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:none}
 .th-left{display:flex;align-items:center;gap:12px}
 .th-icon{width:38px;height:38px;border-radius:10px;background:#E8F5E9;display:flex;align-items:center;justify-content:center;font-size:19px}
-.th-title{font-size:13px;font-weight:800;color:#0D3D32}
-.th-sub{font-size:11px;color:#7A9E8E;margin-top:1px}
+.th-title{font-size:14px;font-weight:800;color:#0D3D32}
+.th-sub{font-size:12px;color:#7A9E8E;margin-top:1px}
 .th-pill{font-size:9px;font-weight:800;background:#E8F5E9;color:#2E7D32;padding:3px 9px;border-radius:20px;margin-right:8px}
 .th-toggle{font-size:18px;color:#00C853;transition:transform .2s;font-weight:700}
 .th-toggle.open{transform:rotate(180deg)}
@@ -122,10 +122,10 @@ a{text-decoration:none;color:inherit}
 .act-item:last-child{border-bottom:none}
 .act-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
 .act-emoji{font-size:18px}
-.act-name{font-size:12px;font-weight:800;color:#0D3D32}
+.act-name{font-size:13px;font-weight:800;color:#0D3D32}
 .act-meta{display:flex;gap:6px;flex-wrap:wrap}
 .act-tag{font-size:9px;background:#EEF2F0;color:#5A7A6A;padding:2px 7px;border-radius:20px;font-weight:600}
-.act-desc{font-size:11px;color:#7A9E8E;line-height:1.5;margin-top:5px}
+.act-desc{font-size:12px;color:#7A9E8E;line-height:1.5;margin-top:5px}
 
 /* FOOTER */
 footer{padding:18px 32px;background:#0D3D32;display:flex;align-items:center;justify-content:space-between;margin-top:8px}
@@ -168,8 +168,8 @@ footer{padding:18px 32px;background:#0D3D32;display:flex;align-items:center;just
   <div class="hero-bg-circle2"></div>
   <div class="hero-text">
     <div class="hero-eyebrow" data-en="Welcome back, Daniela" data-es="Bienvenida, Daniela">Welcome back, Daniela</div>
-    <div class="hero-title">Learn. Grow.<br><span>Fly.</span></div>
-    <div class="hero-tagline">Building capabilities. Driving impact.</div>
+    <div class="hero-title">Own your<br><span>journey.</span></div>
+    
     <div class="hero-sub" data-en="Everything you need to grow at Stori — courses, coaching, team tools, and career resources — all in one place." data-es="Todo lo que necesitas para crecer en Stori — en un solo lugar.">Everything you need to grow at Stori — courses, coaching, team tools, and career resources — all in one place.</div>
     <div class="hero-btns">
       <a class="btn-green" href="requests.html">+ Submit a training request</a>
