@@ -9,69 +9,60 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Lato',-apple-system,sans-serif;background:#F2F5F3;color:#0D3D32;min-height:100vh}
 a{text-decoration:none;color:inherit}
-
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:#0D3D32;height:54px}
 .topbar-left{display:flex;align-items:center;gap:10px}
 .logo-mark{width:28px;height:28px;background:#00C853;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px}
 .site-name{font-size:13px;font-weight:800;color:#fff}
-.back-link{font-size:12px;color:rgba(255,255,255,0.45);display:flex;align-items:center;gap:5px;text-decoration:none}
+.back-link{font-size:12px;color:rgba(255,255,255,0.45);text-decoration:none;margin-left:4px}
 .back-link:hover{color:#00C853}
-
-.hero{background:#0D3D32;padding:28px 28px 32px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.hero{background:#0D3D32;padding:28px 28px 32px}
 .hero-eyebrow{font-size:10px;font-weight:800;color:#00C853;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
-.hero-title{font-size:26px;font-weight:900;color:#fff;margin-bottom:6px;letter-spacing:-.01em}
+.hero-title{font-size:26px;font-weight:900;color:#fff;margin-bottom:6px}
 .hero-sub{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;max-width:520px}
-
-.tabs{display:flex;gap:0;padding:0 28px;background:#fff;border-bottom:1px solid #DDE8E3}
-.tab{padding:12px 16px;font-size:13px;font-weight:700;color:#7A9E8E;cursor:pointer;border-bottom:2px solid transparent;transition:color .15s}
+.tabs{display:flex;padding:0 28px;background:#fff;border-bottom:1px solid #DDE8E3}
+.tab{padding:12px 16px;font-size:13px;font-weight:700;color:#7A9E8E;cursor:pointer;border-bottom:2px solid transparent}
 .tab.active{color:#0D3D32;border-bottom-color:#00C853}
 .tab:hover:not(.active){color:#0D3D32}
+.content{padding:24px 28px}
+.section-label{font-size:11px;font-weight:800;color:#7A9E8E;text-transform:uppercase;letter-spacing:.07em;margin-bottom:16px}
+.section-note{font-size:13px;color:#7A9E8E;margin-bottom:16px;margin-top:-8px}
+.leader-divider{margin:28px 0 16px;padding-top:24px;border-top:2px solid #DDE8E3}
+.leader-label{font-size:11px;font-weight:800;color:#00C853;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+.leader-note{font-size:13px;color:#7A9E8E;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.card{background:#fff;border:1.5px solid #DDE8E3;border-radius:14px;padding:18px;cursor:pointer;transition:border-color .15s,transform .1s}
+.card:hover{border-color:#00C853;transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,200,83,0.08)}
+.card-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.card-icon{width:40px;height:40px;border-radius:11px;background:#E8F5E9;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.card-title{font-size:14px;font-weight:900;color:#0D3D32;margin-bottom:2px}
+.card-source{font-size:10px;color:#AABFB6;font-weight:600}
+.card-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.tag{font-size:10px;background:#EEF2F0;color:#5A7A6A;padding:3px 8px;border-radius:20px;font-weight:700}
+.card-desc{font-size:12px;color:#7A9E8E;line-height:1.6;margin-bottom:14px}
+.card-cta{padding-top:12px;border-top:1px solid #EEF2F0;font-size:11px;font-weight:700;color:#00C853}
 
-/* ACTIVITY LIST VIEW */
-#list-view{display:block;padding:24px 28px}
-.act-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
-.act-card{background:#fff;border:1.5px solid #DDE8E3;border-radius:14px;padding:18px;cursor:pointer;transition:border-color .15s,transform .1s;display:block}
-.act-card:hover{border-color:#00C853;transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,200,83,0.08)}
-.act-card-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.act-icon{width:40px;height:40px;border-radius:11px;background:#E8F5E9;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.act-title{font-size:14px;font-weight:900;color:#0D3D32;margin-bottom:2px}
-.act-source{font-size:10px;color:#AABFB6;font-weight:600}
-.act-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-.act-tag{font-size:10px;background:#EEF2F0;color:#5A7A6A;padding:3px 8px;border-radius:20px;font-weight:700}
-.act-desc{font-size:12px;color:#7A9E8E;line-height:1.6;margin-bottom:14px}
-.act-cta{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid #EEF2F0}
-.act-cta-label{font-size:11px;font-weight:700;color:#00C853}
-.act-cta-arr{font-size:16px;color:#00C853;font-weight:900}
-
-/* ACTIVITY DETAIL VIEW */
-#detail-view{display:none;padding:0}
+/* DETAIL VIEW */
+.detail-back{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#0D3D32;cursor:pointer;padding:16px 28px;background:#fff;border-bottom:1px solid #DDE8E3}
+.detail-back:hover{color:#00C853}
 .detail-header{background:#fff;padding:20px 28px;border-bottom:1px solid #DDE8E3;display:flex;align-items:flex-start;gap:16px}
-.detail-icon{width:52px;height:52px;border-radius:14px;background:#E8F5E9;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
-.detail-meta{}
+.detail-big-icon{width:52px;height:52px;border-radius:14px;background:#E8F5E9;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
 .detail-eyebrow{font-size:10px;font-weight:800;color:#00C853;letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px}
 .detail-title{font-size:20px;font-weight:900;color:#0D3D32;margin-bottom:4px}
 .detail-source{font-size:11px;color:#AABFB6;margin-bottom:8px}
 .detail-tags{display:flex;gap:6px;flex-wrap:wrap}
-.detail-tag{font-size:10px;background:#EEF2F0;color:#5A7A6A;padding:3px 8px;border-radius:20px;font-weight:700}
-
 .detail-body{padding:24px 28px;max-width:720px}
 .detail-section{margin-bottom:28px}
-.detail-section-title{font-size:11px;font-weight:800;color:#00C853;text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
-.detail-purpose{font-size:14px;color:#0D3D32;line-height:1.7;padding:16px 20px;background:#F0FBF5;border-radius:12px;border-left:3px solid #00C853}
-.steps-list{display:flex;flex-direction:column;gap:12px}
+.detail-section-label{font-size:11px;font-weight:800;color:#00C853;text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.purpose-box{font-size:14px;color:#0D3D32;line-height:1.7;padding:16px 20px;background:#F0FBF5;border-radius:12px;border-left:3px solid #00C853}
+.steps{display:flex;flex-direction:column;gap:12px}
 .step{display:flex;gap:14px;align-items:flex-start}
 .step-num{width:28px;height:28px;min-width:28px;border-radius:50%;background:#0D3D32;color:#fff;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;margin-top:2px}
-.step-content{}
 .step-title{font-size:13px;font-weight:800;color:#0D3D32;margin-bottom:3px}
 .step-desc{font-size:13px;color:#5A7A6A;line-height:1.65}
-.tips-list{display:flex;flex-direction:column;gap:8px}
+.tips{display:flex;flex-direction:column;gap:8px}
 .tip{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#5A7A6A;line-height:1.6}
 .tip-dot{width:6px;height:6px;min-width:6px;border-radius:50%;background:#00C853;margin-top:6px}
 .source-box{background:#F2F5F3;border-radius:10px;padding:14px 16px;font-size:12px;color:#7A9E8E;line-height:1.6;border:1px solid #DDE8E3}
-.source-box strong{color:#0D3D32}
-
-.back-to-list{display:flex;align-items:center;gap:6px;font-size:12px;color:#0D3D32;cursor:pointer;padding:14px 28px;background:#fff;border-bottom:1px solid #DDE8E3;font-weight:700}
-.back-to-list:hover{color:#00C853}
 </style>
 </head>
 <body>
@@ -92,155 +83,48 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <div class="tabs">
-  <div class="tab active" onclick="showTab('list')">All activities</div>
-  <div class="tab" onclick="showTab('quick')">Quick</div>
-  <div class="tab" onclick="showTab('deep')">Deep</div>
-  <div class="tab" onclick="showTab('facilitated')">Facilitator-led</div>
-  <div class="tab" onclick="showTab('leader')">Leader sessions</div>
+  <div class="tab active" onclick="filterTab(this,'all')">All activities</div>
+  <div class="tab" onclick="filterTab(this,'quick')">Quick</div>
+  <div class="tab" onclick="filterTab(this,'deep')">Deep</div>
+  <div class="tab" onclick="filterTab(this,'facilitated')">Facilitator-led</div>
+  <div class="tab" onclick="filterTab(this,'leader')">Leader sessions</div>
 </div>
 
-<div id="list-view">
-  <div class="act-grid" id="act-grid">
-
-    <div class="act-card" onclick="showActivity(0)">
-      <div class="act-card-top">
-        <div class="act-icon">👋</div>
-        <div><div class="act-title">Check-in rounds</div><div class="act-source">Based on Psychological Safety research · Edmondson, Harvard</div></div>
-      </div>
-      <div class="act-meta"><span class="act-tag">5 min</span><span class="act-tag">Any size</span><span class="act-tag">No prep</span><span class="act-tag">Quick</span></div>
-      <div class="act-desc">A structured opening that gets everyone mentally present before the work starts. Proven to increase participation and reduce social anxiety in meetings.</div>
-      <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
-    </div>
-
-    <div class="act-card" onclick="showActivity(1)">
-      <div class="act-card-top">
-        <div class="act-icon">🔄</div>
-        <div><div class="act-title">Retro in a box</div><div class="act-source">Agile / Scrum methodology · Used at Google, Spotify</div></div>
-      </div>
-      <div class="act-meta"><span class="act-tag">30 min</span><span class="act-tag">Any size</span><span class="act-tag">Post-sprint</span><span class="act-tag">Deep</span></div>
-      <div class="act-desc">A guided retrospective for any team, any project. One of the most evidence-backed practices for continuous team improvement.</div>
-      <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
-    </div>
-
-    <div class="act-card" onclick="showActivity(2)">
-      <div class="act-card-top">
-        <div class="act-icon">🧩</div>
-        <div><div class="act-title">Working styles</div><div class="act-source">Team dynamics research · DISC framework</div></div>
-      </div>
-      <div class="act-meta"><span class="act-tag">20 min</span><span class="act-tag">4–12 people</span><span class="act-tag">New teams</span></div>
-      <div class="act-desc">Help your team understand how each person works best — and design around it. Reduces friction before it happens.</div>
-      <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
-    </div>
-
-    <div class="act-card" onclick="showActivity(3)">
-      <div class="act-card-top">
-        <div class="act-icon">🧭</div>
-        <div><div class="act-title">Team compass</div><div class="act-source">Team effectiveness research · Hackman & Wageman</div></div>
-      </div>
-      <div class="act-meta"><span class="act-tag">45 min</span><span class="act-tag">Any size</span><span class="act-tag">Cycle kick-off</span><span class="act-tag">Deep</span></div>
-      <div class="act-desc">Align on priorities and ways of working before the sprint starts — not halfway through. Setting shared norms is one of the top predictors of team performance.</div>
-      <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
-    </div>
-
-    <div class="act-card" onclick="showActivity(4)">
-      <div class="act-card-top">
-        <div class="act-icon">💡</div>
-        <div><div class="act-title">Ideation sprint</div><div class="act-source">Design Thinking · IDEO methodology</div></div>
-      </div>
-      <div class="act-meta"><span class="act-tag">25 min</span><span class="act-tag">4–8 people</span><span class="act-tag">Problem-solving</span></div>
-      <div class="act-desc">A structured creative session for any challenge. Generates ideas fast without the usual meeting dynamics where the loudest voice wins.</div>
-      <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
-    </div>
-
-    <div class="act-card" onclick="showActivity(5)">
-      <div class="act-card-top">
-        <div class="act-icon">⭐</div>
-        <div><div class="act-title">Appreciation circle</div><div class="act-source">Positive Psychology · Seligman gratitude research</div></div>
-      </div>
-      <div class="act-meta"><span class="act-tag">10 min</span><span class="act-tag">Any size</span><span class="act-tag">Closing ritual</span><span class="act-tag">Quick</span></div>
-      <div class="act-desc">A simple way to close a sprint or tough week on connection. Recognition takes 10 minutes and measurably increases psychological safety and team cohesion.</div>
-      <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
-    </div>
-
-    <div class="act-card" onclick="showActivity(6)">
-      <div class="act-card-top">
-        <div class="act-icon">🎯</div>
-        <div><div class="act-title">Role clarity exercise</div><div class="act-source">RACI framework · Team effectiveness research</div></div>
-      </div>
-      <div class="act-meta"><span class="act-tag">20 min</span><span class="act-tag">4–10 people</span><span class="act-tag">New projects</span></div>
-      <div class="act-desc">Unclear roles are one of the top sources of team dysfunction. This structured exercise eliminates months of friction in 20 minutes.</div>
-      <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
-    </div>
-
-    <div class="act-card" onclick="showActivity(7)">
-      <div class="act-card-top">
-        <div class="act-icon">🔁</div>
-        <div><div class="act-title">Start / Stop / Continue</div><div class="act-source">Management consulting · Executive coaching practice</div></div>
-      </div>
-      <div class="act-meta"><span class="act-tag">15 min</span><span class="act-tag">Any size</span><span class="act-tag">Feedback culture</span><span class="act-tag">Quick</span></div>
-      <div class="act-desc">A classic feedback framework — simple, non-threatening, and immediately actionable. Builds a feedback culture without the weight of formal reviews.</div>
-      <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
-    </div>
-
-</div>
-<div id="leader-section" style="padding:0 28px 32px">
-  <div style="margin-bottom:16px;padding:16px 0 10px;border-top:2px solid #EEF2F0">
-    <div style="font-size:11px;font-weight:800;color:#00C853;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Leadership & deep collaboration</div>
-    <div style="font-size:13px;color:#7A9E8E">These four activities require a trained facilitator or L&D support. Two are hands-on experiential sessions (TTT available). Two are strategic reflection sessions leaders can run with guidance.</div>
+<!-- LIST VIEW -->
+<div id="list-view" class="content">
+  <div class="section-label">All activities</div>
+  <div class="grid" id="main-grid">
+    <div class="card" onclick="openActivity(0)"><div class="card-top"><div class="card-icon">👋</div><div><div class="card-title">Check-in rounds</div><div class="card-source">Psychological Safety research · Edmondson, Harvard</div></div></div><div class="card-meta"><span class="tag">5 min</span><span class="tag">Any size</span><span class="tag">No prep</span><span class="tag t-quick">Quick</span></div><div class="card-desc">A structured opening that gets everyone mentally present before the work starts.</div><div class="card-cta">View full guide →</div></div>
+    <div class="card" onclick="openActivity(1)"><div class="card-top"><div class="card-icon">🔄</div><div><div class="card-title">Retro in a box</div><div class="card-source">Agile / Scrum · Google, Spotify</div></div></div><div class="card-meta"><span class="tag">30 min</span><span class="tag">Any size</span><span class="tag">Post-sprint</span><span class="tag t-deep">Deep</span></div><div class="card-desc">A guided retrospective for any team, any project. One of the most evidence-backed team practices.</div><div class="card-cta">View full guide →</div></div>
+    <div class="card" onclick="openActivity(2)"><div class="card-top"><div class="card-icon">🧩</div><div><div class="card-title">Working styles</div><div class="card-source">Team dynamics · DISC framework</div></div></div><div class="card-meta"><span class="tag">20 min</span><span class="tag">4–12 people</span><span class="tag">New teams</span></div><div class="card-desc">Help your team understand how each person works best — and design around it.</div><div class="card-cta">View full guide →</div></div>
+    <div class="card" onclick="openActivity(3)"><div class="card-top"><div class="card-icon">🧭</div><div><div class="card-title">Team compass</div><div class="card-source">Team effectiveness · Hackman & Wageman</div></div></div><div class="card-meta"><span class="tag">45 min</span><span class="tag">Any size</span><span class="tag">Cycle kick-off</span><span class="tag t-deep">Deep</span></div><div class="card-desc">Align on priorities and ways of working before the sprint starts — not halfway through.</div><div class="card-cta">View full guide →</div></div>
+    <div class="card" onclick="openActivity(4)"><div class="card-top"><div class="card-icon">💡</div><div><div class="card-title">Ideation sprint</div><div class="card-source">Design Thinking · IDEO methodology</div></div></div><div class="card-meta"><span class="tag">25 min</span><span class="tag">4–8 people</span><span class="tag">Problem-solving</span></div><div class="card-desc">Generate ideas fast without the usual meeting dynamics where the loudest voice wins.</div><div class="card-cta">View full guide →</div></div>
+    <div class="card" onclick="openActivity(5)"><div class="card-top"><div class="card-icon">⭐</div><div><div class="card-title">Appreciation circle</div><div class="card-source">Positive Psychology · Seligman</div></div></div><div class="card-meta"><span class="tag">10 min</span><span class="tag">Any size</span><span class="tag">Closing ritual</span><span class="tag t-quick">Quick</span></div><div class="card-desc">A simple way to close a sprint or tough week on connection. 10 minutes, measurable impact.</div><div class="card-cta">View full guide →</div></div>
+    <div class="card" onclick="openActivity(6)"><div class="card-top"><div class="card-icon">🎯</div><div><div class="card-title">Role clarity exercise</div><div class="card-source">RACI framework · Team effectiveness research</div></div></div><div class="card-meta"><span class="tag">20 min</span><span class="tag">4–10 people</span><span class="tag">New projects</span></div><div class="card-desc">Eliminate months of friction in 20 minutes by making roles explicit.</div><div class="card-cta">View full guide →</div></div>
+    <div class="card" onclick="openActivity(7)"><div class="card-top"><div class="card-icon">🔁</div><div><div class="card-title">Start / Stop / Continue</div><div class="card-source">Management consulting · Executive coaching</div></div></div><div class="card-meta"><span class="tag">15 min</span><span class="tag">Any size</span><span class="tag">Feedback culture</span><span class="tag t-quick">Quick</span></div><div class="card-desc">Build a feedback culture without the weight of formal reviews.</div><div class="card-cta">View full guide →</div></div>
   </div>
-  <div class="act-grid" id="act-grid-leader">
 
-    <div class="act-card" data-section="leader" onclick="showActivity(8)">
-      <div class="act-card-top">
-        <div class="act-icon">🦆</div>
-        <div><div class="act-title">Build the duck</div><div class="act-source">Constructivist learning theory · Piaget & Papert · LSP-inspired</div></div>
-      </div>
-      <div class="act-meta"><span class="act-tag">60–75 min</span><span class="act-tag">Any size</span><span class="act-tag">Facilitator-led</span><span class="act-tag">TTT available</span></div>
-      <div class="act-desc">Build individually, then as a team. The facilitator deconstructs the aha moment around effort, speed, goals, pivot, and flexibility. No Lego license needed.</div>
-      <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
-    </div>
-
-    <div class="act-card" data-section="leader" onclick="showActivity(9)">
-      <div class="act-card-top">
-        <div class="act-icon">🪄</div>
-        <div><div class="act-title">Helium stick</div><div class="act-source">Outdoor education & leadership development tradition</div></div>
-      </div>
-      <div class="act-meta"><span class="act-tag">20–30 min</span><span class="act-tag">8–20 people</span><span class="act-tag">Facilitator-led</span><span class="act-tag">TTT available</span></div>
-      <div class="act-desc">A stick balanced on everyone's index fingers keeps rising when the team tries to lower it. Individual instinct works against the collective goal — a perfect metaphor for cross-functional collaboration.</div>
-      <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
-    </div>
-
-    <div class="act-card" data-section="leader" onclick="showActivity(10)">
-      <div class="act-card-top">
-        <div class="act-icon">🔮</div>
-        <div><div class="act-title">Pre-mortem</div><div class="act-source">Gary Klein · Used by Google Ventures & McKinsey</div></div>
-      </div>
-      <div class="act-meta"><span class="act-tag">45–60 min</span><span class="act-tag">Leadership teams</span><span class="act-tag">Leader session</span></div>
-      <div class="act-desc">Imagine the project already failed — then work backwards to find the real risks nobody is saying out loud. Exceptional for cross-functional leader groups who need to challenge plans without making it personal.</div>
-      <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
-    </div>
-
-    <div class="act-card" data-section="leader" onclick="showActivity(11)">
-      <div class="act-card-top">
-        <div class="act-icon">🗺️</div>
-        <div><div class="act-title">Culture canvas</div><div class="act-source">Organizational culture research · Schein, MIT</div></div>
-      </div>
-      <div class="act-meta"><span class="act-tag">60–75 min</span><span class="act-tag">Leadership teams</span><span class="act-tag">Leader session</span></div>
-      <div class="act-desc">Leaders map the explicit vs unspoken rules of how their team actually operates — what gets rewarded, what gets punished, what people really believe vs what they say. Powerful during change or onboarding.</div>
-      <div class="act-cta"><span class="act-cta-label">View full guide →</span></div>
-    </div>
-
+  <div class="leader-divider">
+    <div class="leader-label">Leadership & deep collaboration</div>
+    <div class="leader-note">These four activities require a trained facilitator or L&D support. Two are hands-on experiential (TTT available). Two are strategic reflection sessions.</div>
+  </div>
+  <div class="grid" id="leader-grid">
+    <div class="card" onclick="openActivity(8)"><div class="card-top"><div class="card-icon">🦆</div><div><div class="card-title">Build the duck</div><div class="card-source">Constructivist learning theory · LSP-inspired</div></div></div><div class="card-meta"><span class="tag">60–75 min</span><span class="tag">Any size</span><span class="tag t-facilitated">Facilitator-led</span><span class="tag">TTT available</span></div><div class="card-desc">Build individually, then as a team. Debrief around effort, goals, pivot, and flexibility.</div><div class="card-cta">View full guide →</div></div>
+    <div class="card" onclick="openActivity(9)"><div class="card-top"><div class="card-icon">🪄</div><div><div class="card-title">Helium stick</div><div class="card-source">Outdoor education · Leadership development tradition</div></div></div><div class="card-meta"><span class="tag">20–30 min</span><span class="tag">8–20 people</span><span class="tag t-facilitated">Facilitator-led</span><span class="tag">TTT available</span></div><div class="card-desc">Individual instinct works against the collective goal — make it visible and physical.</div><div class="card-cta">View full guide →</div></div>
+    <div class="card" onclick="openActivity(10)"><div class="card-top"><div class="card-icon">🔮</div><div><div class="card-title">Pre-mortem</div><div class="card-source">Gary Klein · Google Ventures · McKinsey</div></div></div><div class="card-meta"><span class="tag">45–60 min</span><span class="tag">Leadership teams</span><span class="tag t-leader">Leader session</span><span class="tag t-deep">Deep</span></div><div class="card-desc">Imagine the project already failed. Work backwards to surface the risks nobody is saying.</div><div class="card-cta">View full guide →</div></div>
+    <div class="card" onclick="openActivity(11)"><div class="card-top"><div class="card-icon">🗺️</div><div><div class="card-title">Culture canvas</div><div class="card-source">Edgar Schein, MIT · Organizational culture research</div></div></div><div class="card-meta"><span class="tag">60–75 min</span><span class="tag">Leadership teams</span><span class="tag t-leader">Leader session</span><span class="tag t-deep">Deep</span></div><div class="card-desc">Map stated vs actual culture. Name the unwritten rules and decide what to change.</div><div class="card-cta">View full guide →</div></div>
   </div>
 </div>
 
-<div id="detail-view">
-  <div class="back-to-list" onclick="backToList()">← All activities</div>
+<!-- DETAIL VIEW -->
+<div id="detail-view" style="display:none">
+  <div class="detail-back" onclick="closeActivity()">← All activities</div>
   <div class="detail-header">
-    <div class="detail-icon" id="d-icon">👋</div>
-    <div class="detail-meta">
-      <div class="detail-eyebrow">Team activity guide</div>
-      <div class="detail-title" id="d-title">Check-in rounds</div>
-      <div class="detail-source" id="d-source">Based on Psychological Safety research · Edmondson, Harvard</div>
+    <div class="detail-big-icon" id="d-icon">👋</div>
+    <div>
+      <div class="detail-eyebrow">Activity guide</div>
+      <div class="detail-title" id="d-title"></div>
+      <div class="detail-source" id="d-source"></div>
       <div class="detail-tags" id="d-tags"></div>
     </div>
   </div>
@@ -248,226 +132,193 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script>
-var ACTIVITIES = [
-  {
-    icon:'👋', title:'Check-in rounds', source:'Based on Psychological Safety research · Edmondson, Harvard',
-    tags:['5 min','Any size','No prep','Quick'],
-    purpose:'Help everyone arrive mentally, not just physically. Research by Amy Edmondson at Harvard Business School shows that simple opening rituals that invite personal sharing — even a single word — measurably increase psychological safety and active participation throughout the meeting.',
-    steps:[
-      {title:'Choose your question (1 min)',desc:'Pick one simple question for the whole team. See suggestions below. Write it where everyone can see it.'},
-      {title:'Go around the room (3 min)',desc:'Each person answers in 10–15 seconds. No elaboration, no commentary from others. The goal is to hear every voice — not to discuss.'},
-      {title:'Facilitator goes last (1 min)',desc:'You answer the same question. Then move directly into your agenda. No bridge needed — the check-in has already done its job.'}
-    ],
-    tips:['Good questions: "In one word, how are you showing up today?" · "What\'s your internal weather forecast?" · "What\'s one thing on your mind right now?"','Avoid questions that require long answers or personal disclosure — the goal is connection, not therapy.','If someone passes, let them. Don\'t push. Psychological safety means people feel safe enough to pass too.'],
-    source_note:'Edmondson, A. (1999). Psychological Safety and Learning Behavior in Work Teams. Administrative Science Quarterly.'
-  },
-  {
-    icon:'🔄', title:'Retro in a box', source:'Agile / Scrum methodology · Used at Google, Spotify, and high-performing tech teams globally',
-    tags:['30 min','Any size','Post-sprint','Deep'],
-    purpose:'Create structured space to reflect on what\'s working and what isn\'t — before moving into the next cycle. Retrospectives are one of the most evidence-backed practices in team science. Teams that run regular retros improve faster, communicate better, and have measurably higher satisfaction than those that don\'t.',
-    steps:[
-      {title:'Set the stage (3 min)',desc:'Remind the team this is a safe space — no blame, just learning. Frame it as: "We\'re here to get better together, not to find fault."'},
-      {title:'Gather data (10 min)',desc:'Everyone writes sticky notes (physical or digital) for three prompts: What went well? What was hard? What surprised us? Work independently — no talking during this phase.'},
-      {title:'Group and discuss (10 min)',desc:'Share and cluster similar themes. As a group, pick 2–3 themes that feel most important to discuss. Don\'t try to cover everything.'},
-      {title:'Decide one thing (7 min)',desc:'Pick one concrete thing to do differently next time. Make it specific. Assign an owner and a timeframe. If you can\'t decide in 7 minutes, table it for async.'}
-    ],
-    tips:['One owner per action item — "we\'ll all try to do better" is not an action item.','Rotate the facilitator across cycles so it doesn\'t feel like a manager\'s meeting.','If the team is remote, use a digital whiteboard tool. The async note-writing phase works especially well for introverts.'],
-    source_note:'Schwaber, K. & Sutherland, J. (2020). The Scrum Guide. Also: Google Project Aristotle research on team effectiveness.'
-  },
-  {
-    icon:'🧩', title:'Working styles', source:'Team dynamics research · DISC framework · Interpersonal compatibility studies',
-    tags:['20 min','4–12 people','New teams'],
-    purpose:'Reduce friction before it happens. Research consistently shows that most team conflict stems not from bad intentions but from unspoken differences in how people prefer to work. When teams surface these preferences explicitly, they collaborate better and assume less.',
-    steps:[
-      {title:'Individual reflection (5 min)',desc:'Each person writes their answers to 3 questions: How do you like to receive feedback? What drains your energy at work? What does good support look like to you?'},
-      {title:'Share one thing each (10 min)',desc:'Each person shares the answer they most want the team to know. Others listen — no debate, no questions, just acknowledgment.'},
-      {title:'Commit to one change (5 min)',desc:'Each person states one thing they\'ll do differently based on what they heard. These don\'t need to be big — "I\'ll stop sending Slack messages after 8pm" counts.'}
-    ],
-    tips:['Frame this as curiosity, not diagnosis — you\'re not labeling anyone, you\'re learning.','Works especially well at the start of a new team, a new project, or after a period of tension.','Consider keeping a lightweight "team manual" document where people note their preferences for future reference.'],
-    source_note:'Marston, W.M. (1928). Emotions of Normal People (DISC origin). Also: Driskell, J.E. et al. (2006). What makes a good team player? Group Dynamics.'
-  },
-  {
-    icon:'🧭', title:'Team compass', source:'Team effectiveness research · Hackman & Wageman · Organizational development practice',
-    tags:['45 min','Any size','Cycle kick-off','Deep'],
-    purpose:'Get everyone pointing in the same direction before the sprint starts — not halfway through it. Richard Hackman\'s research on team effectiveness identifies shared goal clarity and explicit norms as two of the strongest predictors of team performance. This activity creates both in one session.',
-    steps:[
-      {title:'North star (10 min)',desc:'Answer together: What is the one thing this team must achieve this cycle? Write it in one sentence. If you can\'t agree in 10 minutes, that disagreement is itself the most important thing to resolve.'},
-      {title:'Current reality (10 min)',desc:'Two lists: What\'s in our way? What do we have going for us? Keep it honest. Don\'t skip the second list — it\'s easy to focus only on obstacles.'},
-      {title:'Ways of working (15 min)',desc:'Write three agreements for how you\'ll work together this cycle. Examples: "We flag blockers within 24 hours." "Decisions made in meetings stay made." "We default to async for updates."'},
-      {title:'Personal commitment (10 min)',desc:'Each person names one thing they personally commit to the team for this cycle. This creates accountability without a manager enforcing it.'}
-    ],
-    tips:['Keep the north star to one sentence — if you need two, you have two goals, not one.','Revisit your ways of working mid-cycle to see if they\'re holding.','This works best at the start of a new quarter, a new project, or when team dynamics feel unclear.'],
-    source_note:'Hackman, J.R. & Wageman, R. (2005). A Theory of Team Coaching. Academy of Management Review.'
-  },
-  {
-    icon:'💡', title:'Ideation sprint', source:'Design Thinking · IDEO methodology · Stanford d.school',
-    tags:['25 min','4–8 people','Problem-solving'],
-    purpose:'Generate ideas fast without the usual meeting dynamics where the loudest voice wins. IDEO\'s design thinking methodology, widely used in product and innovation teams, shows that structured divergent thinking followed by convergence consistently outperforms open brainstorming for idea quality and quantity.',
-    steps:[
-      {title:'Frame the challenge (3 min)',desc:'Write a "How might we..." question on the board. Everyone agrees on the framing before proceeding. Example: "How might we reduce onboarding time for new team members?"'},
-      {title:'Silent generation (7 min)',desc:'Everyone writes ideas individually — no talking. Aim for quantity over quality. Set a timer. Weird ideas are welcome; they often unlock better ones.'},
-      {title:'Share and cluster (10 min)',desc:'Each person shares their top 2–3 ideas. Group similar ones together visually. Look for patterns, combinations, and unexpected connections.'},
-      {title:'Dot vote and decide (5 min)',desc:'Each person gets 3 votes (dots) to place on any ideas — including their own. Most votes signals the idea worth developing further. Assign an owner.'}
-    ],
-    tips:['The "How might we" framing is deliberate — it assumes the problem is solvable and invites possibility rather than complaint.','Don\'t evaluate ideas during the silent generation phase. Judgment kills divergent thinking.','If ideas seem too similar, try a "worst possible idea" round first — it unlocks creative thinking by removing the pressure to be right.'],
-    source_note:'Brown, T. (2008). Design Thinking. Harvard Business Review. Also: IDEO Design Thinking methodology.'
-  },
-  {
-    icon:'⭐', title:'Appreciation circle', source:'Positive Psychology · Seligman gratitude research · Team cohesion studies',
-    tags:['10 min','Any size','Closing ritual','Quick'],
-    purpose:'End on connection, not just output. Research in positive psychology shows that gratitude practices — especially specific, public recognition — measurably increase psychological safety, team cohesion, and individual wellbeing. It takes 10 minutes and costs nothing.',
-    steps:[
-      {title:'Set the tone (1 min)',desc:'Remind the team: appreciation should be specific. "Thanks for your help" doesn\'t land. "Thanks for staying on the call and helping me think through the decision" does.'},
-      {title:'Go around the team (8 min)',desc:'Each person names one colleague and shares specifically what they appreciated about them this week or sprint. No one responds to their own appreciation — they just receive it.'},
-      {title:'Close with the team (1 min)',desc:'Facilitator closes with a brief word of thanks to the whole team. Keep it genuine and short.'}
-    ],
-    tips:['The specificity rule is the most important one — coach your team toward behavioral appreciation, not generic praise.','If someone can\'t think of something, give them a moment. Don\'t skip them — the pause is often where the most meaningful appreciations come from.','Works especially well at the end of a tough sprint, a big milestone, or before a team break.'],
-    source_note:'Seligman, M.E.P. (2011). Flourish: A Visionary New Understanding of Happiness and Well-being. Also: Grant, A. & Gino, F. (2010). A little thanks goes a long way. Journal of Personality and Social Psychology.'
-  },
-  {
-    icon:'🎯', title:'Role clarity exercise', source:'RACI framework · Team effectiveness research · Organizational design practice',
-    tags:['20 min','4–10 people','New projects'],
-    purpose:'Unclear roles are consistently identified as one of the top three sources of team dysfunction. This exercise surfaces ambiguity before it becomes conflict — helping each person understand not just what they own, but what they need from others to deliver.',
-    steps:[
-      {title:'Individual mapping (5 min)',desc:'Each person writes: What do I own on this project/team? What decisions can I make without checking with others? What do I need from my teammates to do my job well?'},
-      {title:'Share and surface overlaps (10 min)',desc:'Go around the team. As people share, listen for overlaps ("we both think we own that") and gaps ("nobody mentioned that — who owns it?"). Note them visibly.'},
-      {title:'Resolve the top 2–3 tensions (5 min)',desc:'Don\'t try to resolve everything. Pick the 2–3 most important overlaps or gaps and make explicit agreements. Document them somewhere the team can reference.'}
-    ],
-    tips:['Overlaps are normal — the goal isn\'t to eliminate them but to make them explicit so people coordinate instead of collide.','Works especially well at project kickoff, after a reorg, or when tension has been building without a clear source.','Keep the output document simple — even a shared doc with 5 bullet points is enough.'],
-    source_note:'Smith, P.G. & Blanck, E.W. (2002). From experience: Leading dispersed teams. Journal of Product Innovation Management. Also: RACI methodology in project management.'
-  },
-  {
-    icon:'🔁', title:'Start / Stop / Continue', source:'Management consulting practice · Executive coaching · Attributed to Phil Crosby, quality management',
-    tags:['15 min','Any size','Feedback culture','Quick'],
-    purpose:'Build a feedback culture without the weight of formal reviews. This framework is simple, non-threatening, and immediately actionable — making it one of the most widely used team feedback tools in consulting and coaching. It works because it balances what to change with what to keep.',
-    steps:[
-      {title:'Set up three columns (2 min)',desc:'Label them: START (things we should begin doing), STOP (things we should stop doing), CONTINUE (things that are working and should be protected). Use a shared whiteboard or doc.'},
-      {title:'Silent individual input (5 min)',desc:'Everyone adds their ideas to each column independently. No talking. Every voice gets equal weight before anyone can be influenced by others.'},
-      {title:'Read, cluster, and discuss (6 min)',desc:'Read through all inputs together. Cluster similar ideas. Discuss the items with the most energy — not necessarily the most votes.'},
-      {title:'Commit to one action per column (2 min)',desc:'Agree on one thing to start, one to stop, and one to continue protecting. Write it down. Assign owners where relevant.'}
-    ],
-    tips:['The CONTINUE column is often neglected but is the most important for morale — explicitly naming what works signals that good things don\'t go unnoticed.','This works for teams, but also for 1:1s between a manager and a direct report.','Run this every 4–6 weeks for maximum impact — enough time for things to change, not so long that feedback feels irrelevant.'],
-    source_note:'Crosby, P.B. (1979). Quality is Free. Also widely attributed in executive coaching literature. Used in Google\'s manager effectiveness programme.'
-  }
-,
-  {
-    icon:'🦆', title:'Build the duck', source:'Constructivist learning theory · Piaget & Papert · Inspired by Lego Serious Play methodology',
-    tags:['60–75 min','Any size','Facilitator-led','TTT available'],
-    purpose:'Building with your hands activates different thinking than talking. Based on constructivist learning theory (Piaget, Papert) and embodied cognition research, this activity generates insights about collaboration, goal alignment, and flexibility that a presentation never could. The build is the vehicle — the debrief is the learning.',
-    steps:[
-      {title:'Individual build (10 min)',desc:'Each participant builds their best version of the target object (a duck, a bridge, a tower — whatever the facilitator chooses) individually and silently. No collaboration yet. Materials: paper, clay, post-its, pipe cleaners, or any craft supplies.'},
-      {title:'Team build (20 min)',desc:'Groups of 4–6 now build one shared version together. They can use or discard individual builds. The goal: create the best collective version. Facilitator observes without intervening — note who leads, who defers, how conflicts are resolved.'},
-      {title:'Gallery and vote (5 min)',desc:'Teams present their creation in 60 seconds. Group votes for the best — not the most beautiful, but the one that best met the brief. This moment often reveals how different people interpreted the same goal.'},
-      {title:'Facilitator deconstruct (20–30 min)',desc:'This is the heart of the session. Facilitator asks: What happened when you went from individual to team? Where did effort not match outcome? What did you sacrifice for speed? When did the plan change — and how did you respond? Who decided what good looked like?'}
-    ],
-    tips:['The debrief questions should connect directly to a real challenge the team is facing — make it specific to Stori context.','Keep the build brief ambiguous on purpose — "build the best duck" leaves room for interpretation, which is itself a data point about how teams handle unclear goals.','TTT (Train the Trainer) available from L&D — contact the team to get certified as a facilitator for this session.'],
-    source_note:'Papert, S. (1980). Mindstorms: Children, Computers, and Powerful Ideas. Also: Resnick, M. (2017). Lifelong Kindergarten. MIT Press. Facilitation design inspired by Lego Serious Play methodology (licensed separately).'
-  },
-  {
-    icon:'🪄', title:'Helium stick', source:'Outdoor education and leadership development tradition · Widely used in corporate team building since the 1990s',
-    tags:['20–30 min','8–20 people','Facilitator-led','TTT available'],
-    purpose:'Individual instinct can directly sabotage collective goals — even when everyone is trying their best. This deceptively simple activity makes that dynamic visible, physical, and undeniable. It works because the experience bypasses intellectual defense — participants can\'t argue with what just happened to them.',
-    steps:[
-      {title:'Setup (2 min)',desc:'Participants stand in two lines facing each other. A lightweight stick (ruler, straw, or tent pole) is placed horizontally on the outstretched index fingers of the whole group. Rule: fingers must stay in contact with the stick at all times.'},
-      {title:'The challenge (5–10 min)',desc:'The group must lower the stick to the ground together. Simple. Except — the stick keeps rising. Every time someone feels it lifting off their finger, they instinctively push up. The group fights itself without realizing it.'},
-      {title:'Let it play out (5 min)',desc:'Don\'t intervene. Let the frustration build. Let the group try to self-organize, blame each other, develop strategies. All of this is data for the debrief.'},
-      {title:'Debrief (10–15 min)',desc:'Facilitator asks: What was happening? Why did the stick keep rising? Where have you seen this in your actual work — where individual reactions work against the team goal? What would it take to lower the stick?'}
-    ],
-    tips:['The physical experience creates a shared reference point the team can use later — "we\'re helium sticking this" becomes a shorthand for when individual optimization is hurting collective outcomes.','Works especially well with cross-functional teams where each function is optimizing for different metrics.','TTT available from L&D — the facilitation of the debrief is the skill that requires practice.'],
-    source_note:'Activity origin in outdoor education and Outward Bound tradition. Widely documented in facilitation literature. See also: Sibbet, D. (2010). Visual Meetings. Jossey-Bass.'
-  },
-  {
-    icon:'🔮', title:'Pre-mortem', source:'Gary Klein · Naturalistic Decision Making research · Used by Google Ventures, McKinsey, and Amazon',
-    tags:['45–60 min','Leadership teams','Leader session'],
-    purpose:'Most teams do post-mortems — they analyse what went wrong after it already happened. The pre-mortem flips that. By imagining failure in advance, teams surface the risks and doubts that people are privately holding but not saying out loud. Research by Gary Klein shows this technique increases the identification of reasons for potential failure by 30% compared to standard risk reviews.',
-    steps:[
-      {title:'Frame the session (5 min)',desc:'Present the plan, project, or decision to the group. Make sure everyone has the same information. Then say: "We are now one year in the future. This project has failed completely. Not just underperformed — completely failed. I want you to write down why."'},
-      {title:'Silent individual writing (5–7 min)',desc:'Everyone writes their failure story independently. No filtering — the goal is to surface every risk, including the ones that feel too political or obvious to say in a group. Quantity over quality.'},
-      {title:'Share and capture (15–20 min)',desc:'Go around the room. Each person shares one reason. Facilitator captures everything on a shared surface. No debate yet — just capture. Keep going until all reasons are surfaced.'},
-      {title:'Cluster and prioritize (10–15 min)',desc:'Group similar risks. Identify the top 3–5 that feel most likely or most catastrophic. For each, ask: what would we do differently in the plan right now to reduce this risk?'},
-      {title:'Update the plan (10 min)',desc:'Assign owners to the top risks. Update the plan where possible. Document what you\'re choosing to accept as a known risk.'}
-    ],
-    tips:['The "complete failure" framing is deliberate — it gives people permission to voice catastrophic concerns without seeming negative or disloyal.','This works for project plans, product launches, organizational changes, and hiring decisions.','Run this before major decisions, not after — the value is in catching risks while there\'s still time to act.'],
-    source_note:'Klein, G. (2007). Performing a Project Premortem. Harvard Business Review. Also: Kahneman, D. (2011). Thinking Fast and Slow — on prospective hindsight.'
-  },
-  {
-    icon:'🗺️', title:'Culture canvas', source:'Edgar Schein, MIT · Organizational culture research · Adapted for team-level use',
-    tags:['60–75 min','Leadership teams','Leader session'],
-    purpose:'Every team has two cultures: the one they talk about, and the one they actually live. Edgar Schein\'s research at MIT shows that most organizational problems labelled as "strategy" or "execution" failures are actually culture failures — people acting on unspoken rules that conflict with stated values. This session makes the invisible visible.',
-    steps:[
-      {title:'Map the stated culture (10 min)',desc:'Start with what\'s official. What are the team\'s stated values, norms, and ways of working? Write them down. This is the culture on paper.'},
-      {title:'Map the actual culture (20 min)',desc:'Now the harder part. As a group, answer: What actually gets rewarded here (regardless of what we say)? What behaviors get punished or ignored? What do new people learn in their first 90 days that nobody tells them explicitly? What are the unwritten rules?'},
-      {title:'Find the gaps (15 min)',desc:'Compare the two maps side by side. Where are the biggest gaps between stated and actual? Name them explicitly — this is where culture change is needed or where clarity is missing.'},
-      {title:'Choose one thing to change (10 min)',desc:'Don\'t try to fix everything. Pick the one gap that has the most impact on how the team performs. Agree on a specific, observable behavior change — not a value statement.'},
-      {title:'Debrief and close (10 min)',desc:'Acknowledge that naming this stuff is hard and takes courage. Commit to revisiting in 90 days to see what\'s shifted.'}
-    ],
-    tips:['Psychological safety is a prerequisite for this session — don\'t run it if the team is in conflict or if there\'s low trust between the leader and the group.','The facilitator\'s job is to protect honesty without letting it become blame. Keep the conversation at the system level: "this is what the culture rewards" not "this person does X."','Works especially well for new leaders inheriting a team, teams going through reorganization, or teams where performance and stated values feel misaligned.'],
-    source_note:'Schein, E.H. (2010). Organizational Culture and Leadership. 4th ed. Jossey-Bass. Also: Coyle, D. (2018). The Culture Code — on building psychological safety for honest conversations.'
-  }
+var DATA = [
+  {icon:"👋",title:"Check-in rounds",source:"Psychological Safety research · Amy Edmondson, Harvard Business School",tags:["5 min","Any size","No prep","Quick"],
+   purpose:"Help everyone arrive mentally, not just physically. Research by Amy Edmondson shows that simple opening rituals that invite personal sharing measurably increase psychological safety and active participation throughout the meeting.",
+   steps:[
+     {t:"Choose your question (1 min)",d:"Pick one simple question for the whole team. Write it where everyone can see it."},
+     {t:"Go around the room (3 min)",d:"Each person answers in 10-15 seconds. No elaboration, no commentary from others. The goal is to hear every voice."},
+     {t:"Facilitator goes last (1 min)",d:"You answer the same question. Then move directly into your agenda."}
+   ],
+   tips:["Good questions: In one word, how are you showing up today? What is your internal weather forecast?","Avoid questions that require long answers — the goal is connection, not therapy.","If someone passes, let them. Psychological safety means people feel safe enough to pass too."],
+   ref:"Edmondson, A. (1999). Psychological Safety and Learning Behavior in Work Teams. Administrative Science Quarterly."},
+
+  {icon:"🔄",title:"Retro in a box",source:"Agile / Scrum methodology · Used at Google, Spotify, and high-performing tech teams globally",tags:["30 min","Any size","Post-sprint","Deep"],
+   purpose:"Create structured space to reflect on what is working and what is not before moving into the next cycle. Teams that run regular retros improve faster, communicate better, and have measurably higher satisfaction.",
+   steps:[
+     {t:"Set the stage (3 min)",d:"Remind the team: no blame, just learning. Frame it as: we are here to get better together."},
+     {t:"Gather data (10 min)",d:"Everyone writes sticky notes for: What went well? What was hard? What surprised us? Work independently — no talking."},
+     {t:"Group and discuss (10 min)",d:"Share and cluster similar themes. Pick 2-3 to discuss as a team. Do not try to cover everything."},
+     {t:"Decide one thing (7 min)",d:"Pick one concrete thing to do differently next time. Assign an owner and a timeframe."}
+   ],
+   tips:["One owner per action item — we will all try to do better is not an action item.","Rotate the facilitator so it does not feel like a manager meeting.","The async note-writing phase works especially well for introverts."],
+   ref:"Schwaber, K. & Sutherland, J. (2020). The Scrum Guide. Also: Google Project Aristotle research."},
+
+  {icon:"🧩",title:"Working styles",source:"Team dynamics research · DISC framework · Interpersonal compatibility studies",tags:["20 min","4-12 people","New teams"],
+   purpose:"Reduce friction before it happens. Most team conflict stems not from bad intentions but from unspoken differences in how people prefer to work. When teams surface these preferences explicitly, they collaborate better and assume less.",
+   steps:[
+     {t:"Individual reflection (5 min)",d:"Each person writes answers to 3 questions: How do you like to receive feedback? What drains your energy? What does good support look like to you?"},
+     {t:"Share one thing each (10 min)",d:"Each person shares the answer they most want the team to know. Others listen — no debate."},
+     {t:"Commit to one change (5 min)",d:"Each person states one thing they will do differently based on what they heard."}
+   ],
+   tips:["Frame this as curiosity, not diagnosis — you are learning, not labeling.","Works especially well at the start of a new team or after a period of tension.","Consider keeping a team manual document where people note their preferences for future reference."],
+   ref:"Marston, W.M. (1928). Emotions of Normal People (DISC origin). Also: Driskell, J.E. et al. (2006). What makes a good team player? Group Dynamics."},
+
+  {icon:"🧭",title:"Team compass",source:"Team effectiveness research · Hackman & Wageman · Organizational development practice",tags:["45 min","Any size","Cycle kick-off","Deep"],
+   purpose:"Get everyone pointing in the same direction before the sprint starts. Richard Hackman identified shared goal clarity and explicit norms as two of the strongest predictors of team performance. This activity creates both in one session.",
+   steps:[
+     {t:"North star (10 min)",d:"Answer together: what is the one thing this team must achieve this cycle? Write it in one sentence."},
+     {t:"Current reality (10 min)",d:"Two lists: what is in our way? What do we have going for us? Do not skip the second list."},
+     {t:"Ways of working (15 min)",d:"Write three agreements for how you will work together this cycle. Examples: we flag blockers within 24 hours. Decisions made in meetings stay made."},
+     {t:"Personal commitment (10 min)",d:"Each person names one thing they personally commit to the team for this cycle."}
+   ],
+   tips:["Keep the north star to one sentence — if you need two, you have two goals.","Revisit your ways of working mid-cycle to see if they are holding.","Works best at the start of a new quarter, a new project, or when team dynamics feel unclear."],
+   ref:"Hackman, J.R. & Wageman, R. (2005). A Theory of Team Coaching. Academy of Management Review."},
+
+  {icon:"💡",title:"Ideation sprint",source:"Design Thinking · IDEO methodology · Stanford d.school",tags:["25 min","4-8 people","Problem-solving"],
+   purpose:"Generate ideas fast without the usual meeting dynamics where the loudest voice wins. Structured divergent thinking followed by convergence consistently outperforms open brainstorming for idea quality and quantity.",
+   steps:[
+     {t:"Frame the challenge (3 min)",d:"Write a How might we question on the board. Everyone agrees on the framing before proceeding."},
+     {t:"Silent generation (7 min)",d:"Everyone writes ideas individually — no talking. Quantity over quality. Weird ideas are welcome."},
+     {t:"Share and cluster (10 min)",d:"Each person shares their top 2-3 ideas. Group similar ones together. Look for patterns and combinations."},
+     {t:"Dot vote and decide (5 min)",d:"Each person gets 3 votes. Most votes signals the idea worth developing. Assign an owner."}
+   ],
+   tips:["The How might we framing assumes the problem is solvable and invites possibility.","Do not evaluate during silent generation — judgment kills divergent thinking.","If ideas seem too similar, try a worst possible idea round first — it unlocks creative thinking."],
+   ref:"Brown, T. (2008). Design Thinking. Harvard Business Review. Also: IDEO Design Thinking methodology."},
+
+  {icon:"⭐",title:"Appreciation circle",source:"Positive Psychology · Seligman gratitude research · Team cohesion studies",tags:["10 min","Any size","Closing ritual","Quick"],
+   purpose:"End on connection, not just output. Gratitude practices — especially specific, public recognition — measurably increase psychological safety, team cohesion, and individual wellbeing. 10 minutes and costs nothing.",
+   steps:[
+     {t:"Set the tone (1 min)",d:"Appreciation should be specific. Thanks for your help does not land. Thanks for staying on the call and helping me think through the decision does."},
+     {t:"Go around the team (8 min)",d:"Each person names one colleague and shares specifically what they appreciated about them this week. No one responds — they just receive it."},
+     {t:"Close with the team (1 min)",d:"Facilitator closes with a brief word of thanks to the whole team. Keep it genuine and short."}
+   ],
+   tips:["The specificity rule is the most important one — coach toward behavioral appreciation.","If someone cannot think of something, give them a moment. Do not skip them.","Works especially well at the end of a tough sprint, a big milestone, or before a break."],
+   ref:"Seligman, M.E.P. (2011). Flourish. Also: Grant, A. & Gino, F. (2010). A little thanks goes a long way. Journal of Personality and Social Psychology."},
+
+  {icon:"🎯",title:"Role clarity exercise",source:"RACI framework · Team effectiveness research · Organizational design practice",tags:["20 min","4-10 people","New projects"],
+   purpose:"Unclear roles are consistently identified as one of the top three sources of team dysfunction. This exercise surfaces ambiguity before it becomes conflict — helping each person understand what they own and what they need from others.",
+   steps:[
+     {t:"Individual mapping (5 min)",d:"Each person writes: What do I own? What decisions can I make without checking with others? What do I need from my teammates?"},
+     {t:"Share and surface overlaps (10 min)",d:"Go around the team. Listen for overlaps and gaps. Note them visibly."},
+     {t:"Resolve the top 2-3 tensions (5 min)",d:"Pick the most important overlaps or gaps and make explicit agreements. Document them somewhere the team can reference."}
+   ],
+   tips:["Overlaps are normal — the goal is to make them explicit so people coordinate instead of collide.","Works especially well at project kickoff, after a reorg, or when tension has been building.","Keep the output simple — even a shared doc with 5 bullet points is enough."],
+   ref:"Smith, P.G. & Blanck, E.W. (2002). Leading dispersed teams. Journal of Product Innovation Management."},
+
+  {icon:"🔁",title:"Start / Stop / Continue",source:"Management consulting practice · Executive coaching · Phil Crosby quality management",tags:["15 min","Any size","Feedback culture","Quick"],
+   purpose:"Build a feedback culture without the weight of formal reviews. Simple, non-threatening, and immediately actionable. It works because it balances what to change with what to keep.",
+   steps:[
+     {t:"Set up three columns (2 min)",d:"Label them: START (things we should begin doing), STOP (things we should stop), CONTINUE (things that are working)."},
+     {t:"Silent individual input (5 min)",d:"Everyone adds their ideas to each column independently. No talking. Every voice gets equal weight."},
+     {t:"Read, cluster, and discuss (6 min)",d:"Read through all inputs together. Cluster similar ideas. Discuss items with the most energy."},
+     {t:"Commit to one action per column (2 min)",d:"Agree on one thing to start, one to stop, one to continue protecting. Write it down."}
+   ],
+   tips:["The CONTINUE column is often neglected but is the most important for morale.","Works for teams and also for 1:1s between a manager and a direct report.","Run this every 4-6 weeks for maximum impact."],
+   ref:"Crosby, P.B. (1979). Quality is Free. Also used in Google manager effectiveness programme."},
+
+  {icon:"🦆",title:"Build the duck",source:"Constructivist learning theory · Piaget & Papert · Inspired by Lego Serious Play",tags:["60-75 min","Any size","Facilitator-led","TTT available"],
+   purpose:"Building with your hands activates different thinking than talking. Based on constructivist learning theory and embodied cognition research, this activity generates insights about collaboration, goal alignment, and flexibility that a presentation never could.",
+   steps:[
+     {t:"Individual build (10 min)",d:"Each participant builds their best version of the target object individually and silently. Materials: paper, clay, post-its, pipe cleaners. No collaboration yet."},
+     {t:"Team build (20 min)",d:"Groups of 4-6 build one shared version together. They can use or discard individual builds. Facilitator observes without intervening."},
+     {t:"Gallery and vote (5 min)",d:"Teams present their creation in 60 seconds. Group votes for the best. This reveals how different people interpreted the same goal."},
+     {t:"Facilitator debrief (20-30 min)",d:"The heart of the session. Ask: What happened when you went from individual to team? Where did effort not match outcome? What did you sacrifice for speed? Who decided what good looked like?"}
+   ],
+   tips:["The debrief questions should connect directly to a real challenge the team is facing.","Keep the build brief ambiguous on purpose — it is itself a data point about how teams handle unclear goals.","TTT available from L&D — contact the team to get certified as a facilitator."],
+   ref:"Papert, S. (1980). Mindstorms. MIT Press. Facilitation inspired by Lego Serious Play methodology (licensed separately)."},
+
+  {icon:"🪄",title:"Helium stick",source:"Outdoor education and leadership development tradition",tags:["20-30 min","8-20 people","Facilitator-led","TTT available"],
+   purpose:"Individual instinct can directly sabotage collective goals — even when everyone is trying their best. This activity makes that dynamic visible, physical, and undeniable. It bypasses intellectual defense — participants cannot argue with what just happened to them.",
+   steps:[
+     {t:"Setup (2 min)",d:"Participants stand in two lines facing each other. A lightweight stick is placed horizontally on the outstretched index fingers of the whole group. Rule: fingers must stay in contact at all times."},
+     {t:"The challenge (5-10 min)",d:"The group must lower the stick to the ground. Simple. Except — it keeps rising. Every time someone feels it lifting, they instinctively push up."},
+     {t:"Let it play out (5 min)",d:"Do not intervene. Let the frustration build. Let the group try to self-organize. All of this is data for the debrief."},
+     {t:"Debrief (10-15 min)",d:"Ask: What was happening? Why did the stick keep rising? Where have you seen this in your actual work? What would it take to lower the stick?"}
+   ],
+   tips:["The physical experience creates a shared reference point: we are helium sticking this becomes shorthand for when individual optimization hurts collective outcomes.","Works especially well with cross-functional teams where each function optimizes for different metrics.","TTT available from L&D — the debrief facilitation is the skill that requires practice."],
+   ref:"Outdoor education tradition. See also: Sibbet, D. (2010). Visual Meetings. Jossey-Bass."},
+
+  {icon:"🔮",title:"Pre-mortem",source:"Gary Klein · Naturalistic Decision Making · Google Ventures, McKinsey, Amazon",tags:["45-60 min","Leadership teams","Leader session","Deep"],
+   purpose:"Most teams do post-mortems after failure. The pre-mortem flips that. By imagining failure in advance, teams surface the risks people are privately holding but not saying. Research by Gary Klein shows this increases identification of failure reasons by 30%.",
+   steps:[
+     {t:"Frame the session (5 min)",d:"Present the plan. Then say: we are now one year in the future. This project has failed completely. Write down why."},
+     {t:"Silent individual writing (5-7 min)",d:"Everyone writes their failure story independently. No filtering — the goal is to surface every risk, including the political ones."},
+     {t:"Share and capture (15-20 min)",d:"Go around the room. Each person shares one reason. Capture everything. No debate yet."},
+     {t:"Cluster and prioritize (10-15 min)",d:"Group similar risks. Identify the top 3-5. For each: what would we do differently right now to reduce this risk?"},
+     {t:"Update the plan (10 min)",d:"Assign owners to the top risks. Update the plan where possible. Document what you are choosing to accept."}
+   ],
+   tips:["The complete failure framing gives people permission to voice catastrophic concerns without seeming disloyal.","Works for project plans, product launches, organizational changes, and hiring decisions.","Run this before major decisions, not after."],
+   ref:"Klein, G. (2007). Performing a Project Premortem. Harvard Business Review."},
+
+  {icon:"🗺️",title:"Culture canvas",source:"Edgar Schein, MIT · Organizational culture research · Adapted for team-level use",tags:["60-75 min","Leadership teams","Leader session","Deep"],
+   purpose:"Every team has two cultures: the one they talk about, and the one they actually live. Schein's research shows that most problems labelled as strategy or execution failures are actually culture failures — people acting on unspoken rules that conflict with stated values.",
+   steps:[
+     {t:"Map the stated culture (10 min)",d:"What are the team's stated values, norms, and ways of working? Write them down. This is the culture on paper."},
+     {t:"Map the actual culture (20 min)",d:"What actually gets rewarded here? What behaviors get punished or ignored? What do new people learn in their first 90 days that nobody tells them explicitly?"},
+     {t:"Find the gaps (15 min)",d:"Compare the two maps. Where are the biggest gaps? Name them explicitly — this is where culture change is needed."},
+     {t:"Choose one thing to change (10 min)",d:"Pick the one gap with the most impact. Agree on a specific, observable behavior change — not a value statement."},
+     {t:"Debrief and close (10 min)",d:"Acknowledge that naming this takes courage. Commit to revisiting in 90 days."}
+   ],
+   tips:["Psychological safety is a prerequisite — do not run this if the team is in conflict or trust is low.","Keep the conversation at the system level: this is what the culture rewards, not this person does X.","Works especially well for new leaders inheriting a team or teams going through change."],
+   ref:"Schein, E.H. (2010). Organizational Culture and Leadership. 4th ed. Jossey-Bass."}
 ];
 
-function showActivity(idx) {
-  document.getElementById('list-view').style.display = 'none';
-  var ls = document.getElementById('leader-section');
-  if(ls) ls.style.display = 'none';
-  document.getElementById('detail-view').style.display = 'block';
-  window.scrollTo(0,0);
-  var a = ACTIVITIES[idx];
+function openActivity(idx) {
+  var a = DATA[idx];
   document.getElementById('d-icon').textContent = a.icon;
   document.getElementById('d-title').textContent = a.title;
   document.getElementById('d-source').textContent = a.source;
-  var tagsEl = document.getElementById('d-tags');
-  tagsEl.innerHTML = a.tags.map(function(t){return '<span class="detail-tag">'+t+'</span>';}).join('');
-  var body = document.getElementById('d-body');
+  document.getElementById('d-tags').innerHTML = a.tags.map(function(t){return '<span class="tag">'+t+'</span>';}).join(' ');
   var html = '';
-  html += '<div class="detail-section"><div class="detail-section-title">Why this works</div><div class="detail-purpose">'+a.purpose+'</div></div>';
-  html += '<div class="detail-section"><div class="detail-section-title">How to run it</div><div class="steps-list">';
-  a.steps.forEach(function(s){
-    html += '<div class="step"><div class="step-num">'+(a.steps.indexOf(s)+1)+'</div><div class="step-content"><div class="step-title">'+s.title+'</div><div class="step-desc">'+s.desc+'</div></div></div>';
-  });
+  html += '<div class="detail-section"><div class="detail-section-label">Why this works</div><div class="purpose-box">'+a.purpose+'</div></div>';
+  html += '<div class="detail-section"><div class="detail-section-label">How to run it</div><div class="steps">';
+  for(var i=0;i<a.steps.length;i++){
+    html += '<div class="step"><div class="step-num">'+(i+1)+'</div><div><div class="step-title">'+a.steps[i].t+'</div><div class="step-desc">'+a.steps[i].d+'</div></div></div>';
+  }
   html += '</div></div>';
-  html += '<div class="detail-section"><div class="detail-section-title">Tips for facilitators</div><div class="tips-list">';
-  a.tips.forEach(function(t){html += '<div class="tip"><div class="tip-dot"></div>'+t+'</div>';});
+  html += '<div class="detail-section"><div class="detail-section-label">Tips for facilitators</div><div class="tips">';
+  for(var j=0;j<a.tips.length;j++){
+    html += '<div class="tip"><div class="tip-dot"></div>'+a.tips[j]+'</div>';
+  }
   html += '</div></div>';
-  html += '<div class="detail-section"><div class="detail-section-title">Source</div><div class="source-box">'+a.source_note+'</div></div>';
-  body.innerHTML = html;
+  html += '<div class="detail-section"><div class="detail-section-label">Source</div><div class="source-box">'+a.ref+'</div></div>';
+  document.getElementById('d-body').innerHTML = html;
+  document.getElementById('list-view').style.display = 'none';
+  document.getElementById('detail-view').style.display = 'block';
+  window.scrollTo(0,0);
 }
 
-function backToList() {
+function closeActivity() {
   document.getElementById('list-view').style.display = 'block';
-  var ls = document.getElementById('leader-section');
-  if(ls) ls.style.display = 'block';
   document.getElementById('detail-view').style.display = 'none';
   window.scrollTo(0,0);
 }
 
-function showTab(tab) {
-  document.querySelectorAll('.tab').forEach(function(t,i){t.classList.toggle('active', ['list','quick','deep','facilitated','leader'][i]===tab);});
-  document.querySelectorAll('.act-card').forEach(function(card) {
-    var idx = parseInt(card.getAttribute('onclick').match(/\d+/)[0]);
-    var tags = ACTIVITIES[idx] ? ACTIVITIES[idx].tags : [];
-    var show = false;
-    if(tab==='list') show=true;
-    else if(tab==='quick') show=tags.some(function(t){return t.includes('Quick')||t.includes('5 min')||t.includes('10 min')||t.includes('15 min')||t.includes('20–30');});
-    else if(tab==='deep') show=tags.some(function(t){return t.includes('Deep')||t.includes('30 min')||t.includes('45')||t.includes('60');});
-    else if(tab==='facilitated') show=tags.includes('Facilitator-led');
-    else if(tab==='leader') show=tags.includes('Leader session');
-    card.style.display=show?'block':'none';
+function filterTab(btn, filter) {
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+  btn.classList.add('active');
+  var allCards = document.querySelectorAll('.card');
+  allCards.forEach(function(card) {
+    if(filter === 'all') {
+      card.style.display = 'block';
+    } else {
+      var hasTags = card.querySelector('.t-'+filter);
+      card.style.display = hasTags ? 'block' : 'none';
+    }
   });
-  // show/hide section headers
-  var leaderHeader = document.querySelector('[data-leader-header]');
-  if(leaderHeader) leaderHeader.style.display=(tab==='list'||tab==='facilitated'||tab==='leader')?'block':'none';
+  var leaderDiv = document.querySelector('.leader-divider');
+  if(filter === 'all' || filter === 'facilitated' || filter === 'leader') {
+    leaderDiv.style.display = 'block';
+  } else {
+    leaderDiv.style.display = 'none';
+  }
 }
 
-// Force show list view on load
-document.getElementById("list-view").style.display="block";
-var ls=document.getElementById("leader-section");if(ls)ls.style.display="block";
-
-// Support direct link to activity from homepage
 var hash = window.location.hash;
 if(hash && hash.startsWith('#activity-')) {
   var idx = parseInt(hash.replace('#activity-',''));
-  if(!isNaN(idx) && idx < ACTIVITIES.length) showActivity(idx);
+  if(!isNaN(idx) && idx >= 0 && idx < DATA.length) openActivity(idx);
 }
 </script>
 </body>
