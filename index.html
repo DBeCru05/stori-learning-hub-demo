@@ -5,144 +5,95 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stori Learning Hub</title>
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Lato",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#F2F5F3;color:#0D3D32;min-height:100vh}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F8F8F6;color:#2C2C2A;min-height:100vh}
 a{text-decoration:none;color:inherit}
 
-/* TOPBAR */
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:#0D3D32;height:58px;position:sticky;top:0;z-index:100}
-.topbar-left{display:flex;align-items:center;gap:12px}
-.owl-logo{width:36px;height:36px;background:#00C853;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;position:relative}
-.brand-text{}
-.brand-name{font-size:14px;font-weight:800;color:#fff;letter-spacing:.01em}
-.brand-tag{font-size:9px;color:#00C853;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;background:#fff;border-bottom:1px solid #E8E6DF;position:sticky;top:0;z-index:100}
+.topbar-left{display:flex;align-items:center;gap:10px}
+.logo{width:30px;height:30px;background:#0F6E56;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;flex-shrink:0}
+.site-name{font-size:14px;font-weight:600;color:#2C2C2A}
+.site-sub{font-size:11px;color:#888780}
 .topbar-right{display:flex;align-items:center;gap:12px}
-.lang-toggle{display:flex;border:1px solid rgba(255,255,255,0.15);border-radius:6px;overflow:hidden}
-.lang-btn{font-size:10px;font-weight:700;padding:4px 10px;border:none;cursor:pointer;font-family:inherit;background:transparent;color:rgba(255,255,255,0.4)}
-.lang-btn.active{background:#00C853;color:#0D3D32}
-.avatar{width:30px;height:30px;border-radius:50%;background:#00C853;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#0D3D32}
+.avatar{width:30px;height:30px;border-radius:50%;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#0F6E56}
+.lang-toggle{display:flex;border:1px solid #E8E6DF;border-radius:7px;overflow:hidden}
+.lang-btn{font-size:10px;font-weight:600;padding:4px 10px;border:none;cursor:pointer;font-family:inherit;transition:background .15s,color .15s}
+.lang-btn.active{background:#0F6E56;color:#fff}
+.lang-btn:not(.active){background:#fff;color:#888780}
+.lang-btn:not(.active):hover{background:#E1F5EE;color:#0F6E56}
 
-/* NAV */
-.nav{display:flex;align-items:center;padding:0 32px;background:#fff;border-bottom:1px solid #DDE8E3;height:42px}
-.nav-item{padding:0 12px;font-size:13px;color:#7A9E8E;cursor:pointer;height:42px;display:flex;align-items:center;border-bottom:2px solid transparent;font-weight:600}
-.nav-item.active{color:#0D3D32;border-bottom-color:#00C853}
-.nav-item:hover:not(.active){color:#0D3D32}
-.nav-spacer{flex:1}
-.nav-ld{font-size:10px;color:#AABFB6;padding:0 4px;cursor:pointer;display:flex;align-items:center;gap:4px;height:42px;text-decoration:none}
-.nav-ld:hover{color:#00C853}
+.nav{display:flex;align-items:center;gap:4px;padding:0 28px;background:#fff;border-bottom:1px solid #E8E6DF;overflow-x:auto}
+.nav a{font-size:12px;font-weight:500;color:#888780;padding:10px 12px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s}
+.nav a:hover{color:#0F6E56}
+.nav a.active{color:#0F6E56;border-bottom-color:#0F6E56}
+.nav-metrics{margin-left:auto;font-size:10px;color:#C8C6BF;padding:10px 0}
+.nav-metrics a{color:#C8C6BF;font-size:10px}
+.nav-metrics a:hover{color:#888780}
 
-/* HERO */
-.hero{background:#0D3D32;padding:44px 32px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative;overflow:hidden}
-.hero-bg-circle{position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(0,200,83,0.06);right:-100px;top:-100px;pointer-events:none}
-.hero-bg-circle2{position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(0,200,83,0.04);left:-50px;bottom:-50px;pointer-events:none}
-.hero-text{position:relative;z-index:1;max-width:480px}
-.hero-eyebrow{font-size:11px;font-weight:700;color:#00C853;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
-.hero-title{font-size:34px;font-weight:900;color:#fff;margin-bottom:6px;line-height:1.2;letter-spacing:-.02em}
-.hero-title span{color:#00C853}
-.hero-tagline{font-size:14px;color:rgba(255,255,255,0.5);font-style:italic;margin-bottom:10px;font-weight:500}
-.hero-sub{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:22px}
-.hero-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start}
-.btn-green{background:#00C853;color:#0D3D32;border:none;padding:11px 20px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
-.btn-green:hover{background:#00B548}
-.compass-btn{background:rgba(255,255,255,0.07);color:#fff;border:1px solid rgba(255,255,255,0.15);padding:11px 20px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1.2}
-.compass-btn span{font-size:10px;color:rgba(255,255,255,0.45);font-weight:400;margin-top:2px}
-.compass-btn:hover{background:rgba(255,255,255,0.12)}
+.hero{padding:40px 28px 28px;max-width:1100px;margin:0 auto}
+.hero-label{font-size:11px;font-weight:600;color:#0F6E56;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.hero-title{font-size:26px;font-weight:700;color:#2C2C2A;line-height:1.2;margin-bottom:8px}
+.hero-title span{color:#0F6E56}
+.hero-sub{font-size:14px;color:#6B6963;max-width:520px;line-height:1.6}
 
-/* OWL CHARACTER */
-.owl-char{position:relative;z-index:1;flex-shrink:0;text-align:center}
-.owl-body{width:90px;height:90px;background:#00C853;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:52px;margin:0 auto;position:relative;border:3px solid rgba(255,255,255,0.15)}
-.owl-eyes{position:absolute;top:22px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
-.owl-eye{width:18px;height:18px;background:#0D3D32;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center}
-.owl-pupil{width:7px;height:7px;background:#fff;border-radius:50%}
-.owl-badge{background:#fff;color:#0D3D32;font-size:9px;font-weight:800;padding:4px 10px;border-radius:20px;margin-top:10px;display:inline-block;letter-spacing:.03em}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 28px 48px;max-width:1100px;margin:0 auto}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:580px){.grid{grid-template-columns:1fr}}
 
-/* ANNOUNCE */
-.announce{margin:20px 32px 0;background:#fff;border-left:4px solid #00C853;border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
-.ann-icon{width:38px;height:38px;min-width:38px;background:#E0F7EC;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
-.ann-tag{font-size:9px;font-weight:800;color:#007A38;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
-.ann-title{font-size:14px;font-weight:800;color:#0D3D32;margin-bottom:2px;line-height:1.4}
-.ann-sub{font-size:12px;color:#7A9E8E;display:flex;gap:10px;flex-wrap:wrap}
-.ann-sub span{display:flex;align-items:center;gap:3px}
-.ann-right{margin-left:auto;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
-.ann-btn{background:#0D3D32;color:#fff;border:none;padding:7px 14px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;text-decoration:none}
-.ann-badge{font-size:9px;font-weight:700;background:#E0F7EC;color:#007A38;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.card{background:#fff;border:1px solid #E8E6DF;border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:box-shadow .2s,border-color .2s;cursor:pointer;position:relative;overflow:hidden}
+.card:hover{box-shadow:0 4px 20px rgba(0,0,0,.07);border-color:#C8F0E0}
+.card-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.card-tag{display:inline-block;font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:20px;width:fit-content}
+.card-title{font-size:15px;font-weight:700;color:#2C2C2A;line-height:1.3}
+.card-desc{font-size:12px;color:#6B6963;line-height:1.6;flex:1}
+.cfoot{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid #F0EEE8;margin-top:auto}
+.cfoot-l{font-size:11px;font-weight:600;color:#0F6E56}
+.cfoot-arr{font-size:14px;color:#0F6E56}
 
-/* FEATURED STRIP */
-.featured-strip{padding:28px 32px 0}
-.strip-title{font-size:11px;font-weight:800;color:#7A9E8E;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px}
-.strip-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.strip-card{border-radius:16px;padding:22px;display:flex;align-items:flex-start;gap:14px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s;position:relative;overflow:hidden}
-.strip-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.1)}
-.strip-card.talks{background:linear-gradient(135deg,#1A2E44 0%,#0D3D32 100%)}
-.strip-card.compass{background:linear-gradient(135deg,#2D1B69 0%,#4527A0 100%)}
-.strip-icon{width:48px;height:48px;min-width:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px;background:rgba(255,255,255,0.12)}
-.strip-text{}
-.strip-tag{font-size:9px;font-weight:800;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
-.strip-name{font-size:18px;font-weight:800;color:#fff;margin-bottom:4px}
-.strip-desc{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.55}
-.strip-arr{position:absolute;bottom:16px;right:16px;font-size:18px;color:rgba(255,255,255,0.3);font-weight:700}
-.strip-badge{position:absolute;top:14px;right:14px;font-size:9px;font-weight:800;background:rgba(255,255,255,0.15);color:#fff;padding:3px 8px;border-radius:20px}
+/* Card accent colors */
+.c-green .card-icon{background:#E1F5EE}
+.c-green .card-tag{background:#E1F5EE;color:#0F6E56}
+.c-blue .card-icon{background:#E8F0FE}
+.c-blue .card-tag{background:#E8F0FE;color:#1A73E8}
+.c-amber .card-icon{background:#FEF3E2}
+.c-amber .card-tag{background:#FEF3E2;color:#B45309}
+.c-purple .card-icon{background:#F3EEFF}
+.c-purple .card-tag{background:#F3EEFF;color:#7C3AED}
+.c-teal .card-icon{background:#E0F7FA}
+.c-teal .card-tag{background:#E0F7FA;color:#00838F}
+.c-rose .card-icon{background:#FEE8E8}
+.c-rose .card-tag{background:#FEE8E8;color:#C0392B}
+.c-indigo .card-icon{background:#EEF2FF}
+.c-indigo .card-tag{background:#EEF2FF;color:#4338CA}
+.c-orange .card-icon{background:#FFF0E8}
+.c-orange .card-tag{background:#FFF0E8;color:#C05621}
+.c-emerald .card-icon{background:#D1FAE5}
+.c-emerald .card-tag{background:#D1FAE5;color:#065F46}
 
-/* MAIN GRID */
-.section{padding:24px 32px 32px}
-.sec-label{font-size:11px;font-weight:800;color:#7A9E8E;text-transform:uppercase;letter-spacing:.07em;margin-bottom:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:12px}
-.card{background:#fff;border:1.5px solid #DDE8E3;border-radius:14px;padding:16px;cursor:pointer;transition:border-color .15s,transform .1s;text-decoration:none;display:block;color:inherit;position:relative;overflow:hidden}
-.card:hover{border-color:#00C853;transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,200,83,0.08)}
-.card-top-bar{height:3px;border-radius:14px 14px 0 0;position:absolute;top:0;left:0;right:0}
-.cicon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:10px;margin-top:4px}
-.pill{display:inline-flex;font-size:9px;font-weight:800;padding:2px 7px;border-radius:20px;margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase}
-.pt{background:#E0F7EC;color:#007A38}
-.pb{background:#E3EFFE;color:#1A4F9C}
-.pa{background:#FFF3E0;color:#8C4A00}
-.pn{background:#ECEFF1;color:#37474F}
-.pg{background:#E8F5E9;color:#2E7D32}
-.ctitle{font-size:14px;font-weight:800;color:#0D3D32;margin-bottom:4px;line-height:1.35}
-.cdesc{font-size:12px;color:#7A9E8E;line-height:1.6}
-.cfoot{margin-top:12px;padding-top:10px;border-top:1px solid #EEF2F0;display:flex;align-items:center;justify-content:space-between}
-.cfoot-l{font-size:11px;color:#AABFB6;font-weight:500}
-.cfoot-arr{font-size:14px;color:#00C853;font-weight:800}
+/* StoriCraft hero card — spans full width */
+.card-hero{grid-column:1/-1;flex-direction:row;align-items:center;gap:24px;background:linear-gradient(135deg,#0F6E56 0%,#1A9E78 100%);border-color:transparent;color:#fff}
+.card-hero:hover{box-shadow:0 8px 32px rgba(15,110,86,.25);border-color:transparent}
+.card-hero .card-icon{background:rgba(255,255,255,.15);width:52px;height:52px;border-radius:14px;font-size:24px;flex-shrink:0}
+.card-hero .card-tag{background:rgba(255,255,255,.2);color:#fff}
+.card-hero .card-title{font-size:18px;color:#fff}
+.card-hero .card-desc{color:rgba(255,255,255,.85);font-size:13px;max-width:600px}
+.card-hero .cfoot{border-top-color:rgba(255,255,255,.2)}
+.card-hero .cfoot-l{color:#fff}
+.card-hero .cfoot-arr{color:#fff}
+.card-hero-text{flex:1}
 
-/* TEAMING SHEET */
-.teaming-section{padding:0 32px 32px}
-.teaming-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;cursor:pointer;background:#fff;border:1.5px solid #DDE8E3;border-radius:14px;padding:16px 18px}
-.teaming-header.open{border-color:#00C853;border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:none}
-.th-left{display:flex;align-items:center;gap:12px}
-.th-icon{width:38px;height:38px;border-radius:10px;background:#E8F5E9;display:flex;align-items:center;justify-content:center;font-size:19px}
-.th-title{font-size:14px;font-weight:800;color:#0D3D32}
-.th-sub{font-size:12px;color:#7A9E8E;margin-top:1px}
-.th-pill{font-size:9px;font-weight:800;background:#E8F5E9;color:#2E7D32;padding:3px 9px;border-radius:20px;margin-right:8px}
-.th-toggle{font-size:18px;color:#00C853;transition:transform .2s;font-weight:700}
-.th-toggle.open{transform:rotate(180deg)}
-.teaming-body{background:#fff;border:1.5px solid #00C853;border-top:none;border-bottom-left-radius:14px;border-bottom-right-radius:14px;overflow:hidden;display:none}
-.teaming-body.open{display:block}
-.act-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0}
-.act-item{padding:16px 18px;border-bottom:1px solid #EEF2F0;border-right:1px solid #EEF2F0;cursor:pointer;transition:background .15s}
-.act-item:hover{background:#F4FBF7}
-.act-item:last-child{border-bottom:none}
-.act-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-.act-emoji{font-size:18px}
-.act-name{font-size:13px;font-weight:800;color:#0D3D32}
-.act-meta{display:flex;gap:6px;flex-wrap:wrap}
-.act-tag{font-size:9px;background:#EEF2F0;color:#5A7A6A;padding:2px 7px;border-radius:20px;font-weight:600}
-.act-desc{font-size:12px;color:#7A9E8E;line-height:1.5;margin-top:5px}
-
-/* FOOTER */
-footer{padding:18px 32px;background:#0D3D32;display:flex;align-items:center;justify-content:space-between;margin-top:8px}
-.footer-left{display:flex;align-items:center;gap:10px}
-.footer-owl{width:26px;height:26px;background:#00C853;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px}
-.footer-text{font-size:11px;color:rgba(255,255,255,0.3)}
-.footer-tag{font-size:10px;color:#00C853;font-weight:700;font-style:italic}
+footer{text-align:center;padding:20px 28px;border-top:1px solid #E8E6DF;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-text{font-size:11px;color:#B0ADA6}
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <div class="topbar-left">
-    <div class="owl-logo">🦉</div>
-    <div class="brand-text">
-      <div class="brand-name">Stori Learning Hub</div>
-      <div class="brand-tag">Building capabilities. Driving impact.</div>
+    <div class="logo">S</div>
+    <div>
+      <div class="site-name" data-en="Stori Learning Hub" data-es="Stori Learning Hub">Stori Learning Hub</div>
+      <div class="site-sub" data-en="Learning & Development" data-es="Aprendizaje y Desarrollo">Learning & Development</div>
     </div>
   </div>
   <div class="topbar-right">
@@ -150,261 +101,136 @@ footer{padding:18px 32px;background:#0D3D32;display:flex;align-items:center;just
       <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
       <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
     </div>
-    <div class="avatar">DB</div>
+    <div class="avatar">DA</div>
   </div>
 </div>
 
-<div class="nav">
-  <div class="nav-item active" data-en="Home" data-es="Inicio">Home</div>
-  <div class="nav-item" data-en="My learning" data-es="Mi aprendizaje">My learning</div>
-  <div class="nav-item" data-en="Catalogue" data-es="Catálogo">Catalogue</div>
-  <div class="nav-item" data-en="For leaders" data-es="Para líderes">For leaders</div>
-  <div class="nav-spacer"></div>
-  <a class="nav-ld" href="metrics.html">🔒 <span data-en="L&D view" data-es="Vista L&D">L&D view</span></a>
-</div>
+<nav class="nav">
+  <a href="index.html" class="active" data-en="Home" data-es="Inicio">Home</a>
+  <a href="storiversity.html" data-en="Storiversity" data-es="Storiversity">Storiversity</a>
+  <a href="storicraft.html" data-en="StoriCraft" data-es="StoriCraft">StoriCraft</a>
+  <a href="business-academy.html" data-en="Business Academy" data-es="Business Academy">Business Academy</a>
+  <a href="leadership.html" data-en="Leadership Academy" data-es="Academia de Liderazgo">Leadership Academy</a>
+  <a href="stori-talks.html" data-en="Stori Talks" data-es="Stori Talks">Stori Talks</a>
+  <a href="compass.html" data-en="Stori Compass" data-es="Stori Compass">Stori Compass</a>
+  <a href="teaming.html" data-en="Teaming" data-es="Trabajo en Equipo">Teaming</a>
+  <a href="grow.html" data-en="Grow at Stori" data-es="Crece en Stori">Grow at Stori</a>
+  <a href="requests.html" data-en="Training Requests" data-es="Solicitudes">Training Requests</a>
+  <div class="nav-metrics"><a href="metrics.html" data-en="L&D view" data-es="Vista L&D">L&D view</a></div>
+</nav>
 
 <div class="hero">
-  <div class="hero-bg-circle"></div>
-  <div class="hero-bg-circle2"></div>
-  <div class="hero-text">
-    <div class="hero-eyebrow" data-en="Welcome back, Daniela" data-es="Bienvenida, Daniela">Welcome back, Daniela</div>
-    <div class="hero-title">Own your<br><span>journey.</span></div>
-    
-    <div class="hero-sub" data-en="Everything you need to grow at Stori — courses, coaching, team tools, and career resources — all in one place." data-es="Todo lo que necesitas para crecer en Stori — en un solo lugar.">Everything you need to grow at Stori — courses, coaching, team tools, and career resources — all in one place.</div>
-    <div class="hero-btns">
-      <a class="btn-green" href="form.html">+ Submit a training request</a>
-      <a class="compass-btn" href="compass.html">🧭 Stori Compass<span>Your coaching tool</span></a>
-    </div>
-  </div>
-  <div class="owl-char">
-    <div class="owl-body">
-      <div style="font-size:52px;line-height:1;position:relative;z-index:2">🦉</div>
-    </div>
-    <div class="owl-badge">Your learning guide</div>
-  </div>
+  <div class="hero-label" data-en="Your learning, your way" data-es="Tu aprendizaje, a tu manera">Your learning, your way</div>
+  <div class="hero-title" data-en="Welcome to the <span>Stori Learning Hub</span>" data-es="Bienvenido al <span>Stori Learning Hub</span>">Welcome to the <span>Stori Learning Hub</span></div>
+  <div class="hero-sub" data-en="Everything you need to grow at Stori — from curated programs to AI-powered learning you build yourself." data-es="Todo lo que necesitas para crecer en Stori — desde programas curados hasta aprendizaje impulsado por IA que tú mismo construyes.">Everything you need to grow at Stori — from curated programs to AI-powered learning you build yourself.</div>
 </div>
 
-<div class="announce">
-  <div class="ann-icon">🎓</div>
-  <div style="flex:1">
-    <div class="ann-tag">Coming next</div>
-    <div class="ann-title">Leadership Academy 2026 — Module I<br>Leading Without Borders: Navigating the Culture Map</div>
-    <div class="ann-sub">
-      <span>📅 May 2026</span>
-      <span>👥 Leaders+</span>
-      <span>🔒 Invite only</span>
+<div class="grid">
+
+  <!-- StoriCraft HERO CARD — full width, top of grid -->
+  <a href="storicraft.html" class="card card-hero">
+    <div class="card-icon">🛠️</div>
+    <div class="card-hero-text">
+      <div class="card-tag" data-en="New · AI-Powered" data-es="Nuevo · IA">New · AI-Powered</div>
+      <div class="card-title" data-en="StoriCraft: AI Learning Path Builder" data-es="StoriCraft: Constructor de Rutas de Aprendizaje IA">StoriCraft: AI Learning Path Builder</div>
+      <div class="card-desc" data-en="You choose what you want to learn. StoriCraft builds the path. Create your own self-directed, gamified learning experience — powered by AI, owned by you." data-es="Tú eliges qué quieres aprender. StoriCraft construye el camino. Crea tu propia experiencia de aprendizaje autodirigida y gamificada — impulsada por IA, tuya.">You choose what you want to learn. StoriCraft builds the path. Create your own self-directed, gamified learning experience — powered by AI, owned by you.</div>
+      <div class="cfoot"><span class="cfoot-l" data-en="Start building →" data-es="Empieza a construir →">Start building →</span></div>
     </div>
-  </div>
-  <div class="ann-right">
-    <span class="ann-badge">Invites coming soon</span>
-    <a class="ann-btn" href="leadership.html">View details</a>
-  </div>
-</div>
+  </a>
 
-<div class="featured-strip">
-  <div class="strip-title" data-en="Featured this month" data-es="Destacado este mes">Featured this month</div>
-  <div class="strip-grid">
-    <a class="strip-card talks" href="talks.html">
-      <div class="strip-icon">🎙️</div>
-      <div class="strip-text">
-        <div class="strip-tag">Audio · ES · EN</div>
-        <div class="strip-name">Stori Talks</div>
-        <div class="strip-desc" data-en="New episode: How to ask for help without looking incompetent" data-es="Nuevo episodio: Cómo pedir ayuda sin parecer incompetente">New episode: How to ask for help without looking incompetent</div>
-      </div>
-      <div class="strip-badge">New</div>
-      <div class="strip-arr">→</div>
-    </a>
-    <a class="strip-card compass" href="compass.html">
-      <div class="strip-icon">🧭</div>
-      <div class="strip-text">
-        <div class="strip-tag">AI coaching</div>
-        <div class="strip-name">Stori Compass</div>
-        <div class="strip-desc" data-en="Your thinking partner for career, manager situations, and learning at Stori" data-es="Tu socio de pensamiento para carrera y aprendizaje en Stori">Your thinking partner for career, manager situations, and learning at Stori</div>
-      </div>
-      <div class="strip-badge">Always on</div>
-      <div class="strip-arr">→</div>
-    </a>
-  </div>
-</div>
+  <!-- Storiversity -->
+  <a href="storiversity.html" class="card c-green">
+    <div class="card-icon">🎓</div>
+    <div class="card-tag" data-en="E-Learning" data-es="E-Learning">E-Learning</div>
+    <div class="card-title" data-en="Storiversity" data-es="Storiversity">Storiversity</div>
+    <div class="card-desc" data-en="Your gateway to Stori's full e-learning library. Courses, certifications, and structured programs — all in one place." data-es="Tu acceso a la biblioteca completa de e-learning de Stori. Cursos, certificaciones y programas estructurados.">Your gateway to Stori's full e-learning library. Courses, certifications, and structured programs — all in one place.</div>
+    <div class="cfoot"><span class="cfoot-l" data-en="Open Eloomi" data-es="Abrir Eloomi">Open Eloomi</span><span class="cfoot-arr">→</span></div>
+  </a>
 
-<div class="section">
-  <div class="sec-label" data-en="All learning spaces" data-es="Todos los espacios">All learning spaces</div>
-  <div class="grid">
+  <!-- Stori Business Academy — RENAMED from Stori Expertise -->
+  <a href="business-academy.html" class="card c-blue">
+    <div class="card-icon">📊</div>
+    <div class="card-tag" data-en="Technical Skills" data-es="Habilidades Técnicas">Technical Skills</div>
+    <div class="card-title" data-en="Stori Business Academy" data-es="Stori Business Academy">Stori Business Academy</div>
+    <div class="card-desc" data-en="Technical skill paths built in partnership with Stori's business functions. Content co-owned by Finance, Risk, Ops, and more — curated by L&D." data-es="Rutas de habilidades técnicas construidas con las funciones de negocio de Stori. Contenido co-creado por Finanzas, Riesgo, Ops y más.">Technical skill paths built in partnership with Stori's business functions. Content co-owned by Finance, Risk, Ops, and more — curated by L&D.</div>
+    <div class="cfoot"><span class="cfoot-l" data-en="Explore paths" data-es="Explorar rutas">Explore paths</span><span class="cfoot-arr">→</span></div>
+  </a>
 
-    <a class="card" href="storiversity.html">
-      <div class="card-top-bar" style="background:#00C853"></div>
-      <div class="cicon" style="background:#E0F7EC">🎓</div>
-      <div class="pill pt">E-learning</div>
-      <div class="ctitle">Storiversity</div>
-      <div class="cdesc" data-en="Full course catalogue and compliance training on Eloomi." data-es="Catálogo completo en Eloomi.">Full course catalogue and compliance training on Eloomi.</div>
-      <div class="cfoot"><span class="cfoot-l">3 in progress</span><span class="cfoot-arr">→</span></div>
-    </a>
+  <!-- Leadership Academy -->
+  <a href="leadership.html" class="card c-amber">
+    <div class="card-icon">🧭</div>
+    <div class="card-tag" data-en="Leadership" data-es="Liderazgo">Leadership</div>
+    <div class="card-title" data-en="Leadership Academy" data-es="Academia de Liderazgo">Leadership Academy</div>
+    <div class="card-desc" data-en="Programs, sessions, and resources designed for Stori's people leaders. From first-time managers to senior directors." data-es="Programas, sesiones y recursos diseñados para los líderes de Stori. Desde nuevos managers hasta directores senior.">Programs, sessions, and resources designed for Stori's people leaders. From first-time managers to senior directors.</div>
+    <div class="cfoot"><span class="cfoot-l" data-en="View sessions" data-es="Ver sesiones">View sessions</span><span class="cfoot-arr">→</span></div>
+  </a>
 
-    <a class="card" href="expertise.html">
-      <div class="card-top-bar" style="background:#1A7AE8"></div>
-      <div class="cicon" style="background:#E3EFFE">🔧</div>
-      <div class="pill pb">By function</div>
-      <div class="ctitle">Stori Expertise</div>
-      <div class="cdesc" data-en="Role-specific training owned by your business unit." data-es="Capacitación específica por área.">Role-specific training owned by your business unit.</div>
-      <div class="cfoot"><span class="cfoot-l" data-en="Select your function" data-es="Elige tu función">Select your function</span><span class="cfoot-arr">→</span></div>
-    </a>
+  <!-- Stori Talks -->
+  <a href="stori-talks.html" class="card c-teal">
+    <div class="card-icon">🎙️</div>
+    <div class="card-tag" data-en="Podcast" data-es="Podcast">Podcast</div>
+    <div class="card-title" data-en="Stori Talks" data-es="Stori Talks">Stori Talks</div>
+    <div class="card-desc" data-en="The Stori learning podcast. Real conversations about growth, leadership, and what it means to build something meaningful." data-es="El podcast de aprendizaje de Stori. Conversaciones reales sobre crecimiento, liderazgo y lo que significa construir algo significativo.">The Stori learning podcast. Real conversations about growth, leadership, and what it means to build something meaningful.</div>
+    <div class="cfoot"><span class="cfoot-l" data-en="Listen now" data-es="Escuchar ahora">Listen now</span><span class="cfoot-arr">→</span></div>
+  </a>
 
-    <a class="card" href="academy.html">
-      <div class="card-top-bar" style="background:#1A7AE8"></div>
-      <div class="cicon" style="background:#E3EFFE">🏅</div>
-      <div class="pill pb">Soft skills</div>
-      <div class="ctitle">Stori Business Academy</div>
-      <div class="cdesc" data-en="Communication, influence, and effectiveness for ICs." data-es="Comunicación e influencia para ICs.">Communication, influence, and effectiveness for ICs.</div>
-      <div class="cfoot"><span class="cfoot-l" data-en="Next cohort: June" data-es="Próxima cohorte: Junio">Next cohort: June</span><span class="cfoot-arr">→</span></div>
-    </a>
+  <!-- Stori Compass -->
+  <a href="compass.html" class="card c-purple">
+    <div class="card-icon">🧠</div>
+    <div class="card-tag" data-en="AI Coach" data-es="Coach IA">AI Coach</div>
+    <div class="card-title" data-en="Stori Compass" data-es="Stori Compass">Stori Compass</div>
+    <div class="card-desc" data-en="Your personal AI learning coach. Ask anything about your growth, get guidance on your career path, and reflect on your performance." data-es="Tu coach de aprendizaje IA personal. Pregunta lo que quieras sobre tu crecimiento, obtén orientación y reflexiona sobre tu desempeño.">Your personal AI learning coach. Ask anything about your growth, get guidance on your career path, and reflect on your performance.</div>
+    <div class="cfoot"><span class="cfoot-l" data-en="Talk to Compass" data-es="Hablar con Compass">Talk to Compass</span><span class="cfoot-arr">→</span></div>
+  </a>
 
-    <a class="card" href="leadership.html">
-      <div class="card-top-bar" style="background:#FF8F00"></div>
-      <div class="cicon" style="background:#FFF3E0">👑</div>
-      <div class="pill pa">For leaders</div>
-      <div class="ctitle">Leadership Academy</div>
-      <div class="cdesc" data-en="Sessions and resources for managers and above." data-es="Sesiones para managers y superiores.">Sessions and resources for managers and above.</div>
-      <div class="cfoot"><span class="cfoot-l" data-en="Invite only" data-es="Solo por invitación">Invite only</span><span class="cfoot-arr">→</span></div>
-    </a>
+  <!-- Teaming -->
+  <a href="teaming.html" class="card c-rose">
+    <div class="card-icon">🤝</div>
+    <div class="card-tag" data-en="Collaboration" data-es="Colaboración">Collaboration</div>
+    <div class="card-title" data-en="Teaming & Collaboration" data-es="Trabajo en Equipo">Teaming & Collaboration</div>
+    <div class="card-desc" data-en="Plug-and-play activities, guides, and resources to help your team connect, communicate, and work better together." data-es="Actividades, guías y recursos listos para usar que ayudan a tu equipo a conectar y trabajar mejor juntos.">Plug-and-play activities, guides, and resources to help your team connect, communicate, and work better together.</div>
+    <div class="cfoot"><span class="cfoot-l" data-en="Browse activities" data-es="Ver actividades">Browse activities</span><span class="cfoot-arr">→</span></div>
+  </a>
 
-    <a class="card" href="grow.html">
-      <div class="card-top-bar" style="background:#00C853"></div>
-      <div class="cicon" style="background:#E0F7EC">🛤️</div>
-      <div class="pill pt">Career</div>
-      <div class="ctitle">Grow at Stori</div>
-      <div class="cdesc" data-en="Career guides, feedback frameworks, and workbooks — powered by NotebookLM." data-es="Guías de carrera y cuadernos impulsados por NotebookLM.">Career guides, feedback frameworks, and workbooks — powered by NotebookLM.</div>
-      <div class="cfoot"><span class="cfoot-l">Powered by NotebookLM</span><span class="cfoot-arr">→</span></div>
-    </a>
+  <!-- Grow at Stori -->
+  <a href="grow.html" class="card c-indigo">
+    <div class="card-icon">🌱</div>
+    <div class="card-tag" data-en="Career" data-es="Carrera">Career</div>
+    <div class="card-title" data-en="Grow at Stori" data-es="Crece en Stori">Grow at Stori</div>
+    <div class="card-desc" data-en="Career conversations, feedback frameworks, and development resources to help you grow intentionally at Stori." data-es="Conversaciones de carrera, marcos de retroalimentación y recursos de desarrollo para crecer intencionalmente en Stori.">Career conversations, feedback frameworks, and development resources to help you grow intentionally at Stori.</div>
+    <div class="cfoot"><span class="cfoot-l" data-en="Explore resources" data-es="Ver recursos">Explore resources</span><span class="cfoot-arr">→</span></div>
+  </a>
 
-    <a class="card" href="requests.html">
-      <div class="card-top-bar" style="background:#546E7A"></div>
-      <div class="cicon" style="background:#ECEFF1">📤</div>
-      <div class="pill pn">L&D team</div>
-      <div class="ctitle" data-en="Training requests" data-es="Solicitudes">Training requests</div>
-      <div class="cdesc" data-en="Submit a learning need. We follow up within 3 business days." data-es="Envía una necesidad. Te respondemos en 3 días.">Submit a learning need. We follow up within 3 business days.</div>
-      <div class="cfoot"><span class="cfoot-l" data-en="Submit a request" data-es="Enviar">Submit a request</span><span class="cfoot-arr">→</span></div>
-    </a>
+  <!-- Training Requests -->
+  <a href="requests.html" class="card c-orange">
+    <div class="card-icon">📋</div>
+    <div class="card-tag" data-en="Support" data-es="Soporte">Support</div>
+    <div class="card-title" data-en="Training Requests" data-es="Solicitudes de Capacitación">Training Requests</div>
+    <div class="card-desc" data-en="Submit a learning need for your team. We'll follow up within 3 business days." data-es="Envía una necesidad de aprendizaje para tu equipo. Te respondemos en 3 días hábiles.">Submit a learning need for your team. We'll follow up within 3 business days.</div>
+    <div class="cfoot"><span class="cfoot-l" data-en="Submit a request" data-es="Enviar solicitud">Submit a request</span><span class="cfoot-arr">→</span></div>
+  </a>
 
-  </div>
-</div>
-
-<div class="teaming-section">
-  <div class="teaming-header" id="teaming-header" onclick="toggleTeaming()">
-    <div class="th-left">
-      <div class="th-icon">🤝</div>
-      <div>
-        <div class="th-title">Teaming & Collaboration</div>
-        <div class="th-sub" data-en="Ready-to-run activities for your team meetings — pick one and go" data-es="Actividades listas para tus reuniones">Ready-to-run activities for your team meetings — pick one and go</div>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px">
-      <span class="th-pill">12 activities</span>
-      <span class="th-toggle" id="teaming-toggle">↓</span>
-    </div>
-  </div>
-  <div class="teaming-body" id="teaming-body">
-    <div style="font-size:10px;font-weight:800;color:#7A9E8E;text-transform:uppercase;letter-spacing:.06em;padding:14px 18px 8px;border-bottom:1px solid #EEF2F0">Quick activities</div>
-    <div class="act-grid">
-      <div class="act-item" onclick="window.location='teaming.html#activity-0'">
-        <div class="act-top"><span class="act-emoji">👋</span><span class="act-name">Check-in rounds</span></div>
-        <div class="act-meta"><span class="act-tag">5 min</span><span class="act-tag">Any size</span><span class="act-tag">No prep</span></div>
-        <div class="act-desc">A structured opening that gets everyone present before the work starts.</div>
-      </div>
-      <div class="act-item" onclick="window.location='teaming.html#activity-1'">
-        <div class="act-top"><span class="act-emoji">🔄</span><span class="act-name">Retro in a box</span></div>
-        <div class="act-meta"><span class="act-tag">30 min</span><span class="act-tag">Any size</span></div>
-        <div class="act-desc">A guided retrospective for any team. No prep needed.</div>
-      </div>
-      <div class="act-item" onclick="window.location='teaming.html#activity-2'">
-        <div class="act-top"><span class="act-emoji">🧩</span><span class="act-name">Working styles</span></div>
-        <div class="act-meta"><span class="act-tag">20 min</span><span class="act-tag">4–12 people</span></div>
-        <div class="act-desc">Help your team understand how each person works best.</div>
-      </div>
-      <div class="act-item" onclick="window.location='teaming.html#activity-3'">
-        <div class="act-top"><span class="act-emoji">🧭</span><span class="act-name">Team compass</span></div>
-        <div class="act-meta"><span class="act-tag">45 min</span><span class="act-tag">Cycle kick-off</span></div>
-        <div class="act-desc">Align on priorities and ways of working for the next cycle.</div>
-      </div>
-      <div class="act-item" onclick="window.location='teaming.html#activity-4'">
-        <div class="act-top"><span class="act-emoji">💡</span><span class="act-name">Ideation sprint</span></div>
-        <div class="act-meta"><span class="act-tag">25 min</span><span class="act-tag">Problem-solving</span></div>
-        <div class="act-desc">Structured creative session for any challenge your team faces.</div>
-      </div>
-      <div class="act-item" onclick="window.location='teaming.html#activity-5'">
-        <div class="act-top"><span class="act-emoji">⭐</span><span class="act-name">Appreciation circle</span></div>
-        <div class="act-meta"><span class="act-tag">10 min</span><span class="act-tag">Closing ritual</span></div>
-        <div class="act-desc">A simple way to close a sprint or a tough week on connection.</div>
-      </div>
-      <div class="act-item" onclick="window.location='teaming.html#activity-6'">
-        <div class="act-top"><span class="act-emoji">🎯</span><span class="act-name">Role clarity</span></div>
-        <div class="act-meta"><span class="act-tag">20 min</span><span class="act-tag">New projects</span></div>
-        <div class="act-desc">Eliminate months of friction in 20 minutes by making roles explicit.</div>
-      </div>
-      <div class="act-item" onclick="window.location='teaming.html#activity-7'">
-        <div class="act-top"><span class="act-emoji">🔁</span><span class="act-name">Start / Stop / Continue</span></div>
-        <div class="act-meta"><span class="act-tag">15 min</span><span class="act-tag">Feedback culture</span></div>
-        <div class="act-desc">Build a feedback culture without the weight of formal reviews.</div>
-      </div>
-    </div>
-    <div style="font-size:10px;font-weight:800;color:#7A9E8E;text-transform:uppercase;letter-spacing:.06em;padding:14px 18px 8px;border-top:1px solid #EEF2F0;border-bottom:1px solid #EEF2F0">Leadership & deep collaboration · Facilitator-led</div>
-    <div class="act-grid">
-      <div class="act-item" onclick="window.location='teaming.html#activity-8'">
-        <div class="act-top"><span class="act-emoji">🦆</span><span class="act-name">Build the duck</span></div>
-        <div class="act-meta"><span class="act-tag">60–75 min</span><span class="act-tag">Facilitator-led</span><span class="act-tag">TTT</span></div>
-        <div class="act-desc">Build individually, then as a team. Debrief around effort, goals, pivot, and flexibility.</div>
-      </div>
-      <div class="act-item" onclick="window.location='teaming.html#activity-9'">
-        <div class="act-top"><span class="act-emoji">🪄</span><span class="act-name">Helium stick</span></div>
-        <div class="act-meta"><span class="act-tag">20–30 min</span><span class="act-tag">Facilitator-led</span><span class="act-tag">TTT</span></div>
-        <div class="act-desc">Individual instinct works against the collective goal — make it visible and physical.</div>
-      </div>
-      <div class="act-item" onclick="window.location='teaming.html#activity-10'">
-        <div class="act-top"><span class="act-emoji">🔮</span><span class="act-name">Pre-mortem</span></div>
-        <div class="act-meta"><span class="act-tag">45–60 min</span><span class="act-tag">Leader session</span></div>
-        <div class="act-desc">Imagine the project already failed. Work backwards to surface the risks nobody is saying.</div>
-      </div>
-      <div class="act-item" onclick="window.location='teaming.html#activity-11'">
-        <div class="act-top"><span class="act-emoji">🗺️</span><span class="act-name">Culture canvas</span></div>
-        <div class="act-meta"><span class="act-tag">60–75 min</span><span class="act-tag">Leader session</span></div>
-        <div class="act-desc">Map stated vs actual culture. Name the unwritten rules and decide what to change.</div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <footer>
-  <div class="footer-left">
-    <div class="footer-owl">🦉</div>
-    <span class="footer-text" data-en="Stori Learning Hub · L&D · 2026 · Demo version" data-es="Stori Learning Hub · L&D · 2026 · Versión demo">Stori Learning Hub · L&D · 2026 · Demo version</span>
-  </div>
-  <span class="footer-tag">Building capabilities. Driving impact.</span>
+  <span class="footer-text" data-en="Stori Learning Hub · L&D · 2026 · Demo version" data-es="Stori Learning Hub · L&D · 2026 · Versión demo">Stori Learning Hub · L&D · 2026 · Demo version</span>
+  <span class="footer-text" data-en="Built for leadership review" data-es="Creado para revisión de liderazgo">Built for leadership review</span>
 </footer>
 
 <script>
-var lang = "en";
+let lang = 'en';
 function setLang(l) {
   lang = l;
-  document.getElementById("btn-en").classList.toggle("active", l === "en");
-  document.getElementById("btn-es").classList.toggle("active", l === "es");
-  document.querySelectorAll("[data-en]").forEach(function(el) {
-    var txt = el.getAttribute("data-" + l);
-    if (txt) el.innerHTML = txt;
+  document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  document.getElementById('btn-es').classList.toggle('active', l === 'es');
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + l);
+    if (val) el.innerHTML = val;
   });
-  localStorage.setItem("stori-lang", l);
+  localStorage.setItem('stori-lang', l);
 }
-var saved = localStorage.getItem("stori-lang");
-if (saved && saved !== "en") setLang(saved);
-
-function toggleTeaming() {
-  var body = document.getElementById("teaming-body");
-  var header = document.getElementById("teaming-header");
-  var toggle = document.getElementById("teaming-toggle");
-  var isOpen = body.classList.contains("open");
-  body.classList.toggle("open", !isOpen);
-  header.classList.toggle("open", !isOpen);
-  toggle.classList.toggle("open", !isOpen);
-  toggle.textContent = isOpen ? "↓" : "↑";
-}
+const saved = localStorage.getItem('stori-lang');
+if (saved && saved !== 'en') setLang(saved);
 </script>
 </body>
 </html>
