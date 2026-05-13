@@ -3,213 +3,263 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stori Compass</title>
+<title>Stori Compass — Stori Learning Hub</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F8F8F6;padding:20px;display:flex;flex-direction:column;align-items:center;min-height:100vh}
-.back{font-size:12px;color:#0F6E56;text-decoration:none;align-self:flex-start;margin-bottom:12px}
-.frame{background:#fff;border-radius:16px;border:1px solid #E8E6DF;width:100%;max-width:540px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
-.header{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid #F0EEE7}
-.cicon{width:36px;height:36px;border-radius:9px;background:#EEEDFE;display:flex;align-items:center;justify-content:center;font-size:18px}
-.h-title{font-size:14px;font-weight:600;color:#2C2C2A}
-.h-sub{font-size:11px;color:#888780}
-.scope{display:flex;gap:5px;padding:10px 20px;border-bottom:1px solid #F0EEE7;flex-wrap:wrap;align-items:center}
-.scope-label{font-size:10px;color:#B4B2A9}
-.pill{font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px}
-.pill-in{background:#EEEDFE;color:#3C3489}
-.pill-out{background:#F1EFE8;color:#5F5E5A}
-.messages{padding:16px 20px;display:flex;flex-direction:column;gap:12px;min-height:340px;max-height:440px;overflow-y:auto}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F8F8F6;color:#2C2C2A;min-height:100vh;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;background:#fff;border-bottom:1px solid #E8E6DF}
+.topbar-left{display:flex;align-items:center;gap:10px}
+.logo{width:30px;height:30px;background:#0F6E56;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600}
+.site-name{font-size:14px;font-weight:600}.site-sub{font-size:11px;color:#888780}
+.avatar{width:30px;height:30px;border-radius:50%;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#0F6E56}
+.back-btn{display:flex;align-items:center;gap:8px;padding:14px 28px;background:#fff;border-bottom:1px solid #E8E6DF;font-size:12px;color:#0F6E56;text-decoration:none}
+.back-btn:hover{background:#F8F8F6}
+
+.chat-wrap{flex:1;max-width:680px;width:100%;margin:0 auto;padding:0 20px;display:flex;flex-direction:column}
+
+/* Header */
+.compass-header{padding:20px 0 14px;border-bottom:1px solid #E8E6DF;display:flex;align-items:center;gap:12px}
+.compass-avatar{width:44px;height:44px;border-radius:12px;background:#F0EEFF;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.compass-name{font-size:16px;font-weight:600;color:#2C2C2A;margin-bottom:2px}
+.compass-sub{font-size:12px;color:#888780}
+
+/* Scope tags */
+.scope-row{padding:12px 0;display:flex;align-items:center;gap:6px;flex-wrap:wrap;border-bottom:1px solid #E8E6DF}
+.scope-label{font-size:11px;color:#888780;margin-right:2px}
+.scope-tag{font-size:11px;padding:4px 10px;border-radius:20px;font-weight:500}
+.scope-tag.in{background:#EEF2FF;color:#4338CA}
+.scope-tag.out{background:#F1EFE8;color:#888780}
+.not-label{font-size:11px;color:#888780;margin-left:4px;margin-right:2px}
+
+/* Messages */
+.messages{flex:1;padding:20px 0;display:flex;flex-direction:column;gap:14px;min-height:320px}
 .msg{display:flex;gap:10px;align-items:flex-start}
 .msg.user{flex-direction:row-reverse}
-.avatar{width:28px;height:28px;min-width:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
-.av-c{background:#EEEDFE;color:#534AB7}
-.av-u{background:#E1F5EE;color:#0F6E56}
-.bubble{padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.65;max-width:82%}
-.bubble-c{background:#F6F5F0;color:#2C2C2A;border-radius:4px 12px 12px 12px}
-.bubble-u{background:#0F6E56;color:#fff;border-radius:12px 4px 12px 12px}
-.typing{display:flex;align-items:center;gap:4px;padding:12px 14px;background:#F6F5F0;border-radius:4px 12px 12px 12px;width:fit-content}
-.dot{width:6px;height:6px;border-radius:50%;background:#B4B2A9;animation:bounce 1.2s infinite}
-.dot:nth-child(2){animation-delay:.2s}
-.dot:nth-child(3){animation-delay:.4s}
-@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-.starters{padding:0 20px 12px;display:flex;flex-direction:column;gap:6px}
-.starter{font-size:12px;color:#534AB7;border:1px solid #AFA9EC;border-radius:8px;padding:8px 12px;cursor:pointer;text-align:left;background:#fff;line-height:1.45;font-family:inherit}
-.starter:hover{background:#EEEDFE}
-.input-area{padding:12px 20px;border-top:1px solid #F0EEE7;display:flex;gap:8px;align-items:flex-end}
-.input-area textarea{flex:1;border:1px solid #D3D1C7;border-radius:10px;padding:9px 12px;font-size:13px;font-family:inherit;resize:none;min-height:38px;max-height:120px;line-height:1.5;color:#2C2C2A;outline:none}
-.input-area textarea:focus{border-color:#534AB7}
-.send-btn{width:36px;height:36px;border-radius:9px;background:#534AB7;border:none;cursor:pointer;color:#fff;flex-shrink:0;font-size:15px;font-family:inherit}
-.send-btn:disabled{background:#D3D1C7;cursor:not-allowed}
-.footer-bar{padding:8px 20px 14px;display:flex;justify-content:space-between;align-items:center}
-.footer-tag{font-size:10px;color:#B4B2A9}
-.reset-btn{font-size:11px;color:#888780;background:none;border:none;cursor:pointer;font-family:inherit}
+.msg-avatar{width:30px;height:30px;border-radius:50%;background:#F0EEFF;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:2px}
+.msg-bubble{max-width:82%;padding:14px 16px;border-radius:14px;font-size:13px;line-height:1.7;color:#2C2C2A}
+.msg.bot .msg-bubble{background:#F0EEE8}
+.msg.user .msg-bubble{background:#4338CA;color:#fff}
+.msg-bubble p+p{margin-top:10px}
+
+/* Suggestions */
+.suggestions{display:flex;flex-direction:column;gap:8px;padding:0 0 16px}
+.suggestion{background:#fff;border:1px solid #C7D2FE;border-radius:10px;padding:11px 16px;font-size:13px;color:#4338CA;cursor:pointer;text-align:left;font-family:inherit;transition:background .15s,border-color .15s}
+.suggestion:hover{background:#EEF2FF;border-color:#818CF8}
+
+/* Input */
+.input-row{display:flex;gap:10px;padding:12px 0 8px;border-top:1px solid #E8E6DF;align-items:center}
+.chat-input{flex:1;border:1px solid #E8E6DF;border-radius:10px;padding:11px 14px;font-size:13px;font-family:inherit;color:#2C2C2A;background:#fff;outline:none;resize:none}
+.chat-input:focus{border-color:#818CF8}
+.send-btn{width:40px;height:40px;border-radius:10px;background:#4338CA;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.send-btn:hover{background:#3730A3}
+.send-btn svg{fill:#fff}
+
+/* Footer */
+.chat-footer{display:flex;justify-content:space-between;align-items:center;padding:6px 0 16px;font-size:11px;color:#B4B2A9}
+.restart-btn{font-size:11px;color:#888780;background:none;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:4px}
+.restart-btn:hover{color:#2C2C2A}
+
+/* Typing indicator */
+.typing{display:none;align-items:center;gap:6px;padding:4px 0}
+.typing.show{display:flex}
+.typing-dot{width:7px;height:7px;border-radius:50%;background:#B4B2A9;animation:bounce .9s infinite}
+.typing-dot:nth-child(2){animation-delay:.15s}
+.typing-dot:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
 </style>
 </head>
 <body>
-<a class="back" href="index.html">← Back to hub</a>
-<div class="frame">
-  <div class="header">
-    <div class="cicon">🧭</div>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="logo">S</div>
+    <div><div class="site-name">Stori Learning Hub</div><div class="site-sub">Learning & Development</div></div>
+  </div>
+  <div class="avatar">DB</div>
+</div>
+<a class="back-btn" href="index.html">← Back to hub</a>
+
+<div class="chat-wrap">
+
+  <div class="compass-header">
+    <div class="compass-avatar">🧭</div>
     <div>
-      <div class="h-title">Stori Compass</div>
-      <div class="h-sub">Your thinking partner for work and growth at Stori</div>
+      <div class="compass-name">Stori Compass</div>
+      <div class="compass-sub">Your thinking partner for work and growth at Stori</div>
     </div>
   </div>
-  <div class="scope">
+
+  <div class="scope-row">
     <span class="scope-label">In scope:</span>
-    <span class="pill pill-in">Career development</span>
-    <span class="pill pill-in">Manager situations</span>
-    <span class="pill pill-in">Learning navigation</span>
-    <span class="scope-label" style="margin-left:4px">Not:</span>
-    <span class="pill pill-out">HR decisions</span>
-    <span class="pill pill-out">Legal advice</span>
-    <span class="pill pill-out">Therapy</span>
+    <span class="scope-tag in">Career development</span>
+    <span class="scope-tag in">Manager situations</span>
+    <span class="scope-tag in">Learning navigation</span>
+    <span class="not-label">Not:</span>
+    <span class="scope-tag out">HR decisions</span>
+    <span class="scope-tag out">Legal advice</span>
+    <span class="scope-tag out">Therapy</span>
   </div>
+
   <div class="messages" id="messages">
-    <div class="msg">
-      <div class="avatar av-c">🧭</div>
-      <div class="bubble bubble-c">Hi — I'm Stori Compass, your thinking partner for work and growth at Stori.<br><br>I'm here to help you think through career decisions, navigate manager situations, or find the right learning for where you are right now. I ask questions more than I give answers — that's intentional.<br><br>What's on your mind?</div>
+    <div class="msg bot">
+      <div class="msg-avatar">🧭</div>
+      <div class="msg-bubble">
+        <p>Hi — I'm Stori Compass, your thinking partner for work and growth at Stori.</p>
+        <p>I'm here to help you think through career decisions, navigate manager situations, or find the right learning for where you are right now. I ask questions more than I give answers — that's intentional.</p>
+        <p>What's on your mind?</p>
+      </div>
     </div>
   </div>
-  <div class="starters" id="starters">
-    <button class="starter" onclick="sendStarter(this,0)">I need to give difficult feedback to someone on my team</button>
-    <button class="starter" onclick="sendStarter(this,1)">I'm thinking about my next step at Stori and not sure where to go</button>
-    <button class="starter" onclick="sendStarter(this,2)">I want to build a specific skill but don't know where to start</button>
+
+  <div class="typing" id="typing">
+    <div class="msg-avatar" style="width:30px;height:30px;border-radius:50%;background:#F0EEFF;display:flex;align-items:center;justify-content:center;font-size:15px">🧭</div>
+    <div style="display:flex;gap:5px;align-items:center;padding:12px 14px;background:#F0EEE8;border-radius:14px">
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+    </div>
   </div>
-  <div class="input-area">
-    <textarea id="input" placeholder="Type your message…" rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
-    <button class="send-btn" id="send-btn" onclick="sendMsg()">➤</button>
+
+  <div class="suggestions" id="suggestions">
+    <button class="suggestion" onclick="useSuggestion(this)">I need to give difficult feedback to someone on my team</button>
+    <button class="suggestion" onclick="useSuggestion(this)">I'm thinking about my next step at Stori and not sure where to go</button>
+    <button class="suggestion" onclick="useSuggestion(this)">I want to build a specific skill but don't know where to start</button>
   </div>
-  <div class="footer-bar">
-    <span class="footer-tag">Stori Learning Hub · L&D · Demo</span>
-    <button class="reset-btn" onclick="resetChat()">↺ Start over</button>
+
+  <div class="input-row">
+    <textarea class="chat-input" id="chat-input" rows="1" placeholder="Type your message..." onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+    <button class="send-btn" onclick="sendMessage()">
+      <svg width="16" height="16" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
+    </button>
   </div>
+
+  <div class="chat-footer">
+    <span>Stori Learning Hub · L&D · Demo</span>
+    <button class="restart-btn" onclick="restartChat()">↺ Start over</button>
+  </div>
+
 </div>
 
 <script>
-var CONV = [
-  [
-    {r:"c",t:"That's a meaningful situation to be in — and the fact that you're thinking carefully about how to do it well says a lot.\n\nBefore I share any frameworks, I want to understand the situation better. What's one specific thing this person has done or not done that made you decide feedback is needed?"},
-    {r:"u",t:"They keep missing deadlines and it affects the whole team"},
-    {r:"c",t:"Got it — recurring missed deadlines with team impact. That's a pattern, not a one-off, which actually makes it easier to address because you have concrete examples.\n\nHere's what I want to understand: has this person ever received feedback about this before, or would this be the first time they're hearing it?"},
-    {r:"u",t:"I don't think they've been told directly"},
-    {r:"c",t:"That's really important context. First-time feedback lands very differently than a follow-up — they may genuinely not know the impact.\n\nSo the goal of this conversation is less about accountability and more about awareness and alignment. That changes the tone completely.\n\nTry this opening: describe what you've observed specifically, explain the impact on the team, and then ask a genuine question — 'What's been getting in the way for you?' You might be surprised by the answer.\n\nHow does that framing feel to you?"}
-  ],
-  [
-    {r:"c",t:"Thinking about your next step is one of the most worthwhile things you can invest time in — and also one of the easiest to keep pushing off.\n\nLet me ask you something simple: when you imagine yourself a year from now feeling genuinely energized by your work at Stori, what does that look like?"},
-    {r:"u",t:"I think I'd be leading a team or a bigger project"},
-    {r:"c",t:"That's a clear signal — leadership and ownership are pulling at you. That's not a small thing to notice about yourself.\n\nNow let me push a little: is it the people leadership part that excites you, or the scope and impact of a bigger project? Because those can lead to pretty different paths."},
-    {r:"u",t:"Honestly more the impact and scope"},
-    {r:"c",t:"That's a really useful distinction. A lot of people assume 'next level' means managing people — but what you're describing sounds more like you want to own something bigger, drive decisions, and see real results.\n\nThat path exists at Stori — and it doesn't necessarily require a people management role first.\n\nWhat's one project you're working on right now where you could start expanding your scope, even slightly? Sometimes the next step is already in front of you."}
-  ],
-  [
-    {r:"c",t:"Great question to bring here. The Learning Hub has a few different spaces depending on what you're trying to build.\n\nHelp me point you in the right direction — are you looking to develop a specific skill for your current role, prepare for something coming up, or explore something for your longer-term growth?"},
-    {r:"u",t:"I want to get better at communicating with senior stakeholders"},
-    {r:"c",t:"That's one of the highest-leverage skills you can develop at a fintech like Stori — especially as you grow.\n\nI'd point you to two places. First, the Stori Business Academy has a programme called Communicating with Clarity — structuring your message for different audiences, async vs sync, and how to be concise without losing depth.\n\nSecond, if you want to think through a specific upcoming situation — a presentation, a difficult message, a proposal — I can help you work through it right here.\n\nWhich feels more useful right now?"}
-  ]
-];
+const SYSTEM_PROMPT = `You are Stori Compass, an AI thinking partner for Storians — employees of Stori, a fast-growing Mexican fintech.
 
-var currentConv = -1;
-var convStep = -1;
+Your role is to help Storians think through:
+- Career development and growth decisions at Stori
+- Manager and team situations
+- Learning navigation — finding the right resource or path for their goal
 
-function getNode(id){return document.getElementById(id);}
+You are NOT a therapist, HR advisor, or legal counsel. If someone raises those topics, acknowledge their concern warmly and redirect them to the right resource.
 
-function addMsg(text, role) {
-  var msgs = getNode("messages");
-  var div = document.createElement("div");
-  div.className = "msg" + (role === "user" ? " user" : "");
-  var av = document.createElement("div");
-  av.className = "avatar " + (role === "user" ? "av-u" : "av-c");
-  av.textContent = role === "user" ? "DB" : "🧭";
-  var bubble = document.createElement("div");
-  bubble.className = "bubble " + (role === "user" ? "bubble-u" : "bubble-c");
-  bubble.innerHTML = text.replace(/\n/g, "<br>");
-  div.appendChild(av);
-  div.appendChild(bubble);
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-}
+Your style:
+- Ask more questions than you give answers. Help people think, don't think for them.
+- Warm, direct, and grounded. Not corporate, not overly cheerful.
+- Short responses — 2 to 4 sentences max unless a longer response is genuinely needed.
+- Never use bullet points or numbered lists. Always respond in natural prose.
+- You speak in English by default. If the Storian writes in Spanish, switch to Spanish and stay in Spanish.
 
-function showTyping() {
-  var msgs = getNode("messages");
-  var div = document.createElement("div");
-  div.className = "msg";
-  div.id = "typing-indicator";
-  var av = document.createElement("div");
-  av.className = "avatar av-c";
-  av.textContent = "🧭";
-  var t = document.createElement("div");
-  t.className = "typing";
-  t.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
-  div.appendChild(av);
-  div.appendChild(t);
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-}
+Always start by understanding the situation before offering any perspective.`;
 
-function removeTyping() {
-  var t = getNode("typing-indicator");
-  if (t) t.remove();
-}
+let history = [];
 
-function getNextResponse() {
-  if (currentConv === -1) return "I'm here to help — try one of the prompts above or describe your situation.";
-  var conv = CONV[currentConv];
-  for (var i = convStep + 1; i < conv.length; i++) {
-    if (conv[i].r === "c") {
-      convStep = i;
-      return conv[i].t;
-    }
+async function sendMessage(text) {
+  const input = document.getElementById('chat-input');
+  const userText = text || input.value.trim();
+  if (!userText) return;
+
+  // Hide suggestions
+  document.getElementById('suggestions').style.display = 'none';
+
+  // Add user message
+  appendMessage('user', userText);
+  input.value = '';
+  input.style.height = 'auto';
+  history.push({ role: 'user', content: userText });
+
+  // Show typing
+  const typing = document.getElementById('typing');
+  typing.classList.add('show');
+  scrollBottom();
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: history
+      })
+    });
+    const data = await response.json();
+    const reply = data.content?.[0]?.text || 'Something went wrong. Please try again.';
+    typing.classList.remove('show');
+    appendMessage('bot', reply);
+    history.push({ role: 'assistant', content: reply });
+  } catch (e) {
+    typing.classList.remove('show');
+    appendMessage('bot', 'I had trouble connecting. Please check your connection and try again.');
   }
-  return "That's really thoughtful. What feels like the right next step for you based on what we've explored?";
+  scrollBottom();
 }
 
-function respond() {
-  getNode("send-btn").disabled = true;
-  showTyping();
-  setTimeout(function() {
-    removeTyping();
-    var reply = getNextResponse();
-    addMsg(reply, "compass");
-    getNode("send-btn").disabled = false;
-  }, 900 + Math.floor(Math.random() * 500));
+function appendMessage(role, text) {
+  const messages = document.getElementById('messages');
+  const msg = document.createElement('div');
+  msg.className = 'msg ' + role;
+  const avatar = document.createElement('div');
+  avatar.className = 'msg-avatar';
+  avatar.textContent = role === 'bot' ? '🧭' : '👤';
+  if (role === 'user') avatar.style.background = '#E1F5EE';
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  text.split('\n\n').forEach(para => {
+    if (para.trim()) {
+      const p = document.createElement('p');
+      p.textContent = para.trim();
+      bubble.appendChild(p);
+    }
+  });
+  msg.appendChild(avatar);
+  msg.appendChild(bubble);
+  messages.appendChild(msg);
+  scrollBottom();
 }
 
-function sendMsg() {
-  var input = getNode("input");
-  var text = input.value.trim();
-  if (!text) return;
-  getNode("starters").style.display = "none";
-  input.value = "";
-  input.style.height = "auto";
-  addMsg(text, "user");
-  respond();
-  input.focus();
-}
-
-function sendStarter(btn, idx) {
-  currentConv = idx;
-  convStep = -1;
-  getNode("starters").style.display = "none";
-  addMsg(btn.textContent, "user");
-  respond();
+function scrollBottom() {
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
 function handleKey(e) {
-  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMsg(); }
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
 }
 
 function autoResize(el) {
-  el.style.height = "auto";
-  el.style.height = Math.min(el.scrollHeight, 120) + "px";
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 120) + 'px';
 }
 
-function resetChat() {
-  currentConv = -1;
-  convStep = -1;
-  var msgs = getNode("messages");
-  msgs.innerHTML = '<div class="msg"><div class="avatar av-c">🧭</div><div class="bubble bubble-c">Hi — I\'m Stori Compass, your thinking partner for work and growth at Stori.<br><br>I\'m here to help you think through career decisions, navigate manager situations, or find the right learning for where you are right now. I ask questions more than I give answers — that\'s intentional.<br><br>What\'s on your mind?</div></div>';
-  getNode("starters").style.display = "flex";
+function useSuggestion(btn) {
+  sendMessage(btn.textContent);
+}
+
+function restartChat() {
+  history = [];
+  document.getElementById('messages').innerHTML = `
+    <div class="msg bot">
+      <div class="msg-avatar">🧭</div>
+      <div class="msg-bubble">
+        <p>Hi — I'm Stori Compass, your thinking partner for work and growth at Stori.</p>
+        <p>I'm here to help you think through career decisions, navigate manager situations, or find the right learning for where you are right now. I ask questions more than I give answers — that's intentional.</p>
+        <p>What's on your mind?</p>
+      </div>
+    </div>`;
+  document.getElementById('suggestions').style.display = 'flex';
+  document.getElementById('chat-input').value = '';
 }
 </script>
 </body>

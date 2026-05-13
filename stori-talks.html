@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stori Talks</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato',-apple-system,sans-serif;background:#0D3D32;color:#fff;min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:#0A2E25;height:54px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.topbar-left{display:flex;align-items:center;gap:10px}
+.logo-mark{width:28px;height:28px;background:#00C853;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px}
+.site-name{font-size:13px;font-weight:800;color:#fff}
+.back-link{font-size:12px;color:rgba(255,255,255,0.45);display:flex;align-items:center;gap:5px}
+.back-link:hover{color:#00C853}
+.lang-toggle{display:flex;border:1px solid rgba(255,255,255,0.15);border-radius:6px;overflow:hidden}
+.lang-btn{font-size:10px;font-weight:800;padding:4px 10px;border:none;cursor:pointer;font-family:inherit;background:transparent;color:rgba(255,255,255,0.4)}
+.lang-btn.active{background:#00C853;color:#0D3D32}
+
+.hero-player{background:linear-gradient(160deg,#1A5C45 0%,#0D3D32 60%);padding:28px 28px 24px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.hero-eyebrow{font-size:10px;font-weight:800;color:#00C853;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.hero-title{font-size:26px;font-weight:900;color:#fff;margin-bottom:4px;letter-spacing:-.01em}
+.hero-sub{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:20px;line-height:1.5}
+
+.now-playing-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px}
+.np-top{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.ep-cover{width:56px;height:56px;min-width:56px;border-radius:12px;background:linear-gradient(135deg,#00C853,#0D3D32);display:flex;align-items:center;justify-content:center;font-size:26px}
+.np-meta{}
+.np-label{font-size:9px;font-weight:800;color:#00C853;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;display:flex;align-items:center;gap=6px}
+.np-dot{width:6px;height:6px;border-radius:50%;background:#00C853;display:inline-block;margin-right:5px;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.np-title{font-size:15px;font-weight:800;color:#fff;line-height:1.35;margin-bottom:2px}
+.np-ep{font-size:11px;color:rgba(255,255,255,0.4)}
+
+.controls{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:14px}
+.ctrl-btn{background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.5);font-size:18px;padding:4px;font-family:inherit}
+.ctrl-btn:hover{color:#fff}
+.play-btn{width:48px;height:48px;border-radius:50%;background:#00C853;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;color:#0D3D32}
+.play-btn:hover{background:#00B548}
+.play-btn:active{transform:scale(0.96)}
+
+.progress-wrap{cursor:pointer;margin-bottom:8px}
+.progress-bg{background:rgba(255,255,255,0.12);border-radius:4px;height:5px;overflow:hidden}
+.progress-fill{background:#00C853;height:5px;border-radius:4px;width:0%;transition:width .1s linear}
+.time-row{display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,0.35);margin-top:5px}
+.bottom-row{display:flex;align-items:center;gap:10px}
+.vol-icon{font-size:13px;color:rgba(255,255,255,0.35)}
+.vol-slider{flex:1;accent-color:#00C853;height:3px}
+.speed-btn{font-size:10px;font-weight:800;color:#00C853;background:rgba(0,200,83,0.12);border:1px solid rgba(0,200,83,0.2);border-radius:5px;padding:3px 8px;cursor:pointer;font-family:inherit}
+.ep-tags{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+.ep-tag{font-size:10px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.55);padding:3px 10px;border-radius:20px}
+
+.body-section{background:#F2F5F3;min-height:60vh}
+
+.find-section{padding:24px 28px 20px}
+.find-title{font-size:20px;font-weight:900;color:#0D3D32;margin-bottom:4px;letter-spacing:-.01em}
+.find-sub{font-size:13px;color:#7A9E8E;margin-bottom:20px}
+.topics-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.topic-pill{font-size:11px;font-weight:800;padding:6px 14px;border-radius:20px;cursor:pointer;border:1.5px solid transparent;transition:all .15s}
+.topic-pill.active{background:#0D3D32;color:#fff;border-color:#0D3D32}
+.topic-pill:not(.active){background:#fff;color:#0D3D32;border-color:#DDE8E3}
+.topic-pill:not(.active):hover{border-color:#00C853;color:#00C853}
+
+.episodes-section{padding:0 28px 28px}
+.ep-section-title{font-size:11px;font-weight:800;color:#7A9E8E;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px}
+
+.ep-item{display:flex;align-items:center;gap:14px;padding:14px 16px;background:#fff;border-radius:12px;margin-bottom:8px;cursor:pointer;transition:box-shadow .15s;border:1.5px solid #DDE8E3}
+.ep-item:hover{box-shadow:0 4px 16px rgba(13,61,50,0.08);border-color:#00C853}
+.ep-item.active-ep{border-color:#00C853;background:#F0FBF5}
+.ep-item.dimmed{opacity:.45;cursor:default}
+.ep-play{width:36px;height:36px;min-width:36px;border-radius:50%;background:#0D3D32;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;flex-shrink:0}
+.ep-item.active-ep .ep-play{background:#00C853;color:#0D3D32}
+.ep-content{flex:1}
+.ep-title-row{display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.ep-name{font-size:13px;font-weight:800;color:#0D3D32;line-height:1.35}
+.ep-new{font-size:9px;font-weight:800;background:#00C853;color:#0D3D32;padding:2px 7px;border-radius:10px}
+.ep-coming{font-size:9px;font-weight:700;background:#EEF2F0;color:#7A9E8E;padding:2px 7px;border-radius:10px}
+.ep-series{font-size:11px;color:#7A9E8E}
+.ep-dur{font-size:11px;color:#AABFB6;white-space:nowrap}
+.ep-lang{font-size:9px;font-weight:800;padding:2px 6px;border-radius:5px;margin-left:4px}
+.lb-en{background:#E3EFFE;color:#1A4F9C}
+.lb-es{background:#E0F7EC;color:#007A38}
+
+.series-section{padding:0 28px 28px}
+.series-title{font-size:11px;font-weight:800;color:#7A9E8E;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px}
+.series-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.series-card{background:#fff;border-radius:12px;padding:14px;border:1.5px solid #DDE8E3;cursor:pointer;transition:border-color .15s}
+.series-card:hover{border-color:#00C853}
+.series-icon{font-size:24px;margin-bottom:8px}
+.series-name{font-size:12px;font-weight:800;color:#0D3D32;margin-bottom:2px;line-height:1.3}
+.series-eps{font-size:10px;color:#AABFB6}
+
+footer{padding:16px 28px;background:#0A2E25;display:flex;align-items:center;justify-content:space-between}
+.footer-text{font-size:11px;color:rgba(255,255,255,0.25)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="logo-mark">🦉</div>
+    <span class="site-name">Stori Learning Hub</span>
+    <span style="color:rgba(255,255,255,0.2);margin:0 4px">·</span>
+    <a class="back-link" href="index.html">← Back to hub</a>
+  </div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-en" onclick="switchLang('en')">EN</button>
+    <button class="lang-btn" id="btn-es" onclick="switchLang('es')">ES</button>
+  </div>
+</div>
+
+<div class="hero-player">
+  <div class="hero-eyebrow">Stori Talks</div>
+  <div class="hero-title" id="hero-title">Find answers to everyday questions.</div>
+  <div class="hero-sub" id="hero-sub">Short audio episodes made for Storians — practical, real, and ready when you are.</div>
+
+  <div class="now-playing-card">
+    <div class="np-top">
+      <div class="ep-cover">🎙️</div>
+      <div class="np-meta">
+        <div class="np-label"><span class="np-dot"></span> Now playing</div>
+        <div class="np-title" id="np-title">How to ask for help without looking incompetent</div>
+        <div class="np-ep">Episode 1 · Stori Talks</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="ctrl-btn" onclick="skip(-15)" aria-label="Back 15s">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 .49-3.96"></path></svg>
+      </button>
+      <button class="play-btn" id="play-btn" onclick="togglePlay()" aria-label="Play or pause">
+        <svg id="play-icon" width="20" height="20" viewBox="0 0 24 24" fill="#0D3D32"><polygon points="5,3 19,12 5,21"></polygon></svg>
+        <svg id="pause-icon" width="20" height="20" viewBox="0 0 24 24" fill="#0D3D32" style="display:none"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+      </button>
+      <button class="ctrl-btn" onclick="skip(15)" aria-label="Forward 15s">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-.49-3.96"></path></svg>
+      </button>
+    </div>
+
+    <div class="progress-wrap" onclick="seekTo(event)">
+      <div class="progress-bg"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="time-row"><span id="current-time">0:00</span><span id="total-time">--:--</span></div>
+    </div>
+
+    <div class="bottom-row">
+      <span class="vol-icon">🔈</span>
+      <input type="range" class="vol-slider" min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)" aria-label="Volume">
+      <button class="speed-btn" id="speed-btn" onclick="cycleSpeed()">1x</button>
+    </div>
+
+    <div class="ep-tags">
+      <span class="ep-tag">Critical thinking</span>
+      <span class="ep-tag">Communication</span>
+      <span class="ep-tag">Growth mindset</span>
+      <span class="ep-tag">Gen Z</span>
+    </div>
+  </div>
+</div>
+
+<div class="body-section">
+  <div class="find-section">
+    <div class="find-title" id="find-title">Find answers to your everyday questions</div>
+    <div class="find-sub" id="find-sub">Every episode tackles a real situation Storians face. Filter by topic.</div>
+    <div class="topics-row">
+      <div class="topic-pill active" onclick="filterTopic(this,'all')" data-en="All" data-es="Todos">All</div>
+      <div class="topic-pill" onclick="filterTopic(this,'thinking')" data-en="Critical thinking" data-es="Pensamiento crítico">Critical thinking</div>
+      <div class="topic-pill" onclick="filterTopic(this,'communication')" data-en="Communication" data-es="Comunicación">Communication</div>
+      <div class="topic-pill" onclick="filterTopic(this,'problem')" data-en="Problem solving" data-es="Resolución de problemas">Problem solving</div>
+      <div class="topic-pill" onclick="filterTopic(this,'adaptability')" data-en="Adaptability" data-es="Adaptabilidad">Adaptability</div>
+      <div class="topic-pill" onclick="filterTopic(this,'collaboration')" data-en="Collaboration" data-es="Colaboración">Collaboration</div>
+      <div class="topic-pill" onclick="filterTopic(this,'storytelling')" data-en="Storytelling" data-es="Storytelling">Storytelling</div>
+    </div>
+  </div>
+
+  <div class="episodes-section">
+    <div class="ep-section-title">Episodes</div>
+
+    <div class="ep-item active-ep" data-topics="thinking communication" onclick="playEp(this,'en')">
+      <div class="ep-play">▶</div>
+      <div class="ep-content">
+        <div class="ep-title-row">
+          <span class="ep-name" data-en="How to ask for help without looking incompetent" data-es="Cómo pedir ayuda sin parecer incompetente">How to ask for help without looking incompetent</span>
+          <span class="ep-new">New</span>
+        </div>
+        <div class="ep-series">Communication series <span class="ep-lang lb-en" id="ep1-lang">EN</span></div>
+      </div>
+      <div class="ep-dur" id="ep1-dur">--:--</div>
+    </div>
+
+    <div class="ep-item dimmed" data-topics="communication storytelling">
+      <div class="ep-play" style="background:#DDE8E3;color:#7A9E8E">▶</div>
+      <div class="ep-content">
+        <div class="ep-title-row">
+          <span class="ep-name" style="color:#7A9E8E" data-en="When your idea is good but nobody is listening" data-es="Cuando tu idea es buena pero nadie escucha">When your idea is good but nobody is listening</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <div class="ep-series">Storytelling series</div>
+      </div>
+      <div class="ep-dur">~8 min</div>
+    </div>
+
+    <div class="ep-item dimmed" data-topics="thinking problem">
+      <div class="ep-play" style="background:#DDE8E3;color:#7A9E8E">▶</div>
+      <div class="ep-content">
+        <div class="ep-title-row">
+          <span class="ep-name" style="color:#7A9E8E" data-en="How to make a decision when you don't have all the information" data-es="Cómo decidir cuando no tienes toda la información">How to make a decision when you don't have all the information</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <div class="ep-series">Critical thinking series</div>
+      </div>
+      <div class="ep-dur">~9 min</div>
+    </div>
+
+    <div class="ep-item dimmed" data-topics="collaboration adaptability">
+      <div class="ep-play" style="background:#DDE8E3;color:#7A9E8E">▶</div>
+      <div class="ep-content">
+        <div class="ep-title-row">
+          <span class="ep-name" style="color:#7A9E8E" data-en="Working with people who think completely differently than you" data-es="Trabajar con personas que piensan diferente a ti">Working with people who think completely differently than you</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <div class="ep-series">Collaboration series</div>
+      </div>
+      <div class="ep-dur">~7 min</div>
+    </div>
+
+    <div class="ep-item dimmed" data-topics="adaptability problem">
+      <div class="ep-play" style="background:#DDE8E3;color:#7A9E8E">▶</div>
+      <div class="ep-content">
+        <div class="ep-title-row">
+          <span class="ep-name" style="color:#7A9E8E" data-en="What to do when the plan changes at the last minute" data-es="Qué hacer cuando el plan cambia a último momento">What to do when the plan changes at the last minute</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <div class="ep-series">Adaptability series</div>
+      </div>
+      <div class="ep-dur">~6 min</div>
+    </div>
+
+    <div class="ep-item dimmed" data-topics="storytelling communication">
+      <div class="ep-play" style="background:#DDE8E3;color:#7A9E8E">▶</div>
+      <div class="ep-content">
+        <div class="ep-title-row">
+          <span class="ep-name" style="color:#7A9E8E" data-en="How to present data so people actually care" data-es="Cómo presentar datos para que a la gente le importe">How to present data so people actually care</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <div class="ep-series">Storytelling series</div>
+      </div>
+      <div class="ep-dur">~10 min</div>
+    </div>
+  </div>
+
+  <div class="series-section">
+    <div class="series-title">Browse by series</div>
+    <div class="series-grid">
+      <div class="series-card"><div class="series-icon">🧠</div><div class="series-name">Critical thinking</div><div class="series-eps">1 ep coming</div></div>
+      <div class="series-card"><div class="series-icon">💬</div><div class="series-name">Communication</div><div class="series-eps">1 ep · 1 coming</div></div>
+      <div class="series-card"><div class="series-icon">🔍</div><div class="series-name">Problem solving</div><div class="series-eps">1 ep coming</div></div>
+      <div class="series-card"><div class="series-icon">🌊</div><div class="series-name">Adaptability</div><div class="series-eps">2 eps coming</div></div>
+      <div class="series-card"><div class="series-icon">🤝</div><div class="series-name">Collaboration</div><div class="series-eps">1 ep coming</div></div>
+      <div class="series-card"><div class="series-icon">✨</div><div class="series-name">Storytelling</div><div class="series-eps">2 eps coming</div></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-text">Stori Talks · Stori Learning Hub · L&D · 2026</span>
+  <span class="footer-text">🦉 Building capabilities. Driving impact.</span>
+</footer>
+
+<audio id="audio" src="stori_talks_ep1_en.m4a" preload="metadata"></audio>
+
+<script>
+var audio = document.getElementById('audio');
+var fill = document.getElementById('progress-fill');
+var curr = document.getElementById('current-time');
+var total = document.getElementById('total-time');
+var playIcon = document.getElementById('play-icon');
+var pauseIcon = document.getElementById('pause-icon');
+var speeds = [1,1.25,1.5,2];
+var speedIdx = 0;
+var currentLang = 'en';
+
+var content = {
+  en:{src:'stori_talks_ep1_en.m4a',title:'How to ask for help without looking incompetent',badge:'EN',badgeClass:'ep-lang lb-en'},
+  es:{src:'stori_talks_ep1.m4a',title:'Cómo pedir ayuda sin parecer incompetente',badge:'ES',badgeClass:'ep-lang lb-es'}
+};
+
+function fmt(s){if(isNaN(s)||!isFinite(s))return'--:--';return Math.floor(s/60)+':'+(Math.floor(s%60)<10?'0':'')+Math.floor(s%60);}
+
+audio.addEventListener('loadedmetadata',function(){
+  total.textContent=fmt(audio.duration);
+  document.getElementById('ep1-dur').textContent=fmt(audio.duration);
+});
+audio.addEventListener('timeupdate',function(){
+  if(!audio.duration)return;
+  fill.style.width=Math.round((audio.currentTime/audio.duration)*100)+'%';
+  curr.textContent=fmt(audio.currentTime);
+});
+audio.addEventListener('ended',function(){
+  playIcon.style.display='block';pauseIcon.style.display='none';
+});
+
+function togglePlay(){
+  if(audio.paused){audio.play();playIcon.style.display='none';pauseIcon.style.display='block';}
+  else{audio.pause();playIcon.style.display='block';pauseIcon.style.display='none';}
+}
+function skip(s){audio.currentTime=Math.max(0,Math.min(audio.duration||0,audio.currentTime+s));}
+function seekTo(e){var r=e.currentTarget.getBoundingClientRect();audio.currentTime=((e.clientX-r.left)/r.width)*(audio.duration||0);}
+function setVolume(v){audio.volume=v;}
+function cycleSpeed(){speedIdx=(speedIdx+1)%speeds.length;audio.playbackRate=speeds[speedIdx];document.getElementById('speed-btn').textContent=speeds[speedIdx]+'x';}
+
+function switchLang(lang){
+  if(lang===currentLang)return;
+  currentLang=lang;
+  var wasPlaying=!audio.paused;
+  audio.pause();playIcon.style.display='block';pauseIcon.style.display='none';
+  fill.style.width='0%';curr.textContent='0:00';total.textContent='--:--';
+  var c=content[lang];
+  audio.src=c.src;audio.load();
+  document.getElementById('np-title').textContent=c.title;
+  var badge=document.getElementById('ep1-lang');
+  badge.textContent=c.badge;badge.className=c.badgeClass;
+  document.getElementById('btn-en').classList.toggle('active',lang==='en');
+  document.getElementById('btn-es').classList.toggle('active',lang==='es');
+  if(wasPlaying){audio.addEventListener('canplay',function(){audio.play();playIcon.style.display='none';pauseIcon.style.display='block';},{once:true});}
+}
+
+function filterTopic(btn, topic){
+  document.querySelectorAll('.topic-pill').forEach(function(p){p.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.ep-item').forEach(function(ep){
+    if(topic==='all'){ep.style.display='flex';}
+    else{
+      var topics=ep.getAttribute('data-topics')||'';
+      ep.style.display=topics.includes(topic)?'flex':'none';
+    }
+  });
+}
+
+function playEp(el,lang){
+  if(lang!==currentLang)switchLang(lang);
+  audio.currentTime=0;audio.play();
+  playIcon.style.display='none';pauseIcon.style.display='block';
+}
+</script>
+</body>
+</html>
